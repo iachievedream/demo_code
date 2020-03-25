@@ -1,0 +1,22 @@
+ a:link {
+    text-decoration: none;/* 文本裝飾，文字中畫線或底線的裝飾功能 */
+    color: #000000;
+ }
+ body {
+    font-size: 10pt;/* 字體大小 */
+    line-height: 13pt;/* 行距高 */
+    background-color: #ECF5FF;/* 背景顏色 */
+ }
+textarea {
+    border: 1px solid #999999;/* 中框 樣式 中框顏色*/
+    padding: 5px;/* 內框 */
+    /* cols:30;
+    rows:5; */
+ }
+ form {
+    margin: 0px;/* 外框 */
+    padding: 0px;/* 內框 */
+ }
+ .p {
+    text-indent: 24px;
+ }

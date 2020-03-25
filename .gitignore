@@ -1,1 +1,9 @@
-pure_php/passsword.php
+# Ignore files called 'passsword.php'
+PDO/password.php
+pure_php/password.php
+
+
+# git rm -r --cached PDO/password.php 
+# git rm -r --cached pure_php/password.php
+
+# git rm -r --cached
