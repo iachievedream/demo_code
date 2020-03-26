@@ -1,5 +1,5 @@
 簡易留言板:<br>
-原先使用mysqli，後續功能做出後改由PDO的方式。<br>
+使用mysqli，後續功能則是改由PDO的方式。<br>
 <br>
 檔案內容:<br>
 add.html:新增文章的表單。<br>
@@ -10,10 +10,10 @@ password.php:MySQL的相關資料，不上傳的資料內容。<br>
 以下為此檔案範例：<br>
 ~~~
 <?php
-$host = 'host';
+$servername = 'host';
 $dbname = 'dbname';
-$user = 'user';
-$pass = 'pass';
+$username = 'user';
+$password = 'pass';
 ~~~
 <br>
 massage_board.sql：建立在MySQL的資料庫內容，須先建立資料庫，後會經由下面建立新的資料表內容。<br>

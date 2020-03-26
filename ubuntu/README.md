@@ -1,3 +1,6 @@
+查詢自己電腦IP位置
+ip address
+hostname -I
 
 sh有些像是widows的批次檔，也就是一個程式碼的資訊全部打在一起，一起執行。<br>
 

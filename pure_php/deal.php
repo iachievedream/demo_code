@@ -1,5 +1,6 @@
 <?php
 require_once('db.php');
+
 //使用$_POST接住表單傳送過來的資料，確認新增留言有點選，後續執行sql指令，並判斷是否新增成功
 $name = $_POST['name'];
 $msg = $_POST['msg'];
@@ -11,6 +12,7 @@ if ($_POST['submit']) {
         echo "留言新增失敗";
     }
 }
+
 //確認參數id是否有抓取，後續執行刪除sql指令，並判斷是否刪除成功
 $id = $_GET['id'];
 if ($_GET['id']) { //null or number
