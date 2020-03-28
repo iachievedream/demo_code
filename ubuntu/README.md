@@ -1,7 +1,7 @@
-查詢自己電腦IP位置
-ip address
-hostname -I
-
+查詢自己電腦IP位置：<br>
+ip address<br>
+hostname -I<br>
+<br>
 sh有些像是widows的批次檔，也就是一個程式碼的資訊全部打在一起，一起執行。<br>
 
 ~~~
@@ -19,12 +19,12 @@ base.sh上面的註解，<br>
 Q&A：mkdir(): Permission denied<br>
 建立新資料夾並使用下列指令開權限。<br>
 <br>
-常見的是以apache2為例，建立laravel資料夾。
+常見的是以apache2為例，建立laravel新資料夾。
 
 ~~~
 cd /var/www/html/
 sudo mkdir laravel
-sudo chmod -R 666 your_dir
+sudo chmod -R 666 laravel
 
 修改linux權限命令：chmod
 用法：chmod XXX filename
@@ -37,4 +37,3 @@ sudo chmod -R 666 your_dir
 所以一定要有r權限才能開檔案，如果只有x或w是不能開檔案的
 普通的文字檔只要有r權限就可以開檔案，不需要有x權限
 ~~~
-

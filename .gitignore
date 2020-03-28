@@ -5,5 +5,4 @@ pure_php/password.php
 
 # git rm -r --cached PDO/password.php 
 # git rm -r --cached pure_php/password.php
-
 # git rm -r --cached
