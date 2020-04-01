@@ -9,3 +9,5 @@ git：<br>
 可以把它視為 VS Code 的 command line，許多擴充套件也須經由這個地方下指令。<br>
 <br>
 Git: View History (git log)<br>
+<a href="https://blog.tonycube.com/2018/11/visual-studio-code.html">Visual Studio Code 極速上手指南</a><br>
+<a href=""></a><br>

@@ -45,3 +45,18 @@ darrbase/seeds/[seeds]
 <br>
 <br>
 
+#### 若要將 Laravel 內建的伺服器開在其他的網路介面上，可以以使用 --host 與 --port 自行指定傾聽之 IP 位址與連接埠：
+
+##### 指定傾聽之 IP 位址與連接埠
+
+~~~
+php artisan serve --host=192.168.122.202 --port=8001
+~~~
+
+<a href="https://blog.gtwang.org/linux/ubuntu-linux-laravel-nginx-mariadb-installation-tutorial/">Ubuntu Linux 安裝 Laravel + Nginx + MariaDB 開發環境教學</a><br>
+<a href="https://www.howtoing.com/install-laravel-php-framework-on-ubuntu">如何在Ubuntu上安装Laravel PHP Framework</a>：有VirtualHost 的設定<br>
+<br>
+推薦網頁：<a href="https://blog.tonycube.com/">tonycube</a><br>
+<a href=""></a><br>
+<a href=""></a><br>
+

@@ -52,3 +52,13 @@ sudo apt-get install phpmyadmin
 # dbc_dbpass='yourpasswd'
 
 # http://127.0.0.1/phpmyadmin/
+
+# install ssh
+sudo apt-get install ssh
+# 查看SSH有無被開啟
+# netstat -a | grep ssh
+# 成功會顯示：tcp 0 0 *:ssh *:* LISTEN
+
+# sudo service ssh start
+# sudo service ssh stop
+# sudo service ssh restart

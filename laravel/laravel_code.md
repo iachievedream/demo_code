@@ -18,8 +18,8 @@ sudo chown -R www-data:root /var/www/laravel_test
 //更改的目標用戶組和用戶，更改的目標文件夾
 sudo chmod 755 /var/www/laravel_test/storage
 
-$ chmod -R 755 laravel_test
-$ chmod -R 777 laravel_test/storage
+$ sudo chmod -R 755 laravel_test
+$ sudo chmod -R 777 laravel_test/storage
 ~~~ 
 
 ### Q&A：Laravel installation:
