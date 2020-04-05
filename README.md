@@ -1,9 +1,12 @@
-### pure_php<br>
-這個資料夾是練習純PHP的留言板，後面則是有改寫PDO的方式來做MySQL的資料處理。<br>
+### Laravel<br>
 <br>
 
-### PDO，簡易留言板:<br>
-原先使用mysqli，此篇功能是改寫成PDO的方式。<br>
+### php<br>
+內有file_upload<br>
+留言板：<br>
+__PDO_msg：使用PDO。<br>
+__pure_msg：使用mysqli。<br>
+php_array_sord：陣列排列練習。<br>
 <br>
 
 ### ubuntu<br>
@@ -20,7 +23,7 @@ ssl的線上憑證後續會嘗試該如何使用<br>
 AWS練習的網址位置為：<a href="https://awsubuntu.fuwork.xyz/">awsubuntu.fuwork.xyz</a><br>
 <br>
 
-#### docker<br>
+##### docker<br>
 
 現在只了解該如何使用，像是VirtualBox一樣的操作ubuntu一般，<br>
 雖然我是了解docker是操作軟體，但我還不懂如何操作以及對接port(ex.8000,或是80port等等)<br>

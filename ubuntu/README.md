@@ -12,35 +12,19 @@ copy base.sh
 sudo sh base.sh
 ~~~
 
+apache2改port方法有在註解裡面<br>
 在安裝phpmyadmin要注意，<br>
 base.sh上面的註解，<br>
 需要手動的輸入才能使用。<br>
 <br>
 
-### 安裝SSH
-
-~~~
-sudo apt-get install ssh
-
-//查看SSH有無被開啟
-netstat -a | grep ssh
-成功會顯示：tcp 0 0 *:ssh *:* LISTEN
-
-sudo service ssh start
-sudo service ssh stop
-sudo service ssh restart
-
-//用SSH連線到別台裝置
-ssh username@hostname
-ex. ssh ubuntu@127.0.0.1
-
-//登出
-logout
-~~~
+### 操作SSH
 
 <a href="https://magiclen.org/linux-ssh/">安裝SSH 讓Linux系統可以被遠端操作</a><br>
-windows使用putty.exe軟體
-IP輸入即可，如：127.0.0.1
+windows使用putty.exe軟體<br>
+IP輸入即可，如：127.0.0.1<br>
+<br>
+ubuntu則是需 ssh username@hostname<br>
 
 <a href="https://sites.google.com/site/linuxcooltea/home/ubuntu-she-dingssh-yuan-duan-lian-xian-gong-neng">Ubuntu - SSH 的安裝與設定 和 設定SSH遠端連線功能</a><br>
 

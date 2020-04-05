@@ -1,8 +1,6 @@
 ## vue
 
-用Webpack把vue把它
-
-devtpul
+用Webpack把vue把它包起來，devtpul
 
 <a href="https://askiebaby.github.io/what-is-webpack/">關於 Webpack，它是什麼？能夠做什麼？為什麼？怎麼做？— freeCodeCamp 的筆記</a><br>
 

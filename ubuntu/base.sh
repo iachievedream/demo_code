@@ -27,6 +27,13 @@ cd /var/www/html
 sudo mv index.html index1.html
 #apache2 -version
 
+# # apache2改port的方法
+# sudo nano /etc/apache2/ports.conf 
+# # 改port及資料夾位置
+# sudo nano /etc/apache2/sites-available/000-default.conf 
+# # 重新啟動
+# sudo service apache2 restart
+
 # ubuntu安装MySQL
 sudo apt-get install mysql-server
 sudo apt install mysql-client
@@ -58,6 +65,7 @@ sudo apt-get install ssh
 # 查看SSH有無被開啟
 # netstat -a | grep ssh
 # 成功會顯示：tcp 0 0 *:ssh *:* LISTEN
+
 
 # sudo service ssh start
 # sudo service ssh stop
