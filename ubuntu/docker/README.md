@@ -52,16 +52,16 @@ docker attach <NAMES>    //容易故障--進入容器(退出停止容器)
 docker inspect [id]
 ~~~
 
+### volume
 -v掛載[本機位置：容器位置]
 
 ~~~
-docker run --name project1  -v ~/project_1:/root/project_1 -p 22:22 -ti ubuntu bash
-~~~
+sudo docker run --name project1  -v ~/project_1:/root/project_1 -p 22:22 -ti ubuntu bash
 
+sudo docker run -d -P --name web --link db:db training/webapp python app.py
+------------------------------------------------------
 --link name:alias，其中 name 是要連接的容器名稱，alias 是這個連接的別名。
 
-~~~
-$ sudo docker run -d -P --name web --link db:db training/webapp python app.py
 ~~~
 
 導出容器
@@ -163,5 +163,45 @@ sudo docker run -itd -p 8888:80 httpd:v1<br>
 docker build -t="ubuntu:v3" .<br>
 -t 是指定image的tag；. 則是當前目錄
 
+<a href="https://www.opencli.com/linux/docker-delete-images-containers">Docker 中刪除 Images 鏡像 及 Containers</a><br>
+
+~~~
+刪除 Docker Image
+# docker images
+# docker rmi image_id
+
+刪除 Docker Containers
+# docker ps -a
+
+# docker stop container_id
+# docker rm container_id
+如果想一次過將所有 container 停止及刪除, 執行以下指令:
+
+# docker stop $(docker ps -a -q)
+# docker rm $(docker ps -a -q)
+~~~
+
+
 <a href="https://www.puritys.me/docs-blog/article-362-%E5%A6%82%E4%BD%95%E7%94%A8-Dockerfile-%E8%87%AA%E8%A3%BD%E4%B8%80%E5%80%8B-Docker-image-Container.html">如何用 Dockerfile 自製一個 Docker image / Container</a><br>
 <a href="https://hackmd.io/@titangene/docker-lamp">利用 Dockfile、Docker Compose 建立 LAMP 環境 (PHP、Apache、MySQL)</a><br>
+
+<a href="https://larrylu.blog/using-volumn-to-persist-data-in-container-a3640cc92ce4">Docker 實戰系列（三）：使用 Volume 保存容器內的數據</a><br>
+<a href=""></a><br>
+<a href=""></a><br>
+<a href=""></a><br>
+<a href=""></a><br>
+<a href=""></a><br>
+
+
+~~~
+sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker
+docker image ls 
+~~~
+
+未看:<br>
+<a href="https://dev.to/veevidify/docker-compose-up-your-entire-laravel-apache-mysql-development-environment-45ea">docker-compose up your entire Laravel + Apache + MySQL development environment.</a><br>
+<a href="https://ithelp.ithome.com.tw/users/20102562/ironman/987">CI 從入門到入坑</a><br>
+<a href=""></a><br>
+<a href=""></a><br>

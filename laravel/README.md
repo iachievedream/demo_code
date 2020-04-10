@@ -50,7 +50,10 @@ darrbase/seeds/[seeds]
 ##### 指定傾聽之 IP 位址與連接埠
 
 ~~~
-php artisan serve --host=192.168.122.202 --port=8001
+php artisan serve --host=127.0.0.1 --port=8001
+
+80port轉成其他port(host需要換成外網ID),再使用
+sudo php artisan serve --host=127.0.0.1 --port=80
 ~~~
 
 <a href="https://blog.gtwang.org/linux/ubuntu-linux-laravel-nginx-mariadb-installation-tutorial/">Ubuntu Linux 安裝 Laravel + Nginx + MariaDB 開發環境教學</a><br>
@@ -61,3 +64,13 @@ php artisan serve --host=192.168.122.202 --port=8001
 <a href=""></a><br>
 
 
+clone 下來的安裝指令
+~~~
+composer install 
+copy .env.example .env
+
+php artisan key:generate
+//如果有JWT
+php artisan jwt:secret
+php artisan migrate:refresh
+~~~

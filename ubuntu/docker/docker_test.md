@@ -183,15 +183,19 @@ sudo docker run -itd -p 8888:80 web:v1
 #### Docker 安装 jenkins(pull jenkins)
 
 ~~~
-sudo docker pull jenkins
-sudo docker run -d -u 0 --privileged  --name jenkins_node1 -p 49003:8081 -v /root/jenkins_node1:/var/jenkins_home jenkins:latest
+下載jenkins
+sudo docker pull jenkins/jenkins
+運行myjenkins容器
+sudo docker run --name myjenkins -d -p 8080:8080 -p 50000:50000 jenkins/jenkins
+sudo docker run --name myjenkins -d -p 8080:8080 -p 50000:50000 -v `pwd`:/var/jenkins_home/workspace jenkins/jenkins
 
-docker run --name myjenkins -d -p 8080:8080 -p 50000:50000 jenkins
-
+進入容器
 sudo docker exec -it myjenkins bash
-
 查看密碼
-cat
+cat /var/jenkins_home/secrets/initialAdminPassword
+
+另外指令(待了解)
+sudo docker run -d -u 0 --privileged  --name jenkins_node1 -p 49003:8081 -v `pwd`:/var/jenkins_home/workspace jenkins/jenkins
 ~~~
 
 原文網址：<a href="https://kknews.cc/code/jlrxe66.html">如何使用 Docker 安裝 Jenkins</a><br>

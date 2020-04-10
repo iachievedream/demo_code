@@ -22,7 +22,7 @@
             {{ n }}
         </li>
         <div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }">字體大小測試</div>
-
+        <button v-on:click="say('what')">Say what</button>
     </div>
     <script>
         new Vue({
@@ -40,6 +40,11 @@
                 ],
                 activeColor: 'green',
                 fontSize: 30
+            },
+            methods: {
+                say: function (message) {
+                    alert(message)
+                }
             }
         })
     </script>
