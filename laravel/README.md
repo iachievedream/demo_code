@@ -21,8 +21,8 @@
 
 ~~~
 routes/web.php[route]-->
-app/http/Kernel[Middeware的管理檔案]-->
-app/http/Middeware/[Middeware]-->
+app/http/Kernel[Middleware的管理檔案]-->
+app/http/Middleware/[Middleware]-->
 app/http/Controllers/[Controller]-->[Model] or [view]
 
 //檔案分類：把[Model]多分出兩層出來管理
@@ -66,11 +66,14 @@ sudo php artisan serve --host=127.0.0.1 --port=80
 
 clone 下來的安裝指令
 ~~~
+git clone https://~~
 composer install 
 copy .env.example .env
-
+**set up MySQL of root and password
 php artisan key:generate
-//如果有JWT
+//如果有JWT(須執行下行指令)
 php artisan jwt:secret
 php artisan migrate:refresh
+php artisan serve
 ~~~
+

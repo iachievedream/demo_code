@@ -9,18 +9,17 @@ JWT的介紹以及實際的操作。<br>
 <a href="https://github.com/iachievedream/blog-laravel">blog-laravel</a><br>
 測試影片(待補內容)<br>
 <br>
-使用JWT的留言板程式碼(使用Postman測試)：
+使用JWT的留言板程式碼(使用Postman測試)：<br>
 <a href="https://github.com/iachievedream/blog-laravel-jwt">blog-laravel-jwt</a><br>
 測試影片(待補內容)<br>
 <br>
-本機的網址內容(AWS的免費額度已滿，所以採用本機使用serve)：<br>
+本機的網址內容(AWS的免費額度已滿，所以使用本機serve)：<br>
 <a href="http://virtualboxubuntu1.fuwork.xyz:81/">http://virtualboxubuntu1.fuwork.xyz:81/</a><br>
 <a href="https://virtualboxubuntu1.fuwork.xyz/">https://virtualboxubuntu1.fuwork.xyz/</a><br>
 
 ### README.md：<br>
 laravel程式的建構前的思考及撰寫程式碼的過程敘述。
 
-===
 
 ## php<br>
 內有file_upload<br>
@@ -30,14 +29,11 @@ __pure_msg：使用mysqli。<br>
 php_array_sord：陣列排列練習。<br>
 <br>
 
-===
 
 ## ubuntu<br>
 ubuntu的使用版本為18.04.4，<br>
 基本VirtualBox安裝完後，<br>
 使用此資料夾中的base.sh安裝基本軟體執行操作，<br>
-<br>
-
 <br>
 apach2_ssl.md：<br>
 ubuntu的apache2的vhost設定(default-ssl.conf)。<br>
