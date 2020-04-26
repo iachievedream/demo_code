@@ -20,29 +20,29 @@
 ### laravel框架的基本認識
 
 ~~~
+.env設定檔(MySQL的帳密等)
+[route]-->[Middleware]-->[Controller]-->[Service]-->[Repository]-->[Model]
+
+檔案位置
 routes/web.php[route]-->
-app/http/Kernel[Middleware的管理檔案]-->
+app/http/Kernel[Middleware的設定檔]-->
 app/http/Middleware/[Middleware]-->
 app/http/Controllers/[Controller]-->[Model] or [view]
 
-//檔案分類：把[Model]多分出兩層出來管理
-//[Controller]-->[Service]-->[Repository]-->[Model]
-app/http/Repositories/[Repository]-->[Model]
-app/http/Services/[Service]-->[Repository]
+檔案分類：把[Model]與[Controller]多分出兩層出來管理，以減少Controller的程式複雜度
 
-app/[Model]
+檔案位置
+App/Http/Controllers/[Controller]-->app/http/Services/[Service]-->app/http/Repositories/[Repository]-->app/[Model]
 
 resources/views/[view]
 
-//MySQL建立與管理
-darrbase/migrations/[migration]
-darrbase/seeds/[seeds]
-
+MySQL建立與管理
+建立資料表：darrbase/migrations/[migration]
+建立假資料內容：darrbase/seeds/[seeds]
 ~~~
 
 ### laravel的檔案規劃順序
 
-<br>
 <br>
 
 #### 若要將 Laravel 內建的伺服器開在其他的網路介面上，可以以使用 --host 與 --port 自行指定傾聽之 IP 位址與連接埠：

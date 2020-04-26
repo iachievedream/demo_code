@@ -28,7 +28,6 @@ sudo chmod -R 777 laravel_test/storage
 ~~~
 sudo mkdir laravel
 sudo chmod 777 laravel
-cd laravel
 sudo chmod 777 laravel/storage
 ~~~ 
 
@@ -58,12 +57,17 @@ chown的教學：<br>
 <a href="https://blog.gtwang.org/linux/linux-chown-command-tutorial/">Linux 更改檔案擁有者與群組，chown 指令使用教學與範例</a><br>
 <br>
 <a href="https://medium.com/@shengyou/2018ironman-eos-for-php-developer-day13-124a0903e937">[2018 鐵人賽] 簡潔高效的 PHP & Laravel 工作術：從 elementary OS 下手的聰明改造提案 #13</a><br>
-sudo nano /etc/apache2/sites-available/laravel.local.conf
 
+sudo nano etc/host
+~~~
+127.0.0.1 abc.xyz
+~~~
+sudo nano /etc/apache2/sites-available/laravel.local.conf
+sudo nano /etc/apache2/sites-available/
 ~~~
 <VirtualHost laravel.local:80>
     DocumentRoot "/var/www/html/laravel/laravel_test/public"
-    ServerAdmin laravel.local
+    ServerAdmin abc
 
     <Directory "/var/www/html/laravel/laravel_test">
         Options All

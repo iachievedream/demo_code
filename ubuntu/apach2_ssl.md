@@ -1,6 +1,24 @@
-## www
+# https設定
 
-#### 使用acme.sh 搭配 GoDaddy， Let's Encrypt 免費萬用憑證
+[使用acme](#使用acme)
+
+[使用openssl](#使用openssl)
+
+[使用Certbot(未嘗試)](#使用Certbot(未嘗試))
+
+[用Caddy申請Let’s_Encrypt_Wildcard憑證](#用Caddy申請Let’s_Encrypt_Wildcard憑證)
+
+[其他資源](#其他資源)
+
+[Q&A](#Q&A)
+
+[尚未練習](#尚未練習)
+
+<img src="https://github.com/iachievedream/demo_code/blob/master/picture/ubuntu/ubuntu_https.png" width="50%" height="50%" />
+
+
+## 使用acme
+使用acme.sh 搭配 GoDaddy， Let's Encrypt 免費萬用憑證
 
 ~~~
 //下列兩程式了解
@@ -32,20 +50,15 @@ systemctl reload apache2
 sudo service apache2 restart
 ~~~
 
-參考資料：<a href="https://magiclen.org/simple-ssl-acme-cloudflare/">如何在Linux作業系統上免費申請Let's Encrypt的SSL憑證，並實現自動化申請和套用？</a><br>
+參考資料：<br>
+<a href="https://magiclen.org/simple-ssl-acme-cloudflare/">如何在Linux作業系統上免費申請Let's Encrypt的SSL憑證，並實現自動化申請和套用？</a><br>
 <a href="https://www.footmark.info/linux/centos/acmesh-godaddy-letsencrypt-wildcard/">acme.sh 搭配 GoDaddy 自動續期 Let's Encrypt 免費萬用憑證</a><br>
 <br>
-使用Certbot(未嘗試)：<a href="https://medium.com/@rommelhong/%E5%9C%A8ubuntu-18-04-lts-apache-2%E4%B8%AD%E5%AE%89%E8%A3%9D%E4%BD%BF%E7%94%A8lets-encrypt-ssl%E6%86%91%E8%AD%89-d2957a0b070f">在Ubuntu 18.04 LTS + Apache 2中安裝使用Let’s Encrypt SSL憑證</a><br>防火牆須嘗試了解
 
-~~~
-為HTTPS開通防火牆設定
-sudo ufw allow 'Apache Full'
-sudo ufw delete allow 'Apache'
-查看防火牆狀態：
-sudo ufw status
-~~~
+[回目錄](#https設定)
 
-使用openssl： <a href="https://ccnrz.wordpress.com/2017/05/04/%E5%9C%A8-ubuntu-apache-%E4%B8%8A%E5%95%9F%E7%94%A8-https-%E8%87%AA%E7%B0%BD%E6%86%91%E8%AD%89/">Ubuntu Apache 上用自簽憑證啟用 https 服務</a>
+## 使用openssl
+ <a href="https://ccnrz.wordpress.com/2017/05/04/%E5%9C%A8-ubuntu-apache-%E4%B8%8A%E5%95%9F%E7%94%A8-https-%E8%87%AA%E7%B0%BD%E6%86%91%E8%AD%89/">Ubuntu Apache 上用自簽憑證啟用 https 服務</a>
 
 ~~~
 開啟 apache2 SSL mode，a2enmod算是一個模組的指令(?)
@@ -115,6 +128,22 @@ systemctl reload apache2
 sudo service apache2 restart
 ~~~
 
+[回目錄](#https設定)
+
+## 使用Certbot(未嘗試)
+<a href="https://medium.com/@rommelhong/%E5%9C%A8ubuntu-18-04-lts-apache-2%E4%B8%AD%E5%AE%89%E8%A3%9D%E4%BD%BF%E7%94%A8lets-encrypt-ssl%E6%86%91%E8%AD%89-d2957a0b070f">在Ubuntu 18.04 LTS + Apache 2中安裝使用Let’s Encrypt SSL憑證</a><br>防火牆須嘗試了解
+
+~~~
+為HTTPS開通防火牆設定
+sudo ufw allow 'Apache Full'
+sudo ufw delete allow 'Apache'
+查看防火牆狀態：
+sudo ufw status
+~~~
+
+[回目錄](#https設定)
+
+## 用Caddy申請Let’s_Encrypt_Wildcard憑證
 <a href="https://websiteforstudents.com/change-apache2-http-default-port-on-ubuntu-16-04-17-10-18-04/">Change Apache2 HTTP Default Port On Ubuntu 16.04 | 17.10 | 18.04</a><br>
 <a href="https://www.webteach.tw/?p=903">LINUX – SSL 憑證 設定 (GoDaddy)</a><br>
 <a href="https://blog.wu-boy.com/2018/07/caddy-lets-encrypt-wildcard-certificate/comment-page-1/">用 Caddy 申請 Let’s Encrypt Wildcard 憑證</a><br>
@@ -134,12 +163,16 @@ CADDYPATH=/etc/caddy/ssl \
 caddy -conf=/etc/caddy/Caddyfile
 ~~~
 
-其他資源：<a href="https://chyuan3c.pixnet.net/blog/post/167336994">啟用Ubuntu的https</a><br>
+[回目錄](#https設定)
+
+## 其他資源
+<a href="https://chyuan3c.pixnet.net/blog/post/167336994">啟用Ubuntu的https</a><br>
 google關鍵字；<br>
 Let's Encrypt 憑證申請 apache godaddy API Key Management<br>
 
-<br>
-Q&A:<br>
+[回目錄](#https設定)
+
+## Q&A
 待認證的錯誤，副檔名要了解
 
 ~~~
@@ -159,7 +192,9 @@ acme.sh --install-cert -d fuwork.xyz \
 --reloadcmd     "service apache2 force-reload"
 ~~~
 
-尚未練習：<br>
+[回目錄](#https設定)
+
+## 尚未練習
 FreeSSL：<a href="https://ithelp.ithome.com.tw/articles/10228781">Nginx server 之 HTTPS(SSL) 設定</a><br>
 <a href="https://www.imnobby.com/2017/09/20/%E6%96%BC-ubuntu-%E8%A8%AD%E5%AE%9A-lets-encrypt-%E5%85%8D%E8%B2%BB-ssl-%E7%B6%B2%E7%AB%99%E8%AD%89%E6%9B%B8/">於 Ubuntu 設定 Let’s Encrypt 免費 SSL 網站證書</a><br>
 步驟六：安裝 Let’s Encrypt
