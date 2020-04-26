@@ -14,7 +14,7 @@
 
 [尚未練習](#尚未練習)
 
-<img src="https://github.com/iachievedream/demo_code/blob/master/picture/ubuntu/ubuntu_https.png" width="50%" height="50%" />
+<img src="https://github.com/iachievedream/demo_code/blob/master/picture/ubuntu/ubuntu_https.png" />
 
 
 ## 使用acme
