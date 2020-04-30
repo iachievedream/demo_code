@@ -1,24 +1,17 @@
 # README
-基本技巧筆記：<a href="https://github.com/iachievedream/demo_code/blob/master/laravel/Laravel_base.md">Laravel_base</a><br>
-laravel程式撰寫過程：<a href="https://github.com/iachievedream/demo_code/blob/master/laravel/Laravel_code.md">Laravel_code</a><br>
-JWT 套用過程:<a href="https://github.com/iachievedream/demo_code/blob/master/laravel/Laravel_JWT.md">Laravel_JWT</a><br>
-JWT 套用後，使用RESTful的過程:<a href="https://github.com/iachievedream/demo_code/blob/master/laravel/Laravel_JWT_RESTful.md">Laravel_JWT_RESTful</a><br>
+基本技巧筆記：<a href="https://github.com/iachievedream/demo_code/blob/master/laravel/laravel_base.md">Laravel_base</a><br>
+laravel程式撰寫過程：<a href="https://github.com/iachievedream/demo_code/blob/master/laravellaravel_code.md">Laravel_code</a><br>
+JWT 套用過程:<a href="https://github.com/iachievedream/demo_code/blob/master/laravel/laravel_JWT.md">Laravel_JWT</a><br>
+JWT 套用後，使用RESTful的過程:<a href="https://github.com/iachievedream/demo_code/blob/master/laravel/laravel_JWT_RESTful.md">Laravel_JWT_RESTful</a><br>
 
 
 # 目錄
-[Laravel的基本介紹](#Laravel的基本介紹)
-
-[laravel框架的基本認識](#laravel框架的基本認識)
-
-[laravel的檔案規劃順序](#laravel的檔案規劃順序)
-
-[laravel指定port與IP](#laravel指定port與IP)
-
-[clone下來的安裝指令](#clone下來的安裝指令)
-
-[推薦網頁](#推薦網頁)
-
-
+[Laravel的基本介紹](#Laravel的基本介紹)<br>
+[laravel框架的基本認識](#laravel框架的基本認識)<br>
+[laravel的檔案規劃順序](#laravel的檔案規劃順序)<br>
+[laravel指定port與IP](#laravel指定port與IP)<br>
+[clone下來的安裝指令](#clone下來的安裝指令)<br>
+[推薦網頁](#推薦網頁)<br>
 
 ## Laravel的基本介紹
 部落格練習，<br>
