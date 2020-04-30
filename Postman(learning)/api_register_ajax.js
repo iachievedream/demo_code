@@ -1,13 +1,34 @@
 var requestURL = "http://127.0.0.1:8000/api/";
+$.ajax({
+  "url": requestURL,
+  "method": "GET",
+  "timeout": 0,
+  "headers": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  success: function (response) {
+    $('.info').html('抓到資料囉!');
+    // $('.info').append(response.message);// 搜尋術，.each使用vue
+    $.each(response.data[0], function (index, element) {
+      $('.info').append(
+        $('<li>', { text: [index] + '：' + element }),
+        // $('<li>', { text: [index] +  '地址：' + element[0]}),
+        $('<p>')
+      );
+    });
+  },
+  error: function (jqXHR, textStatus, errorThrown) {
+    document.getElementById("message").innerHTML = errorThrown;
+  }
+});
+
 // $.ajax({
 //     url: requestURL,
 //     dataType: "json",
-//     // data: data,
-//     // type: "POST",
 //     type: "GET",
 //     // data: data, // 不用JSON.stringify()
 //     // data: JSON.stringify(dataJSON),
-//     // contentType: "application/json;charset=utf-8",
 //     contentType: 'application/x-www-form-urlencoded; charset=UTF-8', // 不能用 'application/json; charset=utf-8'
 //     success: function (returnData) {
 //         // response.data;
@@ -19,68 +40,23 @@ var requestURL = "http://127.0.0.1:8000/api/";
 //     //     console.log(thrownError);
 //     // }
 // });
-$.ajax({
-    url: requestURL,
-    dataType: "json",
-    type: "GET",
-    contentType: "application/json;charset=utf-8",
-    success: function (response) {
-        const charge = [];
-        charge.push(...response);
-        createDomElement(charge);
-    },
-    error: function (thrownError) {
-        console.log(thrownError);
-    }
-});
-
-function createDomElement(charge) {
-    const domElements = charge.map(place => {
-        return `
-                <li>
-                <p class="location">位置： ${ place.author}</p>
-                </li>
-                `;
-    }).join("");
-    const chargeList = document.querySelector('.charge-list');
-    chargeList.innerHTML = domElements;
-}
-
 
 //     success: function (response) {
-//         // response.data;
-//         // alert(response); //這裡目前印出 
-//         // console.log(response);
-
 //         const charge = [];
 //         charge.push(...response);
 //         createDomElement(charge);
 //     },
 //     error: function (thrownError) {
 //         console.log(thrownError);
-//     }
-// });
+
 // function createDomElement(charge) {
 //     const domElements = charge.map(place => {
 //         return `
-//             <li>
-//             <p class="location">位置： ${ place.author}</p>
-//             </li>
-//             `;
+//                 <li>
+//                 <p class="location">位置： ${ place.author}</p>
+//                 </li>
+//                 `;
 //     }).join("");
-
 //     const chargeList = document.querySelector('.charge-list');
 //     chargeList.innerHTML = domElements;
 // }
-
-
-// $.ajax({
-//     // method: "GET",
-//     type: "POST",
-//     url: requestURL,
-//     // data: data,
-//     dataType: "json",
-//     done(function (returnData) {
-//         console.log(returnData);
-//     }),
-// });

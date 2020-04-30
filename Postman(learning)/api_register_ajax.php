@@ -10,18 +10,25 @@
 </head>
 
 <body>
-
+    <h>register</h>
     <form enctype="application/x-www-form-urlencoded" action="http://127.0.0.1:8000/api/register" method="POST">
-        <input type="text" name="name" value="fu">
-        <input type="text" name="email" value="fu@gmail.com">
-        <input type="text" name="password" value="1qaz2wsx">
-        <input type="text" name="password_confirmation" value="1qaz2wsx">
+        <input type="text" name="name" value="root">
+        <input type="text" name="email" value="root@gmail.com">
+        <input type="text" name="password" value="root">
+        <input type="text" name="password_confirmation" value="root">
         <input type="submit" value="submit">
     </form>
-
+    <h>login</h>
+    <form enctype="application/x-www-form-urlencoded" action="http://127.0.0.1:8000/api/login" method="POST">
+        <input type="text" name="email" value="root@gmail.com">
+        <input type="text" name="password" value="root">
+        <input type="submit" value="submit">
+    </form>
     <h1>文章</h1>
-    <ul class="charge-list"></ul>
+    <!-- <div id="message"></div> -->
 
+    <ul class="info">
+    </ul>
 </body>
 
 </html>

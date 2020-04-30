@@ -1,125 +1,416 @@
-## Laravel_code
+# Laravel_code
+###### tags:`code`
 
-環境：ubuntu 18.04<br>
-如果有載入composer就可以使用下列指令安裝laravel
+文件介紹
+<img src="https://github.com/iachievedream/demo_code/blob/master/picture/Laravel/laravel_process.png" width="50%" height="50%" />
 
+hackmd版本說明：[程式介紹](https://hackmd.io/@JvzyHmrLSNCa2tYaMCOzxQ/By9oCCU7L)
+
+[純domo影片](https://www.youtube.com/watch?v=PgSaVoqxjTo&feature=emb_logo)
+
+demo程式碼部分
+<iframe width="560" height="315" src="https://www.youtube.com/embed/PgSaVoqxjTo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+# 目錄
+[domo的程式下載與安裝](#domo的程式下載與安裝)
+
+[安裝Laravel](#安裝Laravel)
+
+[修改.env成自己MySQL的帳密](#修改.env成自己MySQL的帳密)
+
+[執行自動登入的程式指令(ui vue)](#執行自動登入的程式指令)
+
+[建立新的資料庫，使用Migration建立(須按照下方格式)](#建立新的資料庫，使用Migration建立(須按照下方格式))
+
+[在MySQL建立Laravel存取的資料庫，以laravel資料庫為例](#在MySQL建立Laravel存取的資料庫，以laravel資料庫為例)
+
+[在Seeder建立資料表內的假資料](#在Seeder建立資料表內的假資料)
+
+[進階factory](#進階factory)
+
+[修改routes/web.php](#修改routes/web.php)
+
+[新增Model(Article)](#新增Model(Article))
+
+[Middleware](#Middleware)
+
+* [設定Middleware](#設定Middleware)
+
+* [新增Middleware檔案](#新增Middleware檔案)
+
+[新增controller](#新增controller)
+
+* [CRUD](#CRUD)
+
+* * [新增資料](#新增資料)
+
+* * [列出全部資料](#列出全部資料)
+
+* * [顯示單一筆資料](#顯示單一筆資料)
+
+* * [更新資料](#更新資料)
+
+* * [刪除資料](#刪除資料)
+
+*  [進階：建構式以及資料分層(待補)](#進階：建構式以及資料分層(待補))
+
+* [Validator](#Validator)
+
+[新增View](#新增View)
+
+## domo的程式下載與安裝
 ~~~
-//此資料夾才可使用下列指令
-composer global require laravel/installer
-laravel new laravel_test 
+git clone https://github.com/iachievedream/blog-laravel.git
+cd blog-laravel
+composer install 
+copy .env.example .env
+**set up MySQL of root and password
+php artisan key:generate
+php artisan migrate:refresh
+php artisan db:seed
+php artisan serve
+~~~
 
-//直接安裝則是下列指令：
+## 安裝Laravel
+~~~
 composer create-project --prefer-dist laravel/laravel laravel_test "6.*"
 ~~~
 
-修改目錄權限
+[回目錄](#目錄)
 
+## 修改.env成自己MySQL的帳密
 ~~~
-sudo chown -R www-data:root /var/www/laravel_test
-//更改的目標用戶組和用戶，更改的目標文件夾
-sudo chmod -R 755 laravel_test
-sudo chmod -R 777 laravel_test/storage
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laravel
+DB_USERNAME=root
+DB_PASSWORD=
 ~~~
-
-我個人方式是建立新資料夾，
-及使用chmod把權限開至777，
-再進去執行laravel的安裝指令。
-
+嘗試laravel是否順利安裝
+使用Cmder軟體進入此資料夾執行下列指令
 ~~~
-sudo mkdir laravel
-sudo chmod 777 laravel
-sudo chmod 777 laravel/storage
-~~~ 
-
-### Q&A：Laravel installation:
-mkdir(): Permission denied<br>
-解決方法如下:
-
+php artisan serve
 ~~~
-cd /var/www
-sudo chown -Rv root:$USER .
-//chown -R更改所有檔案的權限擁有者 -v顯示更改結果 -f則是不顯示
-//root的群組$USER的使用者
-//ls -l可以看擁有者
+如果出現127.0.0.1:8000，
+查看是否此網址進入有無看見laravel畫面
 
-sudo chmod -Rv g+rw .
-cd html
-composer create-project --prefer-dist laravel/laravel blog
+[回目錄](#目錄)
+
+## 執行自動登入的程式指令
+~~~
+composer require laravel/ui --dev
+npm install && npm run dev
+
+php artisan ui vue --auth
+php artisan migrate
 ~~~
 
-方法來源：從零開始的Laravel RESTful api：<br>
-<a href="https://ithelp.ithome.com.tw/articles/10217379">Day 04 : 環境架設 part III -- Composer & Laravel</a><br>
+[回目錄](#目錄)
+
+## 建立新的資料庫，使用Migration建立(須按照下方格式)
+php artisan make:migration create_articlese_table
+新增這隻檔案程式，名稱為下：
+2020_02_25_025914_create_articles_table.php
+~~~
+CreateArticlesTable
+
+    public function up()
+    {
+        Schema::create('articles', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('title');
+            $table->string('author');
+            $table->string('content');
+            $table->timestamps();
+        });
+    }
+~~~
+
+修改這隻檔案符合你登入的專案資訊
+~~~
+2014_10_12_000000_create_users_table.php
+~~~
+
+[回目錄](#目錄)
+
+## 在MySQL建立Laravel存取的資料庫，以laravel資料庫為例
+
+執行Migration匯入mySQL，
+~~~
+php artisan migrate
+~~~
+如果之前有執行過則執行此指令
+~~~
+php artisan migrate:refresh
+~~~
+清除所有版本的 Migration 並重新執行
+
+[回目錄](#目錄)
+
+## 在Seeder建立資料表內的假資料
+
+修改此檔案資料以填充資料表內資料
+database/seeds/DatabaseSeeder.php
+~~~
+
+    public function run()
+    {
+        // $this->call(UsersTableSeeder::class);
+
+        DB::table('users')->insert([
+            'name' => Str::random(10),
+            'email' => Str::random(10).'@gmail.com',
+            'password' => bcrypt('secret'),
+            'role' => bcrypt('root'),
+        ]);
+    }
+    
+Str::random是現在更新完使令(S需要大寫，否則會有錯誤)
+
+str_random則為舊關鍵字，須使用需執行下列指令
+composer require laravel/helpers
+以新指令為主較好。
+~~~
+
+Q&A:<br>
+[After upgrading Laravel from 5.6 to 6.0, Call to undefined str_random() function not working](https://stackoverflow.com/questions/58163406/after-upgrading-laravel-from-5-6-to-6-0-call-to-undefined-str-random-function)
+
+修改完則執行此指令
+~~~
+php artisan db:seed
+~~~
+
+建立root管理員：[實際程式碼](https://github.com/iachievedream/blog-laravel/blob/master/database/seeds/DatabaseSeeder.php)。
+
+[回目錄](#目錄)
+
+## 進階factory
+database/factories/UserFactory.php
+~~~
+$factory->define(User::class, function (Faker $faker) {
+    return [
+        'name' => $faker->name,
+        'email' => $faker->unique()->safeEmail,
+        'password' => '$2y$10$92IXUNpkjO0rOQ',
+        'role' => 'root',
+    ];
+});
+~~~
+DatabaseSeeder
+~~~
+    public function run()
+    {
+        factory(App\User::class,10)->create();    
+    }
+~~~
+建立多個資訊內容：[實際程式碼](https://github.com/iachievedream/blog-laravel/blob/master/database/factories/UserFactory.php)。<br>
+需取消20行的註解，前方14~19也需做註解處理，<br>
+DatabaseSeeder的程式需使用此行程式內容，新增十個資料內容。
+~~~
+factory(App\User::class,10)->create();    
+~~~
+
+[回目錄](#目錄)
+
+## 修改routes/web.php
+新增下方程式
+~~~
+Auth::routes();
+
+Route::get('/','ArticleController@index');
+
+Route::group(['middleware'=>'auth'],function(){
+
+	Route::get('/create','ArticleController@create');
+    
+	Route::post('/store','ArticleController@store');
+
+	Route::group(['middleware'=>'authority'],function(){
+
+		Route::get('/show/edit/{id}/','ArticleController@edit');
+
+		Route::post('/show/edit/update/{id}','ArticleController@update');
+
+		Route::post('/show/delete/{id}/','ArticleController@destroy');
+	});
+
+});
+~~~
+
+Auth::routes()是Laravel底層的內容，註冊以及登入的功能。
+~~~
+Route::get('/show/{id}','ArticleController@show');
+~~~
+前面是使用方法(以get為例)，<br>
+第一個'/show/{id}'是網址的進入方式，<br>
+第二個'ArticleController@show'<br>
+則是Controller的檔案以及後方需執行或進入的函數。
+
+group則是整理route，把相同的歸在一起。
+
+middleware則是中間進入Controller需要進行的驗證機制。
+
+[回目錄](#目錄)
+
+## 新增Model(Article)
+~~~
+php artisan make:model Article
+~~~
+會增加此檔案
+~~~
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Article extends Model
+{
+    protected $fillable = [
+    	'title', 'author', 'content',
+    ];
+}
+~~~
+程式fillable的含意是可以對此欄資料進行變更，
+
+[回目錄](#目錄)
+
+## Middleware
+### 設定Middleware
+修改此路徑程式碼App\Http\Kernel
+~~~
+protected $routeMiddleware = [
+
+    'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+    'authority' => \App\http\Middleware\Authority::class,
+    //添加地方
+];
+~~~
+
+[回目錄](#目錄)
+
+### 新增Middleware檔案
+下指令新增Middleware檔案
+~~~
+php artisan make:middleware CheckAge
+~~~
+撰寫程式驗證機制，引入那些資料做對照，<br>
+及在哪個時候要跳至哪個route的controller,<br>
+多數狀況為認證成功以及失敗。
+~~~
+    public function handle($request, Closure $next)
+    {
+        //網址回傳ID(使用指令，把route上面的id傳至此middleware)
+        $id = $request->route('id');
+        //文章作者
+        $article = Article::find($id);
+        $author = $article->author;
+        //登入使用者
+        $user = Auth::user()->name;
+        //管理員判斷
+        $role = Auth::user()->role;
+        if ($author == $user || $role == "admin") {
+            return $next($request);    
+            //驗證成功，進入下一個controller內
+        }
+        return redirect('/');          
+        //驗證失敗，跳回/去(須查看route跳至哪一controller)
+    }
+~~~
+
+[回目錄](#目錄)
+
+## 新增controller
+下指令新增controller檔案
+~~~
+php artisan make:controller ArticleController
+~~~
+這個檔案是最多內容的部分<br>
+簡要介紹當中內容，<br>
+詳細的則在[此路徑中](https://github.com/iachievedream/blog-laravel/blob/master/app/Http/Controllers/ArticleController.php)
+
+### CRUD
+#### 新增資料
+~~~
+Article::create([
+    'title' => $data['title'],
+    'content' => $data['content'],
+    'author' => Auth::user()->name,
+]);
+~~~
+
+[回目錄](#目錄)
+
+#### 列出全部資料
+~~~
+public function index()
+{
+    Article::all();
+    return view('article.index')->with('articles', $article);
+}
+~~~
+with的解釋為
+
+[回目錄](#目錄)
+
+#### 顯示單一筆資料
+~~~
+Article::find($id);
+~~~
+
+[回目錄](#目錄)
+
+#### 更新資料
+~~~
+Article::find($id)->update([
+	'title' => $data['title'],
+	'content' => $data['content'],
+]);
+~~~
+
+[回目錄](#目錄)
+
+#### 刪除資料
+~~~
+Article::find($id)->delete();
+~~~
+
+[回目錄](#目錄)
+
+### 進階：建構式以及資料分層(待補)
+~~~
+protected $articleService;
+
+public function __construct(ArticleService $articleService)
+{
+    $this->articleService = $articleService;
+}
+~~~
+__construct為建構式，也就是在進入程式碼後立即執行的程式內容，<br>
+後方括號的部分是將第一行程式碼進行宣告且放入$articleService變數當中。<br>
 <br>
-有權限的開放以及新增一個專屬apache2.conf的教學方式：<br>
-<a href="https://medium.com/@rommelhong/%E5%9C%A8ubuntu-18-04-lts%E4%B8%AD%E5%AE%89%E8%A3%9Dphpmyadmin-composer-laravel-6-c65a0c63fa58">在Ubuntu 18.04 LTS中安裝phpMyAdmin + Composer + Laravel 6</a><br>
-<br>
-chown的教學：<br>
-<a href="https://blog.gtwang.org/linux/linux-chown-command-tutorial/">Linux 更改檔案擁有者與群組，chown 指令使用教學與範例</a><br>
-<br>
-<a href="https://medium.com/@shengyou/2018ironman-eos-for-php-developer-day13-124a0903e937">[2018 鐵人賽] 簡潔高效的 PHP & Laravel 工作術：從 elementary OS 下手的聰明改造提案 #13</a><br>
+$this則是這一整個class當中指什麼函數，也就是進入哪一個函數，
+上方的程式範例為此支class當中的articleService這個函數，
 
-sudo nano etc/host
+[回目錄](#目錄)
+
+### Validator
 ~~~
-127.0.0.1 abc.xyz
-~~~
-sudo nano /etc/apache2/sites-available/laravel.local.conf
-sudo nano /etc/apache2/sites-available/
-~~~
-<VirtualHost laravel.local:80>
-    DocumentRoot "/var/www/html/laravel/laravel_test/public"
-    ServerAdmin abc
-
-    <Directory "/var/www/html/laravel/laravel_test">
-        Options All
-        AllowOverride All
-        Require all granted
-    </Directory>
-</VirtualHost>
-
-# 開啟站台
-sudo a2ensite laravel.local.conf
-# 重新載入 Apache 設定檔
-sudo systemctl reload apache2
-# 設定 hosts
-sudo nano /etc/hosts
-
-127.0.0.1 laravel.local
-
-//測試是不需要重啟apache2
-sudo service apache2 restart
-
-其他指令
-sudo nano /etc/apache2/sites-available/000-default.conf 
-sudo a2ensite 000-default.conf 
+$article = Validator::make($request->all(), [
+    'title' => 'required|max:25',
+    'content' => 'required|max:255',
+]);
 ~~~
 
-[Apache] 反向代理設定 Reverse Proxy
+[回目錄](#目錄)
 
-~~~
-sudo nano httpd.conf 之中開啟兩個mod，分別是
+## 新增View
+新增主頁面：index.blade.php<br>
+新增新增頁：create.blade.php<br>
+新增顯示頁：show.blade.php.<br>
+新增編輯頁：edit.blade.php<br>
+詳細程式則在[此路徑中](https://github.com/iachievedream/blog-laravel/tree/master/resources/views/article)
 
-#LoadModule proxy_module modules/mod_proxy.so
-#LoadModule proxy_http_module modules/mod_proxy_http.so
 
-請將這兩行前面的井號去掉。
 
-2. 在 vhosts之中增加要轉換的網域
-<VirtualHost *:80>
-ServerName yourdomain.com
-ProxyRequests off
-<Proxy *>
-Order allow,deny
-Allow from all
-</Proxy>
-~~~
-
-8080改為80 port<br>
-iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080<br>
-<a href="https://blog.roga.tw/2006/10/325">簡單弄一弄 Apache 的 Proxy 功能</a><br>
-<a href="https://ithelp.ithome.com.tw/questions/10142841">經由網域指向同IP不同port</a><br>
-有VirtualBox的port轉送教學：<br>
-<a href="https://ithelp.ithome.com.tw/articles/10210574">在ubuntu18.04安裝laravel環境</a><br>
-<a href="https://k2r2bai.com/2015/11/04/linux/ubuntu/apache2-proxy/">簡單設定 Apache2 Proxy 與 VirtualHost</a><br>
-<a href=""></a><br>
-<a href=""></a><br>
-<a href=""></a><br>

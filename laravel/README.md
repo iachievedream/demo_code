@@ -1,5 +1,26 @@
+# README
+基本技巧筆記：<a href="https://github.com/iachievedream/demo_code/blob/master/laravel/Laravel_base.md">Laravel_base</a><br>
+laravel程式撰寫過程：<a href="https://github.com/iachievedream/demo_code/blob/master/laravel/Laravel_code.md">Laravel_code</a><br>
+JWT 套用過程:<a href="https://github.com/iachievedream/demo_code/blob/master/laravel/Laravel_JWT.md">Laravel_JWT</a><br>
+JWT 套用後，使用RESTful的過程:<a href="https://github.com/iachievedream/demo_code/blob/master/laravel/Laravel_JWT_RESTful.md">Laravel_JWT_RESTful</a><br>
+
+
+# 目錄
+[Laravel的基本介紹](#Laravel的基本介紹)
+
+[laravel框架的基本認識](#laravel框架的基本認識)
+
+[laravel的檔案規劃順序](#laravel的檔案規劃順序)
+
+[laravel指定port與IP](#laravel指定port與IP)
+
+[clone下來的安裝指令](#clone下來的安裝指令)
+
+[推薦網頁](#推薦網頁)
+
+
+
 ## Laravel的基本介紹
-<br>
 部落格練習，<br>
 <br>
 先想架構，<br>
@@ -43,11 +64,8 @@ MySQL建立與管理
 
 ### laravel的檔案規劃順序
 
-<br>
 
-#### 若要將 Laravel 內建的伺服器開在其他的網路介面上，可以以使用 --host 與 --port 自行指定傾聽之 IP 位址與連接埠：
-
-##### 指定傾聽之 IP 位址與連接埠
+### laravel指定port與IP
 
 ~~~
 php artisan serve --host=127.0.0.1 --port=8001
@@ -58,13 +76,8 @@ sudo php artisan serve --host=127.0.0.1 --port=80
 
 <a href="https://blog.gtwang.org/linux/ubuntu-linux-laravel-nginx-mariadb-installation-tutorial/">Ubuntu Linux 安裝 Laravel + Nginx + MariaDB 開發環境教學</a><br>
 <a href="https://www.howtoing.com/install-laravel-php-framework-on-ubuntu">如何在Ubuntu上安装Laravel PHP Framework</a>：有VirtualHost 的設定<br>
-<br>
-推薦網頁：<a href="https://blog.tonycube.com/">tonycube</a><br>
-<a href=""></a><br>
-<a href=""></a><br>
 
-
-clone 下來的安裝指令
+# clone下來的安裝指令
 ~~~
 git clone https://~~
 composer install 
@@ -77,3 +90,5 @@ php artisan migrate:refresh
 php artisan serve
 ~~~
 
+# 推薦網頁
+<a href="https://blog.tonycube.com/">tonycube</a><br>

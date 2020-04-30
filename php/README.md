@@ -11,3 +11,10 @@
 
 ### php_array_sord<br>
 <br>
+
+### json
+
+~~~
+json_encode	对变量进行 JSON 编码
+json_decode	对 JSON 格式的字符串进行解码，转换为 PHP 变量
+~~~

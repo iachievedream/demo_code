@@ -3,6 +3,7 @@
 <a href="https://mlog.club/article/4132111">如何以我的HTML形式实现Postman get方法</a><br>
 <a href="https://chenye2017.github.io/2019/02/25/%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0-%E8%8E%B7%E5%8F%96%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0/">框架学习-获取请求参数</a><br>
 
+基本表單結構
 ~~~
 <!DOCTYPE html>
 <html lang="en">
