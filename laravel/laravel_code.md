@@ -12,51 +12,29 @@ demo程式碼部分
 <iframe width="560" height="315" src="https://www.youtube.com/embed/PgSaVoqxjTo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 # 目錄
-[domo的程式下載與安裝](#domo的程式下載與安裝)
-
-[安裝Laravel](#安裝Laravel)
-
-[修改.env成自己MySQL的帳密](#修改.env成自己MySQL的帳密)
-
-[執行自動登入的程式指令(ui vue)](#執行自動登入的程式指令)
-
-[建立新的資料庫，使用Migration建立(須按照下方格式)](#建立新的資料庫，使用Migration建立(須按照下方格式))
-
-[在MySQL建立Laravel存取的資料庫，以laravel資料庫為例](#在MySQL建立Laravel存取的資料庫，以laravel資料庫為例)
-
-[在Seeder建立資料表內的假資料](#在Seeder建立資料表內的假資料)
-
-[進階factory](#進階factory)
-
-[修改routes/web.php](#修改routes/web.php)
-
-[新增Model(Article)](#新增Model(Article))
-
-[Middleware](#Middleware)
-
-* [設定Middleware](#設定Middleware)
-
-* [新增Middleware檔案](#新增Middleware檔案)
-
-[新增controller](#新增controller)
-
-* [CRUD](#CRUD)
-
-* * [新增資料](#新增資料)
-
-* * [列出全部資料](#列出全部資料)
-
-* * [顯示單一筆資料](#顯示單一筆資料)
-
-* * [更新資料](#更新資料)
-
-* * [刪除資料](#刪除資料)
-
-*  [進階：建構式以及資料分層(待補)](#進階：建構式以及資料分層(待補))
-
-* [Validator](#Validator)
-
-[新增View](#新增View)
+[domo的程式下載與安裝](#domo的程式下載與安裝)<br>
+[安裝Laravel](#安裝Laravel)<br>
+[修改.env成自己MySQL的帳密](#修改.env成自己MySQL的帳密)<br>
+[執行自動登入的程式指令(ui vue)](#執行自動登入的程式指令)<br>
+[建立新的資料庫，使用Migration建立(須按照下方格式)](#建立新的資料庫，使用Migration建立(須按照下方格式))<br>
+[在MySQL建立Laravel存取的資料庫，以laravel資料庫為例](#在MySQL建立Laravel存取的資料庫，以laravel資料庫為例)<br>
+[在Seeder建立資料表內的假資料](#在Seeder建立資料表內的假資料)<br>
+[進階factory](#進階factory)<br>
+[修改routes/web.php](#修改routes/web.php)<br>
+[新增Model(Article)](#新增Model(Article))<br>
+[Middleware](#Middleware)<br>
+* [設定Middleware](#設定Middleware)<br>
+* [新增Middleware檔案](#新增Middleware檔案)<br>
+[新增controller](#新增controller)<br>
+* [CRUD](#CRUD)<br>
+* * [新增資料](#新增資料)<br>
+* * [列出全部資料](#列出全部資料)<br>
+* * [顯示單一筆資料](#顯示單一筆資料)<br>
+* * [更新資料](#更新資料)<br>
+* * [刪除資料](#刪除資料)<br>
+*  [進階：建構式以及資料分層(待補)](#進階：建構式以及資料分層(待補))<br>
+* [Validator](#Validator)<br>
+[新增View](#新增View)<br>
 
 ## domo的程式下載與安裝
 ~~~

@@ -1,32 +1,20 @@
 # README
 
-[Laravel](#Laravel)
-  
-* [laravel_code](#laravel_code)
-  
-* [Laravel_JWT](#Laravel_JWT)
-  
-* [domo網址](#domo網址)
-  
-[php](#php)
+[Laravel](#Laravel)<br>
+* [laravel_code](#laravel_code)<br>
+* [Laravel_JWT](#Laravel_JWT)<br>
+* [domo網址](#domo網址)<br>
+[php](#php)<br>
+[Postman](#Postman)<br>
+[ubuntu](#ubuntu)<br>
+* [base_sh](#base_sh)<br>
+* [apache2](#apache2)<br>
+* [apache2_ssl](#apache2_ssl)<br>
+* [docker](#docker)<br>
 
-[Postman](#Postman)
-
-[ubuntu](#ubuntu)
-
-* [base_sh](#base_sh)
-
-* [apache2](#apache2)
-
-* [apache2_ssl](#apache2_ssl)
-
-* [docker](#docker)
-  
-* * [docker_apache2](#docker_apache2)
-  
-* * [docker_test](#docker_test)
-
-[vue](#vue)
+* * [docker_apache2](#docker_apache2)<br>
+* * [docker_test](#docker_test)<br>
+[vue](#vue)<br>
 
 
 # Laravel
