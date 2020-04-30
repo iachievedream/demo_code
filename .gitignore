@@ -1,0 +1,8 @@
+# Ignore files called 'passsword.php'
+php/msg_PDO/password.php
+php/msg_pure/password.php
+laravel/laravel_login.md
+
+# git rm -r --cached php/msg_PDO/password.php 
+# git rm -r --cached php/msg_pure/password.php
+# git rm -r --cached laravel/laravel_login.md
