@@ -152,6 +152,11 @@ return auth()->user()->posts()->create($data);
 解決方法為下方連結之內容
 [修改_user_Model](#修改_user_Model)
 
+參考資料：<a href="https://blog.csdn.net/li_haijiang/article/details/80523304">模型hasOne、hasMany、belongsTo详解</a><br>
+
+
+
+
 [回目錄](#目錄)
 
 
