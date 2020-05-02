@@ -1,40 +1,24 @@
 # ubuntu
 
-[基本指令](#基本指令)
-
-* [Terminal](##Terminal)
-
-* [編輯文字檔案](##編輯文字檔案)
-
-* [查詢自己電腦IP位置](##查詢自己電腦IP位置)
-
-* [shell](##shell)
-
-* [操作SSH](##操作SSH)
-
-* [appache2](#appache2)
-
-* * [更改appache2的port](#更改appache2的port)
- 
-* * [更改appache2的conf](#更改appache2的conf)
-  
-* * [開啟站台](#開啟站台)
-  
-* * [重新載入Apache設定檔](#重新載入Apache設定檔)
-  
-* * [設定hosts](#設定hosts)
-
+[基本指令](#基本指令)<br>
+* [Terminal](##Terminal)<br>
+* [編輯文字檔案](##編輯文字檔案)<br>
+* [查詢自己電腦IP位置](##查詢自己電腦IP位置)<br>
+* [shell](##shell)<br>
+* [操作SSH](##操作SSH)<br>
+* [appache2](#appache2)<br>
+* * [更改appache2的port](#更改appache2的port)<br>
+* * [更改appache2的conf](#更改appache2的conf)<br>
+* * [開啟站台](#開啟站台)<br>
+* * [重新載入Apache設定檔](#重新載入Apache設定檔)<br>
+* * [設定hosts](#設定hosts)<br>
 * * [清除系統上被佔用的Port](#清除系統上被佔用的Port)
 
-[Q&A](#Q&A)
+[Q&A](#Q&A)<br>
+* [mkdir Permission denied](#mkdir_Permission_denied)<br>
+* * [chmod](#chmod)<br>
 
-* [mkdir Permission denied](#mkdir_Permission_denied)
-
-* * [chmod](#chmod)
-  
 [](#)
-[](#)
-
 
 ## 基本指令
 ### Terminal

@@ -1,8 +1,27 @@
 # README
-基本技巧筆記：<a href="https://github.com/iachievedream/demo_code/blob/master/laravel/laravel_base.md">Laravel_base</a><br>
-laravel程式撰寫過程：<a href="https://github.com/iachievedream/demo_code/blob/master/laravellaravel_code.md">Laravel_code</a><br>
-JWT 套用過程:<a href="https://github.com/iachievedream/demo_code/blob/master/laravel/laravel_JWT.md">Laravel_JWT</a><br>
-JWT 套用後，使用RESTful的過程:<a href="https://github.com/iachievedream/demo_code/blob/master/laravel/laravel_JWT_RESTful.md">Laravel_JWT_RESTful</a><br>
+基本技巧筆記：
+<a href="https://github.com/iachievedream/demo_code/blob/master/laravel/laravel_base.md">laravel_base</a><br>
+laravel程式撰寫過程：
+<a href="https://github.com/iachievedream/demo_code/blob/master/laravel/laravel_code.md">laravel_code</a>
+* 留言板的laravel程式碼，有詳細介紹內容：
+* <a href="https://github.com/iachievedream/blog-laravel">blog-laravel</a>
+* <a href="https://www.youtube.com/watch?time_continue=13&v=PgSaVoqxjTo&feature=emb_logo">domo影片(youtube)</a>
+
+JWT的介紹以及實際的操作：
+<a href="https://github.com/iachievedream/demo_code/blob/master/laravel/laravel_JWT.md">laravel_JWT</a><br>
+JWT 套用後，使用RESTful的過程：
+<a href="https://github.com/iachievedream/demo_code/blob/master/laravel/laravel_JWT_RESTful.md">laravel_JWT_RESTful</a>
+* 使用JWT的留言板程式碼：
+* <a href="https://github.com/iachievedream/blog-laravel-jwt">blog-laravel-jwt</a>
+* <a href="https://www.youtube.com/watch?v=yn9q4NXd7BM&list=PLfBT9P5LG1z8n61SkoeK5nxIdS83LwZi3&index=2&t=156s">domo影片(youtube)</a>
+
+Postman範例資料以及ajax串表單：
+<a href="https://github.com/iachievedream/demo_code/tree/master/Postman">Postman</a><br>
+
+
+本機的網址內容(AWS的免費額度已滿，所以使用本機serve)：<br>
+<a href="http://virtualboxubuntu1.fuwork.xyz:81/">http://virtualboxubuntu1.fuwork.xyz:81/</a><br>
+<a href="https://virtualboxubuntu1.fuwork.xyz/">https://virtualboxubuntu1.fuwork.xyz/</a><br>
 
 
 # 目錄
@@ -13,25 +32,33 @@ JWT 套用後，使用RESTful的過程:<a href="https://github.com/iachievedream
 [clone下來的安裝指令](#clone下來的安裝指令)<br>
 [推薦網頁](#推薦網頁)<br>
 
-## Laravel的基本介紹
-部落格練習，<br>
-<br>
-先想架構，<br>
-先有新增文章，<br>
-再有文章列表，<br>
-更新文章<br>
-最後則是刪除文章。<br>
-<br>
-後面加入會員權限，<br>
-先由註冊，<br>
-再有登入，<br>
-後續是對於文章的權限，<br>
-對於文章作者以及部落格管理員，<br>
-才有權限做文章的修改以及刪除。<br>
-<br>
-後續在做API的JWT版本。<br>
+[待歸納整理內容](#待歸納整理內容)<br>
 
-### laravel框架的基本認識
+
+## Laravel的基本介紹
+~~~
+部落格練習，
+
+先想架構，
+先有新增文章，
+再有文章列表，
+更新文章
+最後則是刪除文章。
+
+後面加入會員權限，
+先由註冊，
+再有登入，
+後續是設計文章的權限內容，
+對於文章作者以及部落格管理員，
+才有權限做文章的修改以及刪除。
+
+後續在做API的JWT版本，
+進階則是做Ajax的JWT版本。
+~~~
+
+[回目錄](#目錄)
+
+## laravel框架的基本認識
 
 ~~~
 .env設定檔(MySQL的帳密等)
@@ -85,3 +112,17 @@ php artisan serve
 
 # 推薦網頁
 <a href="https://blog.tonycube.com/">tonycube</a><br>
+
+# 待歸納整理內容
+<a href="http://blog.tonycube.com/2015/01/laravel-11-route.html">Laravel 學習筆記(11) - Route 進階</a><br>
+
+資源控制器(Resource controllers)
+
+php artisan routes
+
+Route::resource('post', 'HomeController');
+
+Route::get('post', array('uses' => 'HomeController@index', 'as' => 'post.home'));
+
+
+[回目錄](#目錄)

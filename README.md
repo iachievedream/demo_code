@@ -1,9 +1,6 @@
 # README
 
 [Laravel](#Laravel)<br>
-* [laravel_code](#laravel_code)<br>
-* [Laravel_JWT](#Laravel_JWT)<br>
-* [domo網址](#domo網址)<br>
 [php](#php)<br>
 [Postman](#Postman)<br>
 [ubuntu](#ubuntu)<br>
@@ -18,31 +15,8 @@
 
 
 # Laravel
-laravel程式的建構前的思考及撰寫程式碼的過程敘述。
+<a href="https://github.com/iachievedream/demo_code/tree/master/laravel">laravel</a>
 
-[回目錄](#README)
-
-## laravel_code
-安裝laravel在ubuntu上面，以及修改port的方式。
-
-[回目錄](#README)
-
-留言板的laravel程式碼，有詳細介紹內容：<br>
-<a href="https://github.com/iachievedream/blog-laravel">blog-laravel</a><br>
-<a href="https://www.youtube.com/watch?time_continue=13&v=PgSaVoqxjTo&feature=emb_logo">domo影片(youtube)</a><br>
-
-## Laravel_JWT
-JWT的介紹以及實際的操作。<br>
-使用JWT的留言板程式碼(使用Postman測試)：<br>
-<a href="https://github.com/iachievedream/blog-laravel-jwt">blog-laravel-jwt</a><br>
-測試影片(待補內容)<br>
-
-[回目錄](#README)
-
-## domo網址
-本機的網址內容(AWS的免費額度已滿，所以使用本機serve)：<br>
-<a href="http://virtualboxubuntu1.fuwork.xyz:81/">http://virtualboxubuntu1.fuwork.xyz:81/</a><br>
-<a href="https://virtualboxubuntu1.fuwork.xyz/">https://virtualboxubuntu1.fuwork.xyz/</a><br>
 
 [回目錄](#README)
 
@@ -56,7 +30,7 @@ __msg_PDO：使用PDO。
 [回目錄](#README)
 
 # Postman
-<a href="https://github.com/iachievedream/demo_code/tree/master/Postman(learning)">Postman</a>
+<a href="https://github.com/iachievedream/demo_code/tree/master/Postman">Postman</a>
 
 
 # ubuntu
