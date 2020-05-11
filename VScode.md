@@ -11,3 +11,5 @@ git：<br>
 Git: View History (git log)<br>
 <a href="https://blog.tonycube.com/2018/11/visual-studio-code.html">Visual Studio Code 極速上手指南</a><br>
 <a href=""></a><br>
+
+sudo code --user-data-dir="~/.vscode-root"

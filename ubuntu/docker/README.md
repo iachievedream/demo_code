@@ -1,27 +1,27 @@
 # docker
-[基本指令](#基本指令)
+[基本指令](#基本指令)<br>
+* [啟動容器](#啟動容器)<br>
+* [進入容器](#進入容器)<br>
+* [查看容器](#查看容器)<br>
+  
+[volume](#volume)<br>
+* [導出容器](#導出容器)<br>
+  
+[建立一個數據捲](#建立一個數據捲)<br>
+* [輸出以及載入檔案](#輸出以及載入檔案)<br>
+  
+[Dockerfile](#Dockerfile)<br>
+[待嘗試](#待嘗試)<br>
+[Docker_delete_Images_and_Containers](#Docker_delete_Images_and_Containers)<br>
+[後續步驟](#後續步驟)<br>
+[未看](#未看)<br>
+[sudo_docker](#sudo_docker)<br>
+[建立文件](#建立文件)<br>
 
-* [啟動容器](#啟動容器)
+docker_apache實際操作：<a href="https://youtu.be/wqK81mVUsaM">dome</a><br>
 
-* [進入容器](#進入容器)
+apache2實際操作：<a href="https://youtu.be/wl4CWcZC6so">dome</a><br>
 
-* [查看容器](#查看容器)
-
-[volume](#volume)
-
-* [導出容器](#導出容器)
-
-[建立一個數據捲](#建立一個數據捲)
-
-* [輸出以及載入檔案](#輸出以及載入檔案)
-
-[Dockerfile](#Dockerfile)
-
-[待嘗試](#待嘗試)
-
-[Docker中刪除Images鏡像及Containers](Docker中刪除Images鏡像及Containers)
-
-[未看](#未看)
 ## 基本指令
 以ubuntu為例
 
@@ -197,26 +197,47 @@ docker build -t="ubuntu:v3" .<br>
 
 [回目錄](#docker)
 
-## Docker中刪除Images鏡像及Containers
+## Docker_delete_Images_and_Containers
 
 <a href="https://www.opencli.com/linux/docker-delete-images-containers">Docker 中刪除 Images 鏡像 及 Containers</a>
 
 ~~~
-刪除 Docker Image
-# docker images
-# docker rmi image_id
+# 刪除 Docker Image
+docker images
+docker rmi image_id
 
-刪除 Docker Containers
-# docker ps -a
+# 刪除 Docker Containers
+docker ps -a
 
-# docker stop container_id
-# docker rm container_id
-如果想一次過將所有 container 停止及刪除, 執行以下指令:
+docker stop container_id
+docker rm container_id
+# 如果想一次過將所有 container 停止及刪除, 執行以下指令:
 
-# docker stop $(docker ps -a -q)
-# docker rm $(docker ps -a -q)
+docker stop $(docker ps -a -q)
+docker rm $(docker ps -a -q)
 ~~~
 [回目錄](#docker)
+
+
+
+# 後續步驟
+~~~
+確認container
+docker ps
+sudo docker ps -a          
+
+停止container
+docker stop container_id
+
+刪除container
+docker rm container_id
+
+確認image
+docker images
+
+刪除image
+docker rmi image_id
+~~~
 
 
 <a href="https://www.puritys.me/docs-blog/article-362-%E5%A6%82%E4%BD%95%E7%94%A8-Dockerfile-%E8%87%AA%E8%A3%BD%E4%B8%80%E5%80%8B-Docker-image-Container.html">如何用 Dockerfile 自製一個 Docker image / Container</a><br>
@@ -234,4 +255,76 @@ docker image ls
 <a href="https://dev.to/veevidify/docker-compose-up-your-entire-laravel-apache-mysql-development-environment-45ea">docker-compose up your entire Laravel + Apache + MySQL development environment.</a><br>
 <a href="https://ithelp.ithome.com.tw/users/20102562/ironman/987">CI 從入門到入坑</a><br>
 <a href=""></a><br>
+[回目錄](#docker)
+
+
+
+
+## sudo_docker
+
+<a href="https://oranwind.org/-solution-qi-dong-docker-compose-fa-sheng-error-couldnt-connect-to-docker-daemon-at-httpdockerlocalunixsocket-is-it-running-cuo-wu/">[ Solution ] 啟動 docker-compose 發生 ERROR: Couldn’t connect to Docker daemon at http+docker://localunixsocket - is it running? 錯誤</a><br>
+
+~~~
+Step 1. 將當前用戶加入 docker 群組
+❖ 在 【 Terminal 】中輸入下方指令
+  sudo gpasswd -a ${USER} docker
+
+Step 2. 退出當前用戶
+❖ 在 【 Terminal 】中輸入下方指令
+  sudo su
+
+Step 3. 再次切换到 ubuntu 用戶
+❖ 在 【 Terminal 】中輸入下方指令
+  su ubuntu
+
+Step 4. 啟動 docker-compose
+❖ 在 【 Terminal 】中輸入下方指令
+  docker-compose up -d
+
+http://127.0.0.1:8000/
+~~~
+
+[回目錄](#docker)
+
+# 建立文件
+
+~~~
+cd php
+echo "<?php echo "Hello world";ls ?>" > index.php
+
+sudo nano index.php
+>>>>>>>>>
+<?php 
+echo "Hello world";
+?>
+>>>>>>>>>
+cat index.php
+
+sudo chmod 777 index.php  //待測試
+cd ..
+
+docker-compose up
+~~~
+
+nano Dockerfile
+
+index.php
+
+~~~
+<?php
+$servername = 'db';
+$dbname = 'test_db';
+$username = 'FU';
+$password = 'a1234567';
+$db = mysqli_connect($servername,$username,$password,$dbname);
+if ($db->connect_error) {
+    echo 'fail';
+} 
+echo 'suceddfully';
+
+?>
+~~~
+
+docker-compose up
+
 [回目錄](#docker)

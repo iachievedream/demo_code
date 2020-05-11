@@ -167,3 +167,13 @@ chown的教學：<br>
 <br>
 
 
+
+/etc/php/7.2/cli/php.ini ext-dom ubuntu
+
+
+ext-mbstring ubuntu 18.04
+
+nano /etc/php/7.2/cli/php.iniUse "fg" to return to nano.
+
+
+https://askubuntu.com/questions/1064634/unable-to-install-php-mbstring
