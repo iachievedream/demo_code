@@ -98,7 +98,7 @@ sudo docker ps  //確認是否運行
 sudo docker exec -t mysqltest bash
 sudo docker exec -it mysqltest mysql -u root -p
 
-去瀏覽器查看127.0.0.1:3307網址，雖是錯誤訊息
+去瀏覽器查看127.0.0.1:3306網址，雖是錯誤訊息
 ~~~
 
 #### docke 安裝phpmyadmin(pull phpmyadmin/phpmyadmin)承上列MySQL

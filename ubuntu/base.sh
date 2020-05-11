@@ -20,6 +20,10 @@ sudo apt install docker.io
 # php install:
 sudo apt install php7.2-cli
 sudo apt install hhvm      
+# 新增
+sudo apt-get install php7.2-xml
+sudo apt-get install php-mbstring
+
 
 # apache2 install
 sudo apt install apache2

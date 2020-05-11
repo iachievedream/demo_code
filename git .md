@@ -15,9 +15,9 @@ git checkout test //切換分支
 ~~~
 3.本機備份
 ~~~
+git init
 git add .
 git commit -m "註解內容"
-git push -u origin test
 ~~~
 4.上傳至線上
 ~~~
