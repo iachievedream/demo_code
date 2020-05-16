@@ -80,7 +80,6 @@ docker run --name runoob-php-nginx -p 8083:80 -d \
 ~~~
 
 #### docke 安裝MySQL(pull mysql)
-
 ~~~
 sudo docker pull mysql
 sudo docker run -itd --name mysqltest -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 mysql
@@ -104,9 +103,7 @@ sudo docker exec -it mysqltest mysql -u root -p
 #### docke 安裝phpmyadmin(pull phpmyadmin/phpmyadmin)承上列MySQL
 
 ~~~
-sudo docker search phpmyadmin
 sudo docker pull phpmyadmin/phpmyadmin
-
 //連接phpmyadmin的資料
 sudo docker run --name myadmin -d --link mysqltest:db -p 9100:80 phpmyadmin/phpmyadmin
 ------------------------------------------------------

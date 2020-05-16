@@ -218,6 +218,8 @@ sudo nano /etc/hosts
 
 #### 清除系統上被佔用的Port
 ~~~
+安裝
+sudo apt install net-tools
 // 查詢 Port:3000 狀態 
 sudo netstat -lpn |grep 3000 
 在終端機輸入此指令後應該會出現下列格式資訊，其中 14230 為你的 PID。

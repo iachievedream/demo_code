@@ -63,8 +63,7 @@ JavaScript Function Parameters
 [目錄](#目錄)
 
 # jQuery 
-
-文檔的就緒事件，保證全部載入後執行
+對於"文檔的就緒事件"，保證全部載入後執行
 ~~~javascript
 $(document).ready(function(){
 --- jQuery functions go here ----
