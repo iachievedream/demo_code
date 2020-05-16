@@ -4,12 +4,12 @@
 
 建立之資料夾以及Dockerfile檔案
 ~~~
-sudo mkdir apache_php71
-sudo chmod 777 apache_php71
-cd apache_php71
+sudo mkdir apache
+sudo chmod 777 apache
+cd apache
 sudo nano Dockerfile
 ################
-FROM php:7.1-apache
+FROM php:7.3-apache
 COPY src /var/www/html/
 EXPOSE 80
 ################
@@ -28,7 +28,6 @@ sudo docker images
 運行容器
 ~~~
 sudo docker run --name apachetest -d -p 8000:80 php:7.3-apache
-sudo docker run --name apachetest -d -p 8000:80 php:7.1-apache
 sudo docker run --name apachetest -d -p 8000:80 test
 ~~~
 進入容器中

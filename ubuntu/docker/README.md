@@ -224,7 +224,7 @@ docker rm $(docker ps -a -q)
 ~~~
 確認container
 docker ps
-sudo docker ps -a          
+sudo docker ps -a
 
 停止container
 docker stop container_id
