@@ -72,11 +72,17 @@ php artisan make:model Post
 
 
 ## 新增routes
-
+已使用JWT的程式碼
 ```php
 Route::middleware('auth:api')->group(function () {
     Route::apiResource('post', 'api\PostController');
 });
+```
+未使用JWT的程式碼
+```php
+// Route::middleware('auth:api')->group(function () {
+    Route::apiResource('post', 'api\PostController');
+// });
 ```
 
 [回目錄](#目錄)
@@ -92,8 +98,6 @@ php artisan make:controller api/PostController --api
 App\Http\Controllers\api\PostController
 
 修改此資料的程式碼：<a href="https://github.com/iachievedream/blog-laravel-jwt/blob/master/app/Http/Controllers/api/PostController.php">PostController</a><br>
-
-
 
 
 [回目錄](#目錄)
@@ -137,7 +141,6 @@ class PostRepository
 }
 ```
 
-
 [回目錄](#目錄)
 
 ## Q&A
@@ -155,13 +158,27 @@ return auth()->user()->posts()->create($data);
 參考資料：<a href="https://blog.csdn.net/li_haijiang/article/details/80523304">模型hasOne、hasMany、belongsTo详解</a><br>
 
 
-
-
 [回目錄](#目錄)
 
 
 ## API參數對照表
+~~~
+http://127.0.0.1:8000/api/post/
+use:get,post,put,patch,delete
 
+Authorization:Bearer Token->Token(JWT)
+
+Header:
+     key    ->     value
+   Accept   ->application/json
+Content-Type->application/json
+
+Body:
+     key    ->     value
+    title   ->     hello
+   content  ->     nice
+
+~~~
 [回目錄](#目錄)
 
 <a href=""></a><br>

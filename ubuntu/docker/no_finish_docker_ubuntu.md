@@ -63,85 +63,9 @@ sudo docker build -t docker_ubuntu .
 
 [回目錄](#docker_ubuntu)
 
-# install docker
-sudo apt-get update
-sudo apt install docker.io
 
-# pull_ubuntu
-下載
-~~~
-sudo docker pull ubuntu
-~~~
-檢查images
-~~~
-sudo docker images
-~~~
-運行contain
-~~~
-sudo docker run -t -i ubuntu /bin/bash
-sudo docker run --name ubuntutest -itd -p 8000:80 -p 8001:81 -p 8002:3306 ubuntu /bin/bash
-sudo docker run --name ubuntutest -itd -p 8000:80 ubuntu /bin/bash
-~~~
-進入contain
-~~~
-sudo docker exec -it ubuntu bash
-sudo docker exec -it ubuntutest bash
-~~~
-執行sell指令前的載入(否則沒有指令可以執行shell)
-~~~
-apt-get update && apt-get -y install sudo && apt-get install vim
-apt-get update && apt-get -y install sudo && apt-get install vim && apt-get install -y yum
-~~~
 [回目錄](#docker_ubuntu)
 
-# 執行下方指令在contain內
-vim base.sh
-~~~bash
-#!/bin/bash
-sudo apt-get update
-sudo apt-get install npm
-sudo apt-get install nodejs
-sudo apt-get install curl
-sudo apt install composer
-
-# php install:
-sudo apt install php7.4-cli
-sudo apt install hhvm
-sudo apt-get install php7.4-xml
-sudo apt-get install php-mbstring
-
-# apache2 install
-sudo apt install apache2
-cd /var/www/html
-sudo mv index.html index1.html
-
-# ubuntu安装MySQL
-sudo apt-get install mysql-server
-sudo apt install mysql-client
-sudo apt install libmysqlclient-dev
-# sudo mysql -u root -p
-~~~
-[回目錄](#docker_ubuntu)
-
-## mysql_root
-
-~~~
-//安裝mysql
-sudo docker pull mysql
-sudo docker run -itd --name mysqltest -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 mysql
-
-//進入MySQL
-sudo docker exec -t mysqltest bash
-sudo docker exec -it mysqltest mysql -u root -p
-
-//安裝phpmyadmin
-sudo docker search phpmyadmin
-sudo docker pull phpmyadmin/phpmyadmin
-
-//連接phpmyadmin的資料
-sudo docker run --name myadmin -d --link mysqltest:db -p 9100:80 phpmyadmin/phpmyadmin
-~~~
-[回目錄](#docker_ubuntu)
 
 <a href="https://newtoypia.blogspot.com/2019/03/mysql-password.html">ubuntu 18.04 之 mysql 忘記 root 密碼</a>
 
@@ -165,61 +89,11 @@ https://mlog.club/article/2247728
 下载MySQL时出现奇怪的错误
 Cannot stat file /proc/2846/fd/7: Permission denied
 
-
 sudo apt-get install aptitude
-
 
 yum-config-manager —add-repo https://download.docker.com/linux/centos/docker-ce.repo
 [回目錄](#docker_ubuntu)
 
-# laravel
-vim laravel.sh
-~~~
-sudo git clone https://github.com/iachievedream/blog-laravel.git
-
-sudo chmod -R 755 blog-laravel
-sudo chmod -R 777 blog-laravel/storage
-
-cd blog-laravel
-composer install 
-sudo cp .env.example .env
-**set up MySQL of root and password
-sudo nano .env
-php artisan key:generate
-php artisan migrate:refresh
-php artisan db:seed
-php artisan serve
-php artisan serve --host=127.0.0.1 --port=80
-~~~
-[回目錄](#docker_ubuntu)
-
-
-# 後續步驟
-~~~
-確認container
-docker ps
-sudo docker ps -a          
-
-停止container
-docker stop container_id
-
-刪除container
-docker rm container_id
-
-確認image
-docker images
-
-刪除image
-docker rmi image_id
-~~~
-vin docker.sh
-~~~
-#1/bin/besh
-docker stop container_id
-docker rm container_id
-docker rmi image_id
-~~~
-[回目錄](#docker_ubuntu)
 
 ## Q&A
 
@@ -269,28 +143,6 @@ In PackageManifest.php line 131: Undefined index: name
 ~~~
 composer self-update
 ~~~
-
-### apache2
-* Restarting Apache httpd web server apache2 AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.17.0.2. Set the 'ServerName' directive globally to suppress this message
-
-測試port有無被使用或是查看apache狀態
-~~~
-sudo apt install net-tools
-sudo netstat -lpn |grep 80 
-~~~
-編輯此檔案
-~~~
-root@raspberrypi:/etc/apache2# vi apache2.conf 
-~~~
-加上下列程式碼
-~~~
-ServerName  localhost:80
-~~~
-重新啟動apache2
-~~~
-root@raspberrypi:/etc/apache2# service apache2 restart
-~~~
-參考資料：<a href="https://www.itread01.com/content/1550156775.html">解決httpd: Could not reliably determine the server's fully qualified domain name, using 127.0.0</a><br>
 
 ### laravel_Artisan_migrate_could_not_find_driver
 laravel:php artisan migrate:refresh

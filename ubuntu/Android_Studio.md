@@ -1,21 +1,26 @@
 # Android Studio ubuntu
-cd newfile/
-
-sudo vi Android.sh
+資料來源：<a href="https://www.cnblogs.com/jianhaoscnu/p/12915862.html">如何在ubuntu 上安装配置Android Studio</a>
 ~~~
-wget https://dl.google.com/dl/android/studio/ide-zips/3.1.3.0/android-studio-ide-173.4819257-linux.zip
+wget https://dl.google.com/dl/android/studio/ide-zips/3.6.3.0/android-studio-ide-192.6392135-linux.tar.gz
+cd /opt
+sudo mkdir android_studio
 
-sudo mv android-studio-ide-*-linux.zip /opt/
-cd /opt/
-sudo unzip /opt/android-studio-ide-*-linux.zip
+cd ~/Downloads
+sudo tar -zxvf android-studio-ide-192.6392135-linux.tar.gz -C /opt/android_studio 
 
-sudo chown -R raj:raj android-studio
+cd /opt/android_studio/android-studio/bin
 
-cd /opt/android-studio/bin/
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ubuntu@ubuntu-VirtualBox:/opt/android_studio/android-studio/bin$ ./studio.sh
+Gtk-Message: 16:37:33.876: Failed to load module "canberra-gtk-module"
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+sudo apt install libcanberra-gtk-module libcanberra-gtk3-module
 
 ./studio.sh
-
-sudo ln -sf /opt/android-studio/bin/studio.sh /bin/android-studio
+~~~
+virtualbox 開啟 Nested VT-x/AMD-V
+~~~
+cd C:\Program Files\Oracle\VirtualBox
+.\VBoxManage.exe modifyvm <VM_NAME> --nested-hw-virt on
 ~~~
 
-資料來源：<a href="https://www.itzgeek.com/how-tos/linux/ubuntu-how-tos/how-to-install-android-studio-on-ubuntu-18-04-lts-bionic-beaver.html">How To Install Android Studio on Ubuntu 18.04 LTS (Bionic Beaver)</a>
