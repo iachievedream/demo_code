@@ -44,10 +44,12 @@ sudo apt install mysql-client
 sudo apt install libmysqlclient-dev
 # sudo mysql -u root -p
 # # 建立賦予權限的帳戶 root_sql=ab,yourpasswd=12345678
-# CREATE USER 'ab''@'localhost' IDENTIFIED BY '12345678';
+# CREATE USER 'ab'@'localhost' IDENTIFIED BY '12345678';
 # GRANT ALL PRIVILEGES ON *.* TO 'ab'@'localhost' WITH GRANT OPTION;
 # # GRANT ALL PRIVILEGES ON *.* TO 'phpmyadmin'@'localhost' IDENTIFIED BY 'yourpasswd';//賦予所有權限
 # FLUSH PRIVILEGES;
+
+
 
 # install phpmyadmin
 sudo apt-get install phpmyadmin

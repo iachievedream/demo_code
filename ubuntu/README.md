@@ -13,7 +13,7 @@
 * * [重新載入Apache設定檔](#重新載入Apache設定檔)<br>
 * * [設定hosts](#設定hosts)<br>
 * * [清除系統上被佔用的Port](#清除系統上被佔用的Port)
-
+[防火牆](#防火牆)
 [Q&A](#Q&A)<br>
 * [mkdir Permission denied](#mkdir_Permission_denied)<br>
 * * [chmod](#chmod)<br>
@@ -227,6 +227,34 @@ tcp6  0  0 :::3000 :::* LISTEN 14320/.node.bin
 清除 PID，使用 kill + PID 就能將此排程從背景釋放，就能解決 Port 被佔用的問題了！
 kill 14230
 ~~~
+[回目錄](#ubuntu)
+
+## 防火牆
+關閉防火牆
+~~~
+sudo ufw edisable
+~~~
+開啟防火牆
+~~~
+sudo ufw enable
+~~~
+增加防火牆的規則，ip以及port的規則
+Open incoming TCP port 80 to any source IP address:
+~~~
+sudo ufw allow from any to any port 80 proto tcp
+sudo ufw allow from 127.0.0.1 to any port 443 proto tcp
+sudo ufw allow from 127.0.0.1/8 to any port 53 proto udp
+sudo ufw allow from any to any port 20,21 proto tcp
+~~~
+確認防火牆狀態
+~~~
+sudo ufw status
+~~~
+刪除防火牆規則
+~~~
+sudo ufw delete  5
+~~~
+參考資料:[How to Open/Allow incoming firewall port on Ubuntu 18.04 Bionic Beaver Linux](https://linuxconfig.org/how-to-open-allow-incoming-firewall-port-on-ubuntu-18-04-bionic-beaver-linux)
 [回目錄](#ubuntu)
 
 ## Q&A
