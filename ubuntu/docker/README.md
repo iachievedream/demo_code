@@ -11,14 +11,15 @@
 * [建立一個數據捲](#建立一個數據捲)<br>
 [Docker_delete_Images_and_Containers](#Docker_delete_Images_and_Containers)<br>
 * [將所有container停止及刪除](#將所有container停止及刪除)<br>
-* [vin_docker.sh](#vin_docker.sh)<br>
 [自己執行ubuntu](#自己執行ubuntu)<br>
 * [下載到進入容器](#下載到進入容器)<br>
 * [運行sudo到安裝apache2](#運行sudo到安裝apache2)<br>
 * [執行下方指令在contain內](#執行下方指令在contain內)<br>
 * [QA_apache2](#QA_apache2)<br>
 * [QA_php](#QA_php)<br>
-[docker容器存檔](#docker容器存檔)<br>
+[docker的images及contain儲存方式](#docker的images及contain儲存方式)<br>
+* [images及contain儲存基本指令](#images及contain儲存基本指令)<br>
+* [ubuntu的一次實務練習](#ubuntu的一次實務練習)<br>
 
 測試專案:[laravel](#laravel)<br>
 死坑專用工具:[ubuntu18.04_Mysql_卸除](#ubuntu18.04_Mysql_卸除)<br>
@@ -34,7 +35,6 @@
 [文件](#文件)<br>
 
 # 程式整理docker
-
 docker_apache實際操作：<a href="https://youtu.be/wqK81mVUsaM">dome</a>
 
 apache2實際操作：<a href="https://youtu.be/wl4CWcZC6so">dome</a>
@@ -47,7 +47,6 @@ sudo apt install docker.io
 
 ## sudo_su
 [啟動 docker-compose 發生 ERROR: Couldn’t connect to Docker daemon at http+docker://localunixsocket - is it running? 錯誤](https://oranwind.org/-solution-qi-dong-docker-compose-fa-sheng-error-couldnt-connect-to-docker-daemon-at-httpdockerlocalunixsocket-is-it-running-cuo-wu/)
-
 ~~~
 將當前用戶加入 docker 群組
 sudo gpasswd -a ${USER} docker
@@ -55,6 +54,7 @@ sudo su
 su ubuntu (使用者)
 docker-compose up -d
 ~~~
+[回目錄](#docker)
 
 ## 登入docker_hub
 ~~~
@@ -93,8 +93,9 @@ sudo docker rm -f <id>
 sudo docker rmi  <id>
 //查詢容器內IP
  sudo docker inspect <id> | grep '"IPAddress"' | head -n 1
-
 ~~~
+[回目錄](#docker)
+
 ### 啟動容器
 ~~~
 基本用ubuntu跑終端機字串
@@ -111,6 +112,7 @@ ____________[宿機端口：虛擬機端口]
 ubuntu：IMAGE
 /bin/bash：則是命令的交互式shell或執行ubuntu中的應用程式
 ~~~
+[回目錄](#docker)
 
 ### 進入容器
 
@@ -144,38 +146,31 @@ sudo docker volume create --name test
 [回目錄](#docker)
 
 ## Docker_delete_Images_and_Containers
-
 <a href="https://www.opencli.com/linux/docker-delete-images-containers">Docker 中刪除 Images 鏡像 及 Containers</a>
 
 ~~~
 確認container
 docker ps -a
-
 停止container
 docker stop container_id
-
 刪除container
 docker rm container_id
-
 確認image
 docker images
-
 刪除image
 docker rmi image_id
 ~~~
+
+[回目錄](#docker)
+
 ### 將所有container停止及刪除
 執行以下指令:
 ~~~
 docker stop $(docker ps -a -q)
 docker rm $(docker ps -a -q)
+docker rmi $(docker images)
 ~~~
-### vin_docker.sh
-~~~
-#!/bin/besh
-docker stop container_id
-docker rm container_id
-docker rmi image_id
-~~~
+[回目錄](#docker)
 
 ## 自己執行ubuntu
 ### 下載到進入容器
@@ -190,24 +185,24 @@ sudo docker images
 運行contain
 ~~~
 sudo docker run -t -i ubuntu /bin/bash
-//mysql測試(未完成)
-sudo docker run --name test -itd -p 8000:80 -p 8001:81 -p 8002:3306 -p 8003:8000 -p 8004:8001 -p 8005:8002 ubuntu:18.04 /bin/bash
-
-sudo docker run --name test -itd -p 8000:80 -p 8001:81 -p 8002:8000 -p 8003:8001 -p 8004:8002 -p 8005:8003 ubuntu:18.04 /bin/bash
+sudo docker run --name ubuntutest -itd -p 8000:80 -p 8001:81 -p 8002:8000 -p 8003:8001 -p 8004:8002 -p 8005:8003 -p 22:22 ubuntu:18.04 /bin/bash
 ~~~
 進入contain
 ~~~
-sudo docker exec -it test bash
+sudo docker exec -it ubuntutest bash
 ~~~
+[回目錄](#docker)
+
 ### 運行sudo到安裝apache2
 執行sell指令前的載入(否則沒有指令可以執行shell)
 ~~~
 apt-get update && apt-get -y install sudo && apt-get install vim && apt-get install -y yum
 ~~~
+[回目錄](#docker)
 
 ### 執行下方指令在contain內
 vi base.sh
-~~~bash
+~~~
 #!/bin/bash
 sudo apt-get update
 sudo apt-get install npm
@@ -215,7 +210,7 @@ sudo apt-get install nodejs
 sudo apt-get install curl
 sudo apt install composer
 
-# apache2 install
+# apache2 install  6/73
 sudo apt install apache2
 cd /var/www/html
 sudo mv index.html index1.html
@@ -230,16 +225,19 @@ sudo apt-get install php-mbstring
 sudo apt install libapache2-mod-php7.2 libapache2-mod-php
 sudo service apache2 restart
 
-# ubuntu安装MySQL
-sudo apt-get install mysql-server
-sudo apt install mysql-client
-sudo apt install libmysqlclient-dev
-# sudo mysql -u root -p
+#測試中
+## ubuntu安装MySQL
+#sudo apt-get install mysql-server
+#sudo apt install mysql-client
+#sudo apt install libmysqlclient-dev
+## sudo mysql -u root -p
 ~~~
 執行
 ~~~
 sh base.sh
 ~~~
+[回目錄](#docker)
+
 ### QA_apache2
 * Restarting Apache httpd web server apache2 AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.17.0.2. Set the 'ServerName' directive globally to suppress this message
 
@@ -264,6 +262,10 @@ service apache2 restart
 <a href="https://www.itread01.com/content/1550156775.html">解決httpd: Could not reliably determine the server's fully qualified domain name, using 127.0.0</a>
 
 ### QA_php
+測試php的環境是否正常
+~~~
+echo "<?php echo 'Hello world';ls ?>" > index2.php
+~~~
 碰見問題及參考資料：
 <a href="https://www.ubuntu-tw.org/modules/newbb/viewtopic.php?post_id=360670">更新至18.04後開啟PHP網頁顯示原始碼 [論壇 - 伺服器架設]</a>
 <a href="https://askubuntu.com/questions/912638/error-module-php7-0-does-not-exist">ERROR: Module php7.0 does not exist!</a>
@@ -286,8 +288,10 @@ systemctl restart apache2
 or
 sudo service apache2 restart
 ~~~
+[回目錄](#docker)
 
-# docker容器存檔
+## docker的images及contain儲存方式
+### images及contain儲存基本指令
 images 先來做 Save 動作
 ~~~
 docker save -o ubuntu_save.tar ubuntu
@@ -308,8 +312,41 @@ cat ubuntu_export.tar | docker import - ubuntutest
 ~~~
 
 [比較 save, export 對於映象檔操作差異](https://blog.hinablue.me/docker-bi-jiao-save-export-dui-yu-ying-xiang-dang-cao-zuo-chai-yi/)
-
 [Day 6 關於 Save 與 Export 對 Image 之間的差異](https://ithelp.ithome.com.tw/articles/10193804)
+
+[回目錄](#docker)
+
+### ubuntu的一次實務練習
+以此為例[自己執行ubuntu](#自己執行ubuntu)做一次實務的操作
+~~~
+images 先來做 Save 動作
+docker save -o ubuntu_save.tar ubuntu
+Container 打包匯出的話可以用 export 指令，例如要將 ubuntutest 的 Container 匯出 :
+docker export ubuntutest > ubuntu_export.tar
+
+刪除所有contain以及images
+docker stop $(docker ps -a -q)
+docker rm $(docker ps -a -q)
+docker rmi $(docker images) -f
+
+載入 ubuntu_save.tar
+docker load < ubuntu_save.tar
+
+運行容器(用原先的images)
+sudo docker run --name ubuntutest -itd -p 8000:80 -p 8001:81 -p 8002:8000 -p 8003:8001 -p 8004:8002 -p 8005:8003 -p 22:22 ubuntu:18.04 /bin/bash
+sudo docker exec -it ubuntutest bash
+
+載入容器(images_ubuntutest)
+cat ubuntu_export.tar | docker import - ubuntutest
+sudo docker run --name ubuntutest -itd -p 8000:80 -p 8001:81 -p 8002:8000 -p 8003:8001 -p 8004:8002 -p 8005:8003 -p 22:22 ubuntutest /bin/bash
+sudo docker exec -it ubuntutest bash
+~~~
+測試出來載入容器(images_ubuntutest)，不需要images原始的檔案，
+但匯入容器的方式原本是contain變成是images的型態。
+
+感覺有些小問題或是邏輯問題
+
+[回目錄](#docker)
 
 ## laravel
 vi laravel.sh
@@ -322,7 +359,7 @@ sudo chmod -R 777 blog-laravel/storage
 cd blog-laravel
 composer install 
 sudo cp .env.example .env
-**set up MySQL of root and password
+# set up MySQL of root and password
 sudo nano .env
 php artisan key:generate
 php artisan migrate:refresh
@@ -330,8 +367,7 @@ php artisan db:seed
 php artisan serve
 php artisan serve --host=127.0.0.1 --port=81
 ~~~
-[回目錄](#docker_ubuntu)
-
+[回目錄](#docker)
 
 ## ubuntu18.04_Mysql_卸除
 
@@ -361,6 +397,7 @@ sudo apt-get autoremove --purge mysql-apt-config
 ~~~
 
 參考資料:[在Ubuntu18.04系统下彻底删除MySQL的方法](https://ywnz.com/linuxysjk/3141.html)
+[回目錄](#docker)
 
 ******************************************************************************************************************
 
@@ -506,8 +543,6 @@ sudo docker pull phpmyadmin/phpmyadmin
 sudo docker run --name myadmin -d --link mysqltest:db -p 9100:80 phpmyadmin/phpmyadmin
 ~~~
 
-
-
 ## 自己執行iachievedeam1/test
 pull檔案
 docker pull iachievedeam1/test
@@ -649,3 +684,5 @@ echo 'suceddfully';
 ?>
 ~~~
 docker-compose up
+
+[回目錄](#docker)
