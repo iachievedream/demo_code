@@ -17,14 +17,6 @@ sudo snap install code --classic
 sudo apt-get update
 sudo apt install docker.io
 
-# php install:
-sudo apt install php7.2-cli
-sudo apt install hhvm      
-# 新增
-sudo apt-get install php7.2-xml
-sudo apt-get install php-mbstring
-
-
 # apache2 install
 sudo apt install apache2
 cd /var/www/html
@@ -37,6 +29,15 @@ sudo mv index.html index1.html
 # sudo nano /etc/apache2/sites-available/000-default.conf 
 # # 重新啟動
 # sudo service apache2 restart
+
+# php install:
+sudo apt install php7.2-cli
+sudo apt install hhvm      
+# 新增
+sudo apt-get install php7.2-xml
+sudo apt-get install php-mbstring
+sudo apt install libapache2-mod-php7.2 libapache2-mod-php
+sudo service apache2 restart
 
 # ubuntu安装MySQL
 sudo apt-get install mysql-server
