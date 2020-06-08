@@ -32,7 +32,9 @@
 * [MySQL](#MySQL)<br>
 * [phpmyadmin](#phpmyadmin)<br>
 * [phpmyadmin的資料](#phpmyadmin的資料)<br>
+
 [自己執行iachievedeam1/test](#自己執行iachievedeam1/test)<br>
+
 未了解完全
 [Dockerfile](#Dockerfile)<br>
 [文件](#文件)<br>
@@ -57,6 +59,24 @@ sudo su
 su ubuntu (使用者)
 docker-compose up -d
 ~~~
+
+### 新錯誤內容以及處理方式
+~~~
+>docker run hello-world
+ARNING: Error loading config file:/home/user/.docker/config.json - stat /home/user/.docker/config.json: permission denied
+後續繼續執行
+~~~
+解決方式
+~~~
+sudo chown "$USER":"$USER" /home/"$USER"/.docker -R
+<!-- sudo chmod g+rwx "/home/$USER/.docker" -R -->
+
+延伸學習
+sudo chown $(whoami):docker /home/$(whoami)/.docker/config.json
+whoami是使用指令查詢此使用者的名稱
+~~~
+參考資料:[https://qastack.cn/ubuntu/747778/docker-warning-config-json-permission-denied](https://qastack.cn/ubuntu/747778/docker-warning-config-json-permission-denied)
+
 [回目錄](#docker)
 
 ## 登入docker_hub
@@ -428,19 +448,14 @@ docker image ls
 <a href="https://ithelp.ithome.com.tw/users/20102562/ironman/987">CI 從入門到入坑</a><br>
 <a href=""></a><br>
 
-
 ### MySQL
-
+~~~
 sudo mysql_secure_installation
-
 sudo mysql
-
 SELECT user,authentication_string,plugin,host FROM mysql.user;
-
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
-
 mysql -u root –p
-
+~~~
 [ubuntu18.04安裝mysql沒有密碼提示解決辦法](https://www.itread01.com/content/1543970658.html)
 
 ~~~
@@ -452,18 +467,28 @@ mysql -u debian-sys-maint -p
 
 ### mysql遠端連線
 
-
 ~~~
-GRANT ALL PRIVILEGES ON *.* TO root@192.168.56.1 IDENTIFIED BY 'root';
+GRANT ALL PRIVILEGES ON *.* TO root@127.0.0.1 IDENTIFIED BY 'root';
 GRANT ALL PRIVILEGES ON *.* TO fu@'%' IDENTIFIED BY '1234';
 FLUSH PRIVILEGES;
 ~~~
 
 待消化
+
 [在Ubuntu 18.04 下安装mysql，没有初始密码，重设root密码](https://www.cnblogs.com/williamjie/p/11126486.html)
 
 [Linux MySQL](https://ithelp.ithome.com.tw/articles/10207765?sc=iThelpR)
+~~~
+CREATE USER 'fu'@'%' IDENTIFIED BY 'password';
+GRANT ALL ON *.* to fu@'%' ;
+flush privileges;
 
+mysql -u root -p 123456 -h 127.0.0.1
+mysql -u root  -h 192.168.1.120
+
+GRANT ALL ON *.* to fu@'%' IDENTIFIED BY '1234';
+GRANT ALL ON your_database.* TO 'newuser'@'%';
+~~~
 
 
 ## 未解
@@ -494,8 +519,6 @@ Setting up mysql-server (5.7.30-0ubuntu0.18.04.1) ...
 Processing triggers for libc-bin (2.27-3ubuntu1) ...
 root@8bdc61d2b295:/home# Cannot stat file /proc/12426/fd/15: Permission denied
 bash: Cannot: command not found
-
-
 ~~~
 
 * 另外需要的指令
@@ -521,6 +544,8 @@ create database laravel;
 
 CREATE USER 'fu'@'%' IDENTIFIED BY 'password';
 GRANT ALL ON laravel.* TO 'fu'@'%';
+GRANT ALL PRIVILEGES ON *.* TO 'fu'@'localhost' WITH GRANT OPTION;
+GRANT ALL ON laravel.* TO 'fu'@'%' WITH GRANT OPTION;
 
 docker exec -it mysql8 mysql -u fu -p
 
@@ -548,13 +573,20 @@ sudo docker run --name myadmin -d --link mysqltest:db -p 9100:80 phpmyadmin/phpm
 
 ## 自己執行iachievedeam1/test
 pull檔案
-docker pull iachievedeam1/test
+~~~
+docker pull iachievedeam1/ubuntutest:1.0
+~~~
 執行容器
-docker run --name ubuntutest -itd -p 8000:80 -p 8001:81 -p 8002:3306 -p 8003:8000 -p 8004:8001 -p 8005:8002 iachievedeam1/test /bin/bash
+~~~
+docker run --name ubuntutest -itd -p 8000:80 -p 8001:81 -p 8002:3306 -p 8003:8000 -p 8004:8001 -p 8005:8002 iachievedeam1/ubuntutest:1.0 /bin/bash
+~~~
 進入容器
+~~~
 docker exec -it ubuntutest bash
-
+~~~
 [運行sudo到安裝apache2](###運行sudo到安裝apache2)
+
+[回目錄](#docker)
 
 ## 自己製作dockerfile
 

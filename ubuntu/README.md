@@ -168,21 +168,30 @@ ubuntu則是需 ssh username@hostname<br>
 
 ### appache2
 #### 更改appache2的port
-~~~
 sudo nano /etc/apache2/ports.conf
 ~~~
+Listen 81
+Listen 85
+
+<IfModule ssl_module>
+	Listen 443
+</IfModule>
+
+<IfModule mod_gnutls.c>
+	Listen 443
+</IfModule>
+~~~
 #### 更改appache2的conf
+sudo nano /etc/apache2/sites-available/000-default.conf
 sudo nano /etc/apache2/sites-available/abc.conf 
 ~~~
-<VirtualHost *:84>
-        ServerAdmin webmaster@localhost
-        DocumentRoot /var/www/html/test
+<VirtualHost *:85>
+    ServerAdmin webmaster@localhost
+  	DocumentRoot /var/www/html/blog-laravel/public/index.php
 
-        ErrorLog ${APACHE_LOG_DIR}/error.log
-        CustomLog ${APACHE_LOG_DIR}/access.log combined
-
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
-# vim: syntax=apache ts=4 sw=4 sts=4 sr noet
 ~~~
 sudo nano /etc/apache2/site-available/laravel.local.conf 
 ~~~
