@@ -182,12 +182,13 @@ Listen 85
 </IfModule>
 ~~~
 #### 更改appache2的conf
-sudo nano /etc/apache2/sites-available/000-default.conf
+sudo nano /etc/apache2/sites-available/000-default.conf<br>
 sudo nano /etc/apache2/sites-available/abc.conf 
 ~~~
 <VirtualHost *:85>
     ServerAdmin webmaster@localhost
-  	DocumentRoot /var/www/html/blog-laravel/public/index.php
+    DocumentRoot /var/www/html/blog-laravel/public/index.php
+    # DocumentRoot "/var/www/html/Collection"
 
     ErrorLog ${APACHE_LOG_DIR}/error.log
     CustomLog ${APACHE_LOG_DIR}/access.log combined
@@ -195,8 +196,8 @@ sudo nano /etc/apache2/sites-available/abc.conf
 ~~~
 sudo nano /etc/apache2/site-available/laravel.local.conf 
 ~~~
-<VirtualHost laravel.local:80>
-    DocumentRoot "/home/shengyou/Projects/laravel/public"
+<VirtualHost laravel.local:82>
+    DocumentRoot "/var/www/html/Collection"
     ServerAdmin laravel.local
 
     <Directory "/home/shengyou/Projects/laravel">
@@ -207,18 +208,22 @@ sudo nano /etc/apache2/site-available/laravel.local.conf
 </VirtualHost>
 ~~~
 #### 開啟站台
-sudo a2ensite laravel.local
+~~~
 sudo a2ensite abc.conf
+sudo a2ensite laravel.local.conf
+~~~
 #### 重新載入Apache設定檔
+~~~
 sudo systemctl reload apache2
 sudo service apache2 restart
-
+~~~
 #### 設定hosts
 sudo nano /etc/hosts
 ~~~
 127.0.0.1 laravel.local
-
 ~~~
+
+
 
 資料來源：
 <a href="https://medium.com/@shengyou/2018ironman-eos-for-php-developer-day13-124a0903e937">[2018 鐵人賽] 簡潔高效的 PHP & Laravel 工作術：從 elementary OS 下手的聰明改造提案 #13</a>
