@@ -33,7 +33,7 @@
 * [phpmyadmin](#phpmyadmin)<br>
 * [phpmyadmin的資料](#phpmyadmin的資料)<br>
 
-[自己執行iachievedeam1/test](#自己執行iachievedeam1/test)<br>
+[自己執行iachievedeam1/ubuntutest](#自己執行iachievedeam1)<br>
 
 未了解完全
 [Dockerfile](#Dockerfile)<br>
@@ -571,7 +571,7 @@ sudo docker pull phpmyadmin/phpmyadmin
 sudo docker run --name myadmin -d --link mysqltest:db -p 9100:80 phpmyadmin/phpmyadmin
 ~~~
 
-## 自己執行iachievedeam1/test
+## 自己執行iachievedeam1
 pull檔案
 ~~~
 docker pull iachievedeam1/ubuntutest:1.0

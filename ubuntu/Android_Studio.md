@@ -66,3 +66,22 @@ Exception: Gradle task assembleDebug failed with exit code 1
 flutter doctor --android-licenses
 ~~~
 [Day 2：安裝 Flutter 開發環境](https://ithelp.ithome.com.tw/articles/10216013)
+
+
+## 
+
+### Ubuntu 18.04 Android Studio 运行模拟器时提示 “/dev/kvm device: permission denied”
+
+KVM is required to run this AVD. /dev/kvm device: permission denied. Grant current user access to /dev/kvm
+~~~
+ls -al /dev/kvm
+sudo chmod -R 755 /dev/kvm
+sudo chown <你系统当前的登陆用户名> -R /dev/kvm
+~~~
+
+
+https://blog.csdn.net/fesdgasdgasdg/article/details/83044535
+
+
+## Low disk space on a Android Studio system directory partition
+### 

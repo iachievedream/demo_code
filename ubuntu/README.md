@@ -18,7 +18,7 @@
 * [mkdir Permission denied](#mkdir_Permission_denied)<br>
 * * [chmod](#chmod)<br>
 
-[](#)
+[other_tool](#other_tool)
 
 ## 基本指令
 ### Terminal
@@ -298,6 +298,12 @@ sudo chmod -R 666 laravel
 ## 備註
 
 [回目錄](#ubuntu)
+
+
+## other_tool
+截圖工具<br>
+ubuntu自帶截圖工具,可以在terminator中呼叫。<br>
+gnome-screenshot -a
 
 <a href=""></a><br>
 <a href=""></a><br>
