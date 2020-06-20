@@ -301,9 +301,24 @@ sudo chmod -R 666 laravel
 
 
 ## other_tool
-截圖工具<br>
+### 截圖工具<br>
 ubuntu自帶截圖工具,可以在terminator中呼叫。<br>
+~~~
 gnome-screenshot -a
+~~~
+
+### timeshift-還原點設立
+
+~~~
+sudo apt-add-repository -y ppa:teejee2008/ppa
+
+sudo -i
+apt update
+apt install timeshift
+
+*timeshift
+~~~
+
 
 <a href=""></a><br>
 <a href=""></a><br>
