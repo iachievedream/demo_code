@@ -197,21 +197,15 @@ docker rmi $(docker images)
 
 ## 自己執行ubuntu
 ### 下載到進入容器
+~~~
 下載
-~~~
 sudo docker pull ubuntu:18.04
-~~~
-檢查images
-~~~
-sudo docker images
-~~~
+
 運行contain
-~~~
 sudo docker run -t -i ubuntu /bin/bash
-sudo docker run --name ubuntutest -itd -p 8000:80 -p 8001:81 -p 8002:8000 -p 8003:8001 -p 8004:8002 -p 8005:8003 -p 22:22 ubuntu:18.04 /bin/bash
-~~~
+sudo docker run --name ubuntutest -itd -p 8000:80 -p 8001:81 -p 8002:8000 -p 8003:8001 -p 8004:8002 -p 8005:8003 ubuntu:18.04 /bin/bash
+
 進入contain
-~~~
 sudo docker exec -it ubuntutest bash
 ~~~
 [回目錄](#docker)
@@ -233,7 +227,7 @@ sudo apt-get install nodejs
 sudo apt-get install curl
 sudo apt install composer
 
-# apache2 install  6/73
+# apache2 install  6/73/73
 sudo apt install apache2
 cd /var/www/html
 sudo mv index.html index1.html

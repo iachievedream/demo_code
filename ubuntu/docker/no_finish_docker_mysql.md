@@ -28,46 +28,7 @@ mysql -u root -p
 ~~~
 參考資料:[docker 快速搭建 mysql](https://juejin.im/post/5ebbc1666fb9a043410a18cb)
 
-
 ## 設定遠端連線
-
-~~~
-
-~~~
-
-~~~
-
-~~~
-
 
 其他資料:[使用Docker安装mysql5和mysql8](https://www.jianshu.com/p/d297b0be4157)
 其他資料:[Docker系列之《Dockerfile构建MySQL镜像》](https://nicksors.cc/2018/06/19/Docker%E7%B3%BB%E5%88%97%E4%B9%8B%E3%80%8ADockerfile%E6%9E%84%E5%BB%BAMySQL%E9%95%9C%E5%83%8F%E3%80%8B.html)
-
-
-
-CREATE USER 'fu'@'%' IDENTIFIED BY 'password';
-GRANT ALL ON *.* to fu@'%' ;
-flush privileges;
-
-mysql -u root -p 123456 -h 192.168.1.120
-mysql -u root -p 123456 -h 172.17.0.1
-
-GRANT ALL ON *.* to fu@'%' IDENTIFIED BY '1234';
-GRANT ALL ON your_database.* TO 'newuser'@'%';
-
-
-192.168.1.120 172.17.0.1 2001:b011:380f:1d78:e900:b685:b7ec:8ddd 2001:b011:380f:1d78:408c:f009:191d:5063 
-
-mysql -u root -h 192.168.1.120
-mysql -u root -h 172.17.0.1
-
-
-mysql -u fu -h 192.168.1.120
-mysql -u fu -h 172.17.0.1
-
-
-UPDATE user SET Password=PASSWORD where USER='root';
-GRANT all ON *.* TO root@'localhost' IDENTIFIED BY '輸入你 root 的密碼';
-FLUSH PRIVILEGES;
-
-
