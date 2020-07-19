@@ -3,6 +3,9 @@ php/msg_PDO/password.php
 php/msg_pure/password.php
 laravel/laravel_login.md
 
+php/.vscode/launch.json
+.vscode/launch.json
 # git rm -r --cached php/msg_PDO/password.php 
 # git rm -r --cached php/msg_pure/password.php
 # git rm -r --cached laravel/laravel_login.md
+

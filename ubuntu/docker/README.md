@@ -1,8 +1,7 @@
 # docker
-[install_docker](#install_docker)<br>
 [sudo_su](#sudo_su)<br>
-[登入docker_hub](#登入docker_hub)<br>
-[上傳至_docker_hub](#上傳至_docker_hub)<br>
+[login_docker_hub](#login_docker_hub)<br>
+[push_docker_hub](#push_docker_hub)<br>
 [基本指令](#基本指令)<br>
 * [啟動容器](#啟動容器)<br>
 * [進入容器](#進入容器)<br>
@@ -11,7 +10,6 @@
 * [建立一個數據捲](#建立一個數據捲)<br>
 
 [Docker_delete_Images_and_Containers](#Docker_delete_Images_and_Containers)<br>
-* [將所有container停止及刪除](#將所有container停止及刪除)<br>
   
 [自己執行ubuntu](#自己執行ubuntu)<br>
 * [下載到進入容器](#下載到進入容器)<br>
@@ -19,21 +17,21 @@
 * [執行下方指令在contain內](#執行下方指令在contain內)<br>
 * [QA_apache2](#QA_apache2)<br>
 * [QA_php](#QA_php)<br>
+* [QA_could_not_find_driver](#QA_could_not_find_driver)<br>
   
 [docker的images及contain儲存方式](#docker的images及contain儲存方式)<br>
-* [images及contain儲存基本指令](#images及contain儲存基本指令)<br>
 * [ubuntu的一次實務練習](#ubuntu的一次實務練習)<br>
 
-測試專案:[laravel](#laravel)<br>
-死坑專用工具:[ubuntu18.04_Mysql_卸除](#ubuntu18.04_Mysql_卸除)<br>
+測試專案：[laravel](#laravel)<br>
+測試專案：[iachievedeam1/ubuntutest](#iachievedeam1/ubuntutest)<br>
 
-待測試:
+死坑專用工具：[ubuntu18.04_Mysql_卸除](#ubuntu18.04_Mysql_卸除)<br>
+
+待測試：
 * [安裝mysql](#安裝mysql)<br>
 * [MySQL](#MySQL)<br>
 * [phpmyadmin](#phpmyadmin)<br>
 * [phpmyadmin的資料](#phpmyadmin的資料)<br>
-
-[自己執行iachievedeam1/ubuntutest](#自己執行iachievedeam1)<br>
 
 未了解完全
 [Dockerfile](#Dockerfile)<br>
@@ -43,12 +41,6 @@
 docker_apache實際操作：<a href="https://youtu.be/wqK81mVUsaM">dome</a>
 
 apache2實際操作：<a href="https://youtu.be/wl4CWcZC6so">dome</a>
-
-## install_docker
-~~~
-sudo apt update
-sudo apt install docker.io
-~~~
 
 ## sudo_su
 [啟動 docker-compose 發生 ERROR: Couldn’t connect to Docker daemon at http+docker://localunixsocket - is it running? 錯誤](https://oranwind.org/-solution-qi-dong-docker-compose-fa-sheng-error-couldnt-connect-to-docker-daemon-at-httpdockerlocalunixsocket-is-it-running-cuo-wu/)
@@ -65,9 +57,9 @@ docker-compose up -d
 >docker run hello-world
 ARNING: Error loading config file:/home/user/.docker/config.json - stat /home/user/.docker/config.json: permission denied
 後續繼續執行
-~~~
+
 解決方式
-~~~
+
 sudo chown "$USER":"$USER" /home/"$USER"/.docker -R
 <!-- sudo chmod g+rwx "/home/$USER/.docker" -R -->
 
@@ -75,26 +67,26 @@ sudo chown "$USER":"$USER" /home/"$USER"/.docker -R
 sudo chown $(whoami):docker /home/$(whoami)/.docker/config.json
 whoami是使用指令查詢此使用者的名稱
 ~~~
-參考資料:[https://qastack.cn/ubuntu/747778/docker-warning-config-json-permission-denied](https://qastack.cn/ubuntu/747778/docker-warning-config-json-permission-denied)
+參考資料：[https://qastack.cn/ubuntu/747778/docker-warning-config-json-permission-denied](https://qastack.cn/ubuntu/747778/docker-warning-config-json-permission-denied)
 
 [回目錄](#docker)
 
-## 登入docker_hub
+## login_docker_hub
 ~~~
 docker login
 ~~~
-## 上傳至_docker_hub
+## push_docker_hub
 ~~~
 docker pull ubuntu:18.04
-docker run --name ubuntutest -itd -p 8000:80 -p 8001:81 -p 8002:3306 ubuntu:18.04 bash
+docker run --name ubuntutest -itd -p 8000:80 -p 80:8000 -p 8001:81 -p 8002:82 ubuntu:18.04 bash
 docker exec -it ubuntutest bash
 
-docker tag 123456789012 iachievedeam1/docker-demo:1.0.0
-docker tag 123456789012 iachievedeam1/test
-
+docker tag 123456789012 iachievedeam1/test:1.0.0
 docker push [username]    /[REPOSITORY]:[TAG]
-docker push iachievedeam1/test
+docker push iachievedeam1/test:1.0.0
 ~~~
+[回目錄](#docker)
+
 ## 基本指令
 以ubuntu為例
 ~~~
@@ -138,7 +130,6 @@ ubuntu：IMAGE
 [回目錄](#docker)
 
 ### 進入容器
-
 ~~~
 docker exec -it <NAMES> bash   //-t進入終端機--進入容器(開新console)	
 docker attach <NAMES>    //容易故障--進入容器(退出停止容器)	
@@ -153,7 +144,6 @@ docker inspect [id]
 
 ### volume
 -v掛載[本機位置：容器位置]
-
 ~~~
 sudo docker run --name project1  -v ~/project_1:/root/project_1 -p 22:22 -ti ubuntu bash
 sudo docker run -d -P --name web --link db:db training/webapp python app.py
@@ -174,21 +164,20 @@ sudo docker volume create --name test
 ~~~
 確認container
 docker ps -a
+
 停止container
 docker stop container_id
+
 刪除container
 docker rm container_id
+
 確認image
 docker images
+
 刪除image
 docker rmi image_id
-~~~
 
-[回目錄](#docker)
-
-### 將所有container停止及刪除
-執行以下指令:
-~~~
+將所有container停止及刪除，執行以下指令:
 docker stop $(docker ps -a -q)
 docker rm $(docker ps -a -q)
 docker rmi $(docker images)
@@ -199,11 +188,11 @@ docker rmi $(docker images)
 ### 下載到進入容器
 ~~~
 下載
-sudo docker pull ubuntu:18.04
+docker pull ubuntu:18.04
 
 運行contain
-sudo docker run -t -i ubuntu /bin/bash
-sudo docker run --name ubuntutest -itd -p 8000:80 -p 8001:81 -p 8002:8000 -p 8003:8001 -p 8004:8002 -p 8005:8003 ubuntu:18.04 /bin/bash
+docker run -t -i ubuntu /bin/bash
+docker run --name ubuntutest -itd -p 8000:80 -p 80:8000 -p 8001:81 -p 8002:82 ubuntu:18.04 bash
 
 進入contain
 sudo docker exec -it ubuntutest bash
@@ -275,8 +264,7 @@ ServerName  localhost:80
 ~~~
 service apache2 restart
 ~~~
-參考資料：
-<a href="https://www.itread01.com/content/1550156775.html">解決httpd: Could not reliably determine the server's fully qualified domain name, using 127.0.0</a>
+參考資料：<a href="https://www.itread01.com/content/1550156775.html">解決httpd: Could not reliably determine the server's fully qualified domain name, using 127.0.0</a>
 
 ### QA_php
 測試php的環境是否正常
@@ -307,24 +295,35 @@ sudo service apache2 restart
 ~~~
 [回目錄](#docker)
 
+### QA_could_not_find_driver
+(PDOException “could not find driver”)[https://stackoverflow.com/questions/2852748/pdoexception-could-not-find-driver]
+For newer versions of Ubuntu that have PHP 7.0 you can get the php-mysql package:
+
+sudo apt-get install php-mysql
+
+Then restart your server:
+
+sudo service apache2 restart
+~~~
+sudo apt-get install php-mysql
+~~~
+
 ## docker的images及contain儲存方式
 ### images及contain儲存基本指令
-images 先來做 Save 動作
 ~~~
+images 先來做 Save 動作
 docker save -o ubuntu_save.tar ubuntu
 docker save ubuntu > ubuntu_save.tar
-~~~
+
 載入 ubuntu_save.tar
-~~~
 docker load --input ubuntu_save.tar
 docker load < ubuntu_save.tar
-~~~
-Container 打包匯出的話可以用 export 指令，例如要將 ubuntutest 的 Container 匯出 :
-~~~
+
+Container 打包匯出的話可以用 export 指令，
+例如要將 ubuntutest 的 Container 匯出 :
 docker export ubuntutest > ubuntu_export.tar
-~~~
+
 接著我們使用剛剛 Export 輸出的檔案來還原，
-~~~
 cat ubuntu_export.tar | docker import - ubuntutest
 ~~~
 
@@ -338,7 +337,8 @@ cat ubuntu_export.tar | docker import - ubuntutest
 ~~~
 images 先來做 Save 動作
 docker save -o ubuntu_save.tar ubuntu
-Container 打包匯出的話可以用 export 指令，例如要將 ubuntutest 的 Container 匯出 :
+Container 打包匯出的話可以用 export 指令，
+例如要將 ubuntutest 的 Container 匯出 :
 docker export ubuntutest > ubuntu_export.tar
 
 刪除所有contain以及images
@@ -386,34 +386,45 @@ php artisan serve --host=127.0.0.1 --port=81
 ~~~
 [回目錄](#docker)
 
-## ubuntu18.04_Mysql_卸除
 
+## iachievedeam1/ubuntutest
+~~~
+pull images
+docker pull iachievedeam1/ubuntutest:1.0
+
+執行容器
+docker run --name ubuntutest -itd -p 8000:80 -p 80:8000 -p 8001:81 -p 8002:82 iachievedeam1/ubuntutest:1.0 /bin/bash
+
+進入容器
+docker exec -it ubuntutest bash
+~~~
+[運行sudo到安裝apache2](###運行sudo到安裝apache2)
+
+[回目錄](#docker)
+
+## ubuntu18.04_Mysql_卸除
+~~~
 首先在系统终端中查看MySQL的依赖项，运行命令：
-~~~
 dpkg --list|grep mysql
-~~~
+
 卸载命令：
-~~~
 sudo apt-get remove mysql-common
-~~~
+
 卸载命令：
-~~~
 sudo apt-get autoremove --purge mysql-server-5.7
-~~~
+
 清除残留数据，运行命令：
-~~~
 dpkg -l|grep ^rc|awk '{print$2}'|sudo xargs dpkg -P
-~~~
+
 再次查看MySQL的剩余依赖项，运行命令：
-~~~
 dpkg --list|grep mysql
-~~~
+
 继续删除剩余依赖项，如：
-~~~
 sudo apt-get autoremove --purge mysql-apt-config
 ~~~
 
 參考資料:[在Ubuntu18.04系统下彻底删除MySQL的方法](https://ywnz.com/linuxysjk/3141.html)
+
 [回目錄](#docker)
 
 ******************************************************************************************************************
@@ -442,48 +453,7 @@ docker image ls
 <a href="https://ithelp.ithome.com.tw/users/20102562/ironman/987">CI 從入門到入坑</a><br>
 <a href=""></a><br>
 
-### MySQL
-~~~
-sudo mysql_secure_installation
-sudo mysql
-SELECT user,authentication_string,plugin,host FROM mysql.user;
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
-mysql -u root –p
-~~~
-[ubuntu18.04安裝mysql沒有密碼提示解決辦法](https://www.itread01.com/content/1543970658.html)
-
-~~~
-查看系統密碼
-sudo vi /etc/mysql/debian.cnf
-登入MySQL資料庫(貼密碼)
-mysql -u debian-sys-maint -p
-~~~
-
-### mysql遠端連線
-
-~~~
-GRANT ALL PRIVILEGES ON *.* TO root@127.0.0.1 IDENTIFIED BY 'root';
-GRANT ALL PRIVILEGES ON *.* TO fu@'%' IDENTIFIED BY '1234';
-FLUSH PRIVILEGES;
-~~~
-
-待消化
-
-[在Ubuntu 18.04 下安装mysql，没有初始密码，重设root密码](https://www.cnblogs.com/williamjie/p/11126486.html)
-
-[Linux MySQL](https://ithelp.ithome.com.tw/articles/10207765?sc=iThelpR)
-~~~
-CREATE USER 'fu'@'%' IDENTIFIED BY 'password';
-GRANT ALL ON *.* to fu@'%' ;
-flush privileges;
-
-mysql -u root -p 123456 -h 127.0.0.1
-mysql -u root  -h 192.168.1.120
-
-GRANT ALL ON *.* to fu@'%' IDENTIFIED BY '1234';
-GRANT ALL ON your_database.* TO 'newuser'@'%';
-~~~
-
+[回目錄](#docker)
 
 ## 未解
 Cannot stat file /proc/12426/fd/15: Permission denied 
@@ -493,7 +463,6 @@ sudo apt-get install mysql-server
 ](https://askubuntu.com/questions/1129029/getting-strange-errors-while-downloading-mysql)
 
 ~~~
-
 invoke-rc.d: policy-rc.d denied execution of stop.
 update-alternatives: using /etc/mysql/mysql.cnf to provide /etc/mysql/my.cnf (my.cnf) in auto mode
 Renaming removed key_buffer and myisam-recover options (if present)
@@ -501,9 +470,7 @@ Cannot stat file /proc/12425/fd/0: Permission denied
 Cannot stat file /proc/12425/fd/1: Permission denied
 Cannot stat file /proc/12425/fd/2: Permission denied
 Cannot stat file /proc/12425/fd/3: Permission denied
-
 ===============================
-
 Cannot stat file /proc/12426/fd/23: Permission denied
 Cannot stat file /proc/12426/fd/24: Permission denied
 Cannot stat file /proc/12426/fd/25: Permission denied
@@ -529,30 +496,14 @@ cd /tmp/ && wget https://dev.mysql.com/get/mysql-apt-config_0.8.10-1_all.deb
 ~~~
 [How to install wget on a Debian or Ubuntu Linux](https://www.cyberciti.biz/faq/how-to-install-wget-togetrid-of-error-bash-wget-command-not-found/)
 
-### 
-[Docker 玩轉 MySQL](https://myapollo.com.tw/zh-tw/docker-mysql/)
-
-~~~
-docker exec -it mysql8 mysql -u root -p
-create database laravel;
-
-CREATE USER 'fu'@'%' IDENTIFIED BY 'password';
-GRANT ALL ON laravel.* TO 'fu'@'%';
-GRANT ALL PRIVILEGES ON *.* TO 'fu'@'localhost' WITH GRANT OPTION;
-GRANT ALL ON laravel.* TO 'fu'@'%' WITH GRANT OPTION;
-
-docker exec -it mysql8 mysql -u fu -p
-
-~~~
-
-### 安裝mysql***********
+### 安裝mysql
 ~~~
 sudo docker pull mysql
 sudo docker run -itd --name mysqltest -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 mysql
 ~~~
 ### MySQL
 ~~~
-sudo docker exec -t mysqltest bash
+sudo docker exec -it mysqltest bash
 sudo docker exec -it mysqltest mysql -u root -p
 ~~~
 ### phpmyadmin
@@ -564,21 +515,6 @@ sudo docker pull phpmyadmin/phpmyadmin
 ~~~
 sudo docker run --name myadmin -d --link mysqltest:db -p 9100:80 phpmyadmin/phpmyadmin
 ~~~
-
-## 自己執行iachievedeam1
-pull檔案
-~~~
-docker pull iachievedeam1/ubuntutest:1.0
-~~~
-執行容器
-~~~
-docker run --name ubuntutest -itd -p 8000:80 -p 8001:81 -p 8002:3306 -p 8003:8000 -p 8004:8001 -p 8005:8002 iachievedeam1/ubuntutest:1.0 /bin/bash
-~~~
-進入容器
-~~~
-docker exec -it ubuntutest bash
-~~~
-[運行sudo到安裝apache2](###運行sudo到安裝apache2)
 
 [回目錄](#docker)
 
@@ -609,8 +545,6 @@ EXPOSE 80
 EXPOSE 3306
 EXPOSE 8000
 EXPOSE 8001
-EXPOSE 8002
-EXPOSE 8003
 
 CMD ["/bin/bash"]
 ~~~
@@ -618,8 +552,7 @@ CMD ["/bin/bash"]
 sudo docker build -t docker_ubuntu .
 sudo docker build -t docker_ubuntu:v1 .
 
-****************************************
-
+[回目錄](#docker)
 
 ##  Dockerfile 
 mkdir ~/Desktop/docker_test
@@ -677,6 +610,8 @@ sudo docker images
 sudo docker run -itd -p 8888:80 httpd:v1
 docker build -t="ubuntu:v3" .
 -t 是指定image的tag；. 則是當前目錄
+
+[回目錄](#docker)
 
 ## 建立文件
 

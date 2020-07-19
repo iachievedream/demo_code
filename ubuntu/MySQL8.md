@@ -14,10 +14,10 @@ y設置完成重新載入安全表
 SHOW VARIABLES LIKE 'validate_password%';
 
 在 mysql 資料庫的 user 表中檢視當前 root 使用者的相關資訊
+~~~
 use mysql;
 select host, user, authentication_string, plugin from user; 
 
-~~~
 可以 sudo mysql -u root -p
 不行 mysql -u root -p
 
@@ -28,15 +28,12 @@ ERROR 1698 (28000): Access denied for user 'root'@'localhost'
 ~~~
 use mysql;
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'QAws#ED4rf';
 FLUSH PRIVILEGES;
 
 drop user 'root'@'localhost'; 
-
 ~~~
 可以
 sudo mysql -u root -p
-
 
 新增其他的使用者
 ~~~
@@ -45,7 +42,7 @@ CREATE USER 'fu'@'localhost' IDENTIFIED BY 'password';
 GRANT ALL PRIVILEGES ON *.* TO 'fu'@'localhost';
 
 ## 新增 MySQL 遠端帳號和密碼
-CREATE USER 'fu'@'%' IDENTIFIED BY 'password';
+CREATE USER 'fu'@'%' IDENTIFIED BY 'qazWSX3edc';
 GRANT ALL PRIVILEGES ON *.* TO 'fu'@'%';
 
 GRANT ALL ON *.* TO 'fu'@'%';
@@ -56,6 +53,7 @@ drop user 'fu'@'%';
 drop user 'fu'@'localhost'; 
 
 
+# 新的認證方式
 # ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'password'; 
 # 修改加密規則ALTER USER 'root'@'localhost' IDENTIFIED BY 'password' PASSWORD EXPIRE NEVER; 
 兩個是什麼
@@ -93,3 +91,19 @@ https://blog.vvtitan.com/2018/04/mysql%E6%9B%B4%E6%94%B9%E5%AF%86%E7%A2%BC%E9%A1
 [Docker 玩轉 MySQL](https://myapollo.com.tw/zh-tw/docker-mysql/)
 
 [如何在 Ubuntu 18.04 安裝 MySQL 8.0](https://leadingtides.com/article/%E6%95%99%E5%AD%B8-%E5%A6%82%E4%BD%95%E5%9C%A8-Ubuntu-18.04-%E5%AE%89%E8%A3%9D-MySQL-8.0)
+
+
+docker pull mysql/mysql-server:8.0
+
+docker run --name=mysql8 -d -p 3306:3306 --env MYSQL_ROOT_PASSWORD=ab123456 mysql/mysql-server:8.0
+
+sudo docker exec -it mysql8 mysql -uroot -p
+
+
+CREATE USER 'fu'@'%' IDENTIFIED BY 'qazWSX3edc';
+GRANT ALL PRIVILEGES ON *.* TO 'fu'@'%';
+FLUSH PRIVILEGES;
+
+ALTER USER 'fu'@'%' IDENTIFIED WITH mysql_native_password BY 'qazWSX3edc';
+
+mysql -u fu -h 172.17.0.1 -p
