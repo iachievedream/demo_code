@@ -15,6 +15,7 @@
 * [下載到進入容器](#下載到進入容器)<br>
 * [運行sudo到安裝apache2](#運行sudo到安裝apache2)<br>
 * [執行下方指令在contain內](#執行下方指令在contain內)<br>
+* [QA_sudo_su](#QA_sudo_su)<br>
 * [QA_apache2](#QA_apache2)<br>
 * [QA_php](#QA_php)<br>
 * [QA_could_not_find_driver](#QA_could_not_find_driver)<br>
@@ -23,7 +24,7 @@
 * [ubuntu的一次實務練習](#ubuntu的一次實務練習)<br>
 
 測試專案：[laravel](#laravel)<br>
-測試專案：[iachievedeam1/ubuntutest](#iachievedeam1/ubuntutest)<br>
+測試專案：[iachievedeam1_ubuntutest](#iachievedeam1_ubuntutest)<br>
 
 死坑專用工具：[ubuntu18.04_Mysql_卸除](#ubuntu18.04_Mysql_卸除)<br>
 
@@ -38,9 +39,8 @@
 [文件](#文件)<br>
 
 # 程式整理docker
-docker_apache實際操作：<a href="https://youtu.be/wqK81mVUsaM">dome</a>
-
-apache2實際操作：<a href="https://youtu.be/wl4CWcZC6so">dome</a>
+docker_apache實際操作：[dome](https://youtu.be/wqK81mVUsaM)<br>
+apache2實際操作：[dome](https://youtu.be/wl4CWcZC6so)
 
 ## sudo_su
 [啟動 docker-compose 發生 ERROR: Couldn’t connect to Docker daemon at http+docker://localunixsocket - is it running? 錯誤](https://oranwind.org/-solution-qi-dong-docker-compose-fa-sheng-error-couldnt-connect-to-docker-daemon-at-httpdockerlocalunixsocket-is-it-running-cuo-wu/)
@@ -52,29 +52,11 @@ su ubuntu (使用者)
 docker-compose up -d
 ~~~
 
-### 新錯誤內容以及處理方式
-~~~
->docker run hello-world
-ARNING: Error loading config file:/home/user/.docker/config.json - stat /home/user/.docker/config.json: permission denied
-後續繼續執行
-
-解決方式
-
-sudo chown "$USER":"$USER" /home/"$USER"/.docker -R
-<!-- sudo chmod g+rwx "/home/$USER/.docker" -R -->
-
-延伸學習
-sudo chown $(whoami):docker /home/$(whoami)/.docker/config.json
-whoami是使用指令查詢此使用者的名稱
-~~~
-參考資料：[https://qastack.cn/ubuntu/747778/docker-warning-config-json-permission-denied](https://qastack.cn/ubuntu/747778/docker-warning-config-json-permission-denied)
-
-[回目錄](#docker)
-
 ## login_docker_hub
 ~~~
 docker login
 ~~~
+
 ## push_docker_hub
 ~~~
 docker pull ubuntu:18.04
@@ -159,7 +141,7 @@ sudo docker volume create --name test
 [回目錄](#docker)
 
 ## Docker_delete_Images_and_Containers
-<a href="https://www.opencli.com/linux/docker-delete-images-containers">Docker 中刪除 Images 鏡像 及 Containers</a>
+<a href="https://www.opencli.com/linux/docker-delete-images-containers">Docker中刪除Images鏡像及Containers</a>
 
 ~~~
 確認container
@@ -244,6 +226,25 @@ sh base.sh
 ~~~
 [回目錄](#docker)
 
+### QA_sudo_su
+新錯誤內容以及處理方式
+~~~
+docker run hello-world
+ARNING: Error loading config file:/home/user/.docker/config.json - stat /home/user/.docker/config.json: permission denied
+後續繼續執行
+
+解決方式
+sudo chown "$USER":"$USER" /home/"$USER"/.docker -R
+<!-- sudo chmod g+rwx "/home/$USER/.docker" -R -->
+
+延伸學習
+sudo chown $(whoami):docker /home/$(whoami)/.docker/config.json
+whoami是使用指令查詢此使用者的名稱
+~~~
+參考資料：[https://qastack.cn/ubuntu/747778/docker-warning-config-json-permission-denied](https://qastack.cn/ubuntu/747778/docker-warning-config-json-permission-denied)
+
+[回目錄](#docker)
+
 ### QA_apache2
 * Restarting Apache httpd web server apache2 AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.17.0.2. Set the 'ServerName' directive globally to suppress this message
 
@@ -265,6 +266,14 @@ ServerName  localhost:80
 service apache2 restart
 ~~~
 參考資料：<a href="https://www.itread01.com/content/1550156775.html">解決httpd: Could not reliably determine the server's fully qualified domain name, using 127.0.0</a>
+
+vi apache2.conf 
+~~~
+ServerName  localhost:80
+~~~
+
+[解決httpd: Could not reliably determine the server's fully qualified domain name, using 127.0.0
+](https://www.itread01.com/content/1550156775.html)
 
 ### QA_php
 測試php的環境是否正常
@@ -296,7 +305,8 @@ sudo service apache2 restart
 [回目錄](#docker)
 
 ### QA_could_not_find_driver
-(PDOException “could not find driver”)[https://stackoverflow.com/questions/2852748/pdoexception-could-not-find-driver]
+<a href="https://stackoverflow.com/questions/2852748/pdoexception-could-not-find-driver">PDOException “could not find driver”</a>
+
 For newer versions of Ubuntu that have PHP 7.0 you can get the php-mysql package:
 
 sudo apt-get install php-mysql
@@ -383,11 +393,12 @@ php artisan migrate:refresh
 php artisan db:seed
 php artisan serve
 php artisan serve --host=127.0.0.1 --port=81
+php artisan serve --host=0.0.0.0 --port=8000
 ~~~
 [回目錄](#docker)
 
 
-## iachievedeam1/ubuntutest
+## iachievedeam1_ubuntutest
 ~~~
 pull images
 docker pull iachievedeam1/ubuntutest:1.0
