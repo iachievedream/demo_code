@@ -241,12 +241,12 @@ sudo chown "$USER":"$USER" /home/"$USER"/.docker -R
 sudo chown $(whoami):docker /home/$(whoami)/.docker/config.json
 whoami是使用指令查詢此使用者的名稱
 ~~~
-參考資料：[https://qastack.cn/ubuntu/747778/docker-warning-config-json-permission-denied](https://qastack.cn/ubuntu/747778/docker-warning-config-json-permission-denied)
+參考資料：[码头工人警告config.json权限被拒绝](https://qastack.cn/ubuntu/747778/docker-warning-config-json-permission-denied)
 
 [回目錄](#docker)
 
 ### QA_apache2
-* Restarting Apache httpd web server apache2 AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.17.0.2. Set the 'ServerName' directive globally to suppress this message
+Restarting Apache httpd web server apache2 AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.17.0.2. Set the 'ServerName' directive globally to suppress this message
 
 測試port有無被使用或是查看apache狀態
 ~~~
@@ -308,8 +308,6 @@ sudo service apache2 restart
 <a href="https://stackoverflow.com/questions/2852748/pdoexception-could-not-find-driver">PDOException “could not find driver”</a>
 
 For newer versions of Ubuntu that have PHP 7.0 you can get the php-mysql package:
-
-sudo apt-get install php-mysql
 
 Then restart your server:
 
