@@ -18,44 +18,42 @@
         <br>
         <input id="add" type="submit" name="add_submit" value="送出"/>
     </form>
+    <div id="addadd"></div>
 
     <script type="text/javascript">
         $(document).ready(function(){
             $("#add").click(function(){
-                var name = $("#idname").val();
-                var msg = $("#idmsg").val();                
-                $.post("deal.php",{
+                var nameVal = $("#idname").val();
+                var msgVal = $("#idmsg").val();
+                $.ajax({
+                    url: "deal.php",
+                    type: "POST",
+                    dataType: "json",
+                    data: {
+                        // name:$("input:text").val
+                        name: nameVal,
+                        msg: msgVal },
+                    success: function(data) {
+                        alert("success");
+                    },
+                    error: function(data) {
+                        // $("#add").html("add error")
+                        // $("#addadd").val(data)
+                        alert("error");
+                    }
+                    // complete: function(data) {
+                    //     alert("complete");
+                    // }
+                })
+            });
+            $("#ajax_delete").click(function(){    
+                var nameVal = $("#idname").val();
+                $.post("deal.php?delete=1&id=<?php echo $row["id"]; ?>",{
                     name: name,
                     msg: msg
                 },function(data) {
                     alert(data);
                 });
-                // //以下失敗
-                // success: function(data){
-                //     alert(data);
-                // },
-                // error: function(data) {
-                //     alert(data);
-                // });
-
-                // //以下另一種成功方式
-                // $.ajax({
-                //     url: "deal.php",
-                //     type: "POST",
-                //     dataType: "json",
-                //     data: {
-                //         // name:$("input:text").val
-                //         name: name,
-                //         msg: msg
-                //     },
-                //     success: function(data) {
-                //         alert("success");
-                //     },
-                //     error: function(data) {
-                //         // alert(data);
-                //         alert("error");
-                //     }
-                // });
             });
         });
     </script>
@@ -96,9 +94,15 @@
                     <a href="updata.php?id=<?php echo $row["id"]; ?>">edit</a>
                 </button>
                 &nbsp
-                <button>
+                <button  id="delete">
                     <a href="deal.php?delete=1&id=<?php echo $row["id"]; ?>">delete</a>
                 </button>
+
+                <button  id="ajax_delete">
+                    <a >ajax_delete</a>
+                </button>
+                <input id="ajax_delete" type="submit" name="add_submit" value="ajax_delete"/>
+
             </td>
         </tr>
     <?php
@@ -108,6 +112,7 @@
     }
     ?>
     </table>
+
 </body>
 
 </html>
