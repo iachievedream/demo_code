@@ -1,8 +1,10 @@
 #  ajax
-
+ajax參數介紹
+~~~
 $.post("deal.php",{msg:  $("#idname").val()},function(data)  {alert(data);});
 ________伺服端檔案__帶入參數_________________________________回傳參數
-
+~~~
+範例
 ~~~php
 <script  type="text/javascript">
     $(document).ready(function(){
