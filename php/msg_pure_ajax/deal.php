@@ -12,15 +12,16 @@
 
     //使用$_POST接住表單傳送過來的資料，確認新增留言有點選，後續執行sql指令，並判斷是否新增成功
     if ($_POST['add_submit']) {
-    // if ($_POST['name'] && $_POST['msg']) {
-        $name = $_POST['name'];
-        $msg = $_POST['msg'];   
-        $sql = "insert into message_board(name,msg,update_time) values ('$name','$msg',now())";
-        mysqli_query($db, $sql);
-        if (mysqli_query($db, $sql)) {
-            echo "msg add successfully";
-        } else {
-            echo "msg add failed";
+        if ($_POST['name'] && $_POST['msg']) {
+            $name = $_POST['name'];
+            $msg = $_POST['msg'];   
+            $sql = "insert into message_board(name,msg,update_time) values ('$name','$msg',now())";
+            mysqli_query($db, $sql);
+            // if (mysqli_query($db, $sql)) {
+            //     echo "msg add successfully";
+            // } else {
+            //     echo "msg add failed";
+            // }
         }
     }
 

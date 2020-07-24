@@ -10,31 +10,52 @@
 </head>
 
 <body>
-    <form id = form1>
-        <table border="1" width=200 align="center">
-            <tr align="center">
-                <td colspan="2">add msg</td>
-            </tr>
-            <tr align="center">
-                <td>name：</td>
-                <td ><input id="idname" type="text" name="name" /></td>
-            </tr>
-            <tr align="center">
-                <td>msg：</td>
-                <td><input id="idmsg" type="text" name="msg" ></input></td>
-            </tr>
-            <tr align="center">
-                <td colspan="2">
-                    <input id="add" class="add_submit" type="submit" name="add_submit" value="送出"/>
-                </td>
-            </tr>
-        </table>
-    </form>
-    <div id="addadd"></div><br>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#add_hide").hide();
+            $("#add_button_show").click(function(){
+                $("#add_hide").show();
+                $("#add_show").hide();
+            });
+            $("#add_button_hide").click(function(){
+                $("#add_hide").hide();
+                $("#add_show").show();
+            });
+        });
+    </script>
+    <div id="add_show" align="center">
+        <button id="add_button_show">add msg show</button>
+    </div>
+    <div id="add_hide" align="center">
+        <button id="add_button_hide">add msg hide</button>
+        <br><br>
+        <form id="add_form">
+            <table border="1" width=200 align="center">
+                <tr align="center">
+                    <td colspan="2">add msg</td>
+                </tr>
+                <tr align="center">
+                    <td>name：</td>
+                    <td ><input id="idname" type="text" name="name" /></td>
+                </tr>
+                <tr align="center">
+                    <td>msg：</td>
+                    <td><input id="idmsg" type="text" name="msg" ></input></td>
+                </tr>
+                <tr align="center">
+                    <td colspan="2">
+                        <input id="add" class="add_submit" type="submit" name="add_submit" value="Send out"/>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div><br>
 <!-- ajax_add -->
     <script type="text/javascript">
         $(document).ready(function(){
-            $("#add").click(function(){
+            $("#add").one("click",function(){
+                var nameVal = $('#idname').val();
+                var msgVal = $('#idmsg').val();
                 $.ajax({
                     url: "deal.php",
                     type: "POST",
@@ -44,10 +65,10 @@
                         name: nameVal,
                         msg: msgVal },
                     success: function(data) {
-                        alert(data);
+                        alert("successfully");
                     },
                     error: function(data) {
-                        alert(data);
+                        alert("failed");
                     }
                 })
             });
@@ -111,7 +132,7 @@
     </div>
 
 <!-- ajax_update -->
-<script type="text/javascript">
+    <script type="text/javascript">
         $(document).ready(function(){
             $(".ajax_update_button").click(function(){    
                 var idVal = $(this).attr('id');
