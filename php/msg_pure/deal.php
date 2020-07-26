@@ -9,7 +9,6 @@
 <body>
     <?php
     require_once('db.php');
-
     //使用$_POST接住表單傳送過來的資料，確認新增留言有點選，後續執行sql指令，並判斷是否新增成功
     if ($_POST['add_submit']) {
         $name = $_POST['name'];
@@ -19,17 +18,6 @@
             echo "msg add successfully";
         } else {
             echo "msg add failed";
-        }
-    }
-
-    //確認參數delete是否為1，後續抓取id以及執行刪除sql指令，並判斷是否刪除成功
-    if ($_GET['delete']) { //null or number
-        $id = $_GET['id'];
-        $delete = "delete from message_board where id=" . $id;
-        if (mysqli_query($db, $delete)) {
-            echo "delete successfully";
-        } else {
-            echo "delete failed";
         }
     }
 
@@ -43,6 +31,17 @@
             echo "msg update successfully";
         } else {
             echo "msg update failed";
+        }
+    }
+
+    //確認參數delete是否為1，後續抓取id以及執行刪除sql指令，並判斷是否刪除成功
+    if ($_GET['delete']) { //null or number
+        $id = $_GET['id'];
+        $delete = "delete from message_board where id=" . $id;
+        if (mysqli_query($db, $delete)) {
+            echo "delete successfully";
+        } else {
+            echo "delete failed";
         }
     }
     ?>

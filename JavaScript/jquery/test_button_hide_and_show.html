@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>內容顯示與隱藏</title>
+    <!-- <link href="css.css" rel="stylesheet" type="text/css"> -->
+    <script src="jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#content").hide();
+            $("#content_button_show").click(function(){
+                $("#content").show();
+                $("#content_button_hide").show();
+                $("#content_button_show").hide();
+            });
+            $("#content_button_hide").click(function(){
+                $("#content").hide();
+                $("#content_button_show").show();
+            });
+        });
+    </script>
+    <button id="content_button_show">content_button_show</button>
+    <div id="content" >
+        <button id="content_button_hide">content_button_hide</button>
+        <br>內容顯示
+    </div>
+<body>
+</html>
