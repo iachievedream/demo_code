@@ -1,27 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>deal</title>
-    <link href="css.css" rel="stylesheet" type="text/css">
-</head>
-<body>
     <?php
     require_once('db.php');
 
     //使用$_POST接住表單傳送過來的資料，確認新增留言有點選，後續執行sql指令，並判斷是否新增成功
-    if ($_POST['add_submit']) {
+    if ($_POST['add_data']) {
         if ($_POST['name'] && $_POST['msg']) {
             $name = $_POST['name'];
             $msg = $_POST['msg'];   
-            $sql = "insert into message_board(name,msg,update_time) values ('$name','$msg',now())";
-            mysqli_query($db, $sql);
-            // if (mysqli_query($db, $sql)) {
-            //     echo "msg add successfully";
-            // } else {
-            //     echo "msg add failed";
-            // }
+            $sql = "insert into message_board(name,msg,update_time) values ('".$name."','".$msg."',now())";
+            // mysqli_query($db, $sql);
+            if (mysqli_query($db, $sql)) {
+                echo "msg add successfully";
+            } else {
+                echo "msg add failed";
+            }
+        }else {
+            echo "error";
         }
     }
 
@@ -33,8 +26,22 @@
         }
     }
 
+    if ($_GET['ajax_edit']) { //null or number
+        $id = $_GET["id"];
+        $sql = "select * from message_board WHERE id=".$id;
+        $result = mysqli_query($db,$sql);
+        $row = mysqli_fetch_assoc($result);
+        // echo $row." ".$row["name"]." ".$row["msg"];
+        $response = array(
+            'name' => $row["name"],
+            'msg'=> $row["msg"]
+        );
+        // echo json_encode($response); 
+        echo $response; 
+    }
+
     //跳至updata頁面後的更新，input按鍵的名稱update_submit去做傳送更新的資訊內容
-    if ($_POST['update_submit']) {
+    if ($_POST['update_data']) {
         $id = $_GET['id'];
         $name = $_POST['update_name'];
         $msg = $_POST['update_msg'];
@@ -44,14 +51,6 @@
         } else {
             echo "msg update failed";
         }
-    }
-
-    if ($_GET['ajax_update']) { //null or number
-        $id = $_GET["id"];
-        $sql = "select * from message_board WHERE id=".$id;
-        $result = mysqli_query($db,$sql);
-        $row = mysqli_fetch_assoc($result);
-        // var_dump($row);die;
     }
 
     //確認參數delete是否為1，後續抓取id以及執行刪除sql指令，並判斷是否刪除成功
@@ -65,12 +64,3 @@
         }
     }
     ?>
-    <br>
-    <button>
-        <a href="index.php">msg index</a>
-    </button>
-    <button>
-        <a href="add.html">add msg</a>
-    </button>
-</body>
-</html>
