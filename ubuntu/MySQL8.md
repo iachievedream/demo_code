@@ -10,6 +10,7 @@
 * [QA_mysql無法順利登入](###QA_mysql無法順利登入)<br>
 [other](#other)<br>
 * [防火牆](#防火牆)<br>
+* [索引](#索引)<br>
 
 
 ## service_mysql_status
@@ -143,3 +144,41 @@ https://blog.vvtitan.com/2018/04/mysql%E6%9B%B4%E6%94%B9%E5%AF%86%E7%A2%BC%E9%A1
 [如何在 Ubuntu 18.04 安裝 MySQL 8.0](https://leadingtides.com/article/%E6%95%99%E5%AD%B8-%E5%A6%82%E4%BD%95%E5%9C%A8-Ubuntu-18.04-%E5%AE%89%E8%A3%9D-MySQL-8.0)
 
 [回目錄](#MySQL8)
+
+
+## 索引
+~~~
+建立表格的時建立索引：
+CREATE TABLE member (
+id      INT UNSIGNED PRIMARY KEY,
+name    VARCHAR(20),
+email   VARCHAR(36) UNIQUE KEY,
+)
+
+或者
+
+CREATE TABLE member (
+id,
+name,
+email,
+PRIMARY KEY(id),
+UNIQUE KEY(email),
+)
+
+直接建立索引：
+(CREATE INDEX 建立單個索引)
+CREATE INDEX email_index ON member(email);
+
+(ALTER TABLE 建立多個索引，不另外顯出外鍵名稱)
+ALTER TABLE member ADD INDEX(email);
+ALTER TABLE member ADD PRIMARY KEY (Id), ADD INDEX (LastName,FirstName);
+
+刪除索引：
+DROP INDEX email ON member;
+DROP INDEX 'PRIMARY' on member;
+
+複合索引:
+CREATE INDEX email_tel_index ON member(email, tel);
+ALTER TABLE member ADD INDEX email_tel_index (email, tel);
+
+~~~
