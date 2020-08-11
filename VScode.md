@@ -34,7 +34,7 @@ which php
 "php.validate.executablePath": "/usr/bin/php"
 ~~~
 
-
+~~~
 Format HTML in PHP
 Git History
 HTML CSS Support
@@ -46,6 +46,6 @@ open in browser
 PHPUnit
 Prettier - Code formatter
 Preview on Web Server
-
+~~~
 
 
