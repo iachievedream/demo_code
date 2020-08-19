@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{ firstname }}</p>
+        <div v-html="message"></div>
+        <pre><a v-bind:href="url">測試網址</a></pre>
+        <ol>
+            <li v-for="site in sites">
+                {{ site.name }}
+            </li>
+        </ol>
+        <li v-for="n in 10">
+            {{ n }}
+        </li>
+        <div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }">字體大小測試</div>
+        <button v-on:click="say('what')">Say what</button>
+    </div>
+    <script>
+        new Vue({
+            // 宣告差異
+            // var vm = new Vue({
+            el: '#app',
+            data: {
+                firstname: 'fu2',
+                message: '<h1>測試訊息</h1>',
+                url: 'http://fuwork.xyz',
+                sites: [
+                    { name: 'html' },
+                    { name: 'css' },
+                    { name: 'php' }
+                ],
+                activeColor: 'green',
+                fontSize: 30
+            },
+            methods: {
+                say: function (message) {
+                    alert(message)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
+
+<!-- el綁id，須要在此id內才可做數值的替換，且在vue.js需要放在轉換的html後面，才可順利執行。 -->
+
+<!-- vue裡面的data內容在不同的數值後面，
+有下一個數值，最後要加上,，
+才不會產生錯誤。 -->

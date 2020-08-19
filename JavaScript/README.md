@@ -6,7 +6,7 @@
 [Ajax](#Ajax)
 [json](#json)
 
-# JavaScript
+## JavaScript
 
 alert()跳出訊息
 
@@ -62,7 +62,7 @@ JavaScript Function Parameters
 
 [目錄](#目錄)
 
-# jQuery 
+## jQuery 
 對於"文檔的就緒事件"，保證全部載入後執行
 ~~~javascript
 $(document).ready(function(){
@@ -155,7 +155,7 @@ $("#stop").click(function(){
 
 [目錄](#目錄)
 
-# Ajax
+## Ajax
 
 ~~~javascript
 $.get(URL,callback);
@@ -201,9 +201,9 @@ $(document).ready(function(){
 
 ## json
 
-
-~~~
-
+~~~php
+myObj = JSON.parse(this.responseText);
+echo json_encode($response); 
 ~~~
 
 [目錄](#目錄)
