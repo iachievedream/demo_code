@@ -37,4 +37,20 @@ git rm -r --cached index.html
 git rm -r --cached PDO/password.php
 ~~~
 
-7.其他：錯誤訊息等
+7.其他：
+
+~~~
+git stash save
+
+git stash list
+
+//恢復暫存的操作
+git stash pop
+
+git stash drop
+
+git stash clear
+~~~
+
+錯誤訊息等
+
