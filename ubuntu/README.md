@@ -240,6 +240,10 @@ sudo netstat -lpn |grep 3000
 tcp6  0  0 :::3000 :::* LISTEN 14320/.node.bin
 清除 PID，使用 kill + PID 就能將此排程從背景釋放，就能解決 Port 被佔用的問題了！
 kill 14230
+
+備註:windows
+netstat -ano | findstr 0.0:80
+
 ~~~
 [回目錄](#ubuntu)
 
