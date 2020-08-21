@@ -7,13 +7,14 @@
 * [shell](##shell)<br>
 * [操作SSH](##操作SSH)<br>
 * [appache2](#appache2)<br>
+* * [php](#php)<br>
 * * [更改appache2的port](#更改appache2的port)<br>
 * * [更改appache2的conf](#更改appache2的conf)<br>
 * * [開啟站台](#開啟站台)<br>
 * * [重新載入Apache設定檔](#重新載入Apache設定檔)<br>
 * * [設定hosts](#設定hosts)<br>
-* * [清除系統上被佔用的Port](#清除系統上被佔用的Port)
-[防火牆](#防火牆)
+* * [清除系統上被佔用的Port](#清除系統上被佔用的Port)<br>
+[防火牆](#防火牆)<br>
 [Q&A](#Q&A)<br>
 * [mkdir Permission denied](#mkdir_Permission_denied)<br>
 * * [chmod](#chmod)<br>
@@ -167,6 +168,14 @@ ubuntu則是需 ssh username@hostname<br>
 [回目錄](#ubuntu)
 
 ### appache2
+
+#### php
+~~~
+vi /etc/php/7.2/apache2/php.ini
+extension=mysqli
+
+sudo service apache2 restart
+~~~
 #### 更改appache2的port
 sudo nano /etc/apache2/ports.conf
 ~~~
@@ -182,9 +191,10 @@ Listen 85
 </IfModule>
 ~~~
 #### 更改appache2的conf
-sudo nano /etc/apache2/sites-available/000-default.conf<br>
-sudo nano /etc/apache2/sites-available/abc.conf 
 ~~~
+sudo vi /etc/apache2/sites-available/000-default.conf<br>
+sudo vi /etc/apache2/sites-available/abc.conf 
+
 <VirtualHost *:85>
     ServerAdmin webmaster@localhost
     DocumentRoot /var/www/html/blog-laravel/public/index.php
@@ -244,6 +254,8 @@ kill 14230
 備註:windows
 netstat -ano | findstr 0.0:80
 
+taskkill /PID <PID> /F
+taskkill /PID 8572 /F
 ~~~
 [回目錄](#ubuntu)
 

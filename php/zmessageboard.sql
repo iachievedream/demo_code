@@ -1,5 +1,5 @@
 CREATE DATABASE crud;
-use crud
+use crud;
 CREATE TABLE `zuser` (
   `id` int(3) unsigned NOT NULL AUTO_INCREMENT,
   `username` varchar(20) NOT NULL,
