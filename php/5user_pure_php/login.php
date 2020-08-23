@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>login</title>
 </head>
 <body>
 
@@ -11,9 +11,6 @@
     <p>login</p>
      <form action="session.php" id = form1 method="post">
     <table border="1" wedth=200 align="center">
-        <!-- <tr align="center">
-            <td colspan="2" >login</tr>
-        </tr> -->
         <tr align="center" >
             <td>name</td>
             <td ><input id="idname" type="text" name="name"/></td>
