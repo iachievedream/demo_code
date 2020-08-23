@@ -26,6 +26,6 @@ class Solution {
 
 $abcd = new Solution();
 echo "答案為".$abcd->twoSum(9);
-
+// 正確的class以及this的使用方式(內涵array的部分)
 // function外，class內的變數引用是使用this，如果是function裡面的則是直接使用變數。
 ?>

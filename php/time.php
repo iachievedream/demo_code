@@ -1,6 +1,7 @@
 <?php
 //現在的時間戳
 $nowtime = time();
+echo date('Y-m-d H:i:s', strtotime('+8 hours'));
 echo "<br>現在  time()  的時間戳".$nowtime."<br>";
 echo "現在 date的時間戳".date('Y-m-d H:i:s', $nowtime)."<br>";
 echo "現在 date strtotime +8 hours 的時間戳".date('Y-m-d H:i:s', strtotime('+8 hours'))."<br>";

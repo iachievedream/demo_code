@@ -68,11 +68,11 @@
                         name: nameVal,
                         msg: msgVal },
                     success: function(data) {
-\                        // alert("successfully");
+                        // alert("successfully");
                         document.getElementById("state").innerHTML = data;
                     },
                     error: function(data) {
-\                        // alert("failed");
+                        // alert("failed");
                         document.getElementById("state").innerHTML = data;
                     }
                 })
@@ -80,13 +80,38 @@
         });
     </script>
 <!-- 如何即時讀取mysql的資料 -->
-    <!-- <button class="ajax_mysql" id="<?php echo $row["id"]; ?>">ajax_mysql</button> -->
+    <button class="ajax_mysql" >ajax_mysql</button>
     <?php
     require_once('db.php');
     $sql = "select * from message_board order by id asc";//sql指令,order by id照id的順序排列，desc由大至小，asc由小至大
     $result = mysqli_query($db, $sql);//執行指令
     if (mysqli_num_rows($result) > 0) {//共取得幾筆記錄
     ?>
+
+<!-- ajax_mysql -->
+<script type="text/javascript">
+        $(document).ready(function(){
+            $(".ajax_mysql").one("click",function(){
+                $.ajax({
+                    url: "deal.php",
+                    type: "POST",
+                    dataType: "json",
+                    data: {
+                        ajax_mysql: "1",//觸發指令
+                    },
+                    success: function(data) {
+                        alert("successfully");
+                        // document.getElementById("state").innerHTML = data;
+                    },
+                    error: function(data) {
+                        ("failed");
+                        // document.getElementById("state").innerHTML = data;
+                    }
+                })
+            });
+        });
+    </script>
+
 
     <div id="mysql_content">
         <table border="1" width=550 align="center">
