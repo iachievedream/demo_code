@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>login</title>
+    <link href="css/css.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 
 <div align="center">
-    <p>login</p>
-     <form action="session.php" id = form1 method="post">
+    <form action="session.php" id = form1 method="post">
+    <p>Login</p>
     <table border="1" wedth=200 align="center">
         <tr align="center" >
             <td>name</td>
@@ -24,21 +25,6 @@
         </tr>
     </form>
 </div>
-
-<?php
-session_start();
-if(isset($_POST['name']) && ($_POST['password'])){
-    $_SESSION['wd'] ="name";
-}
-if(isset($_SESSION['wd'])){
-    echo "成功";
-?>
-<button id="login">logout</button>
-<?php
-    echo "abc";
-    unset($_SESSION['wd']);
-}
-?>
 </body>
 </html>
 

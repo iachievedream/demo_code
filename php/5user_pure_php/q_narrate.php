@@ -15,9 +15,9 @@
 -->
 
 <form action="session.php" method="post">
-<input type="text" name="nusername" value="123">
-<input type="password" name="npassword" value="123">
-<input type="submit" name="nlogin" value="login">
+    <input type="text" name="nusername" value="123">
+    <input type="password" name="npassword" value="123">
+    <input type="submit" name="nlogin" value="login">
 </form>
 
 <?php
