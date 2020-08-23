@@ -28,6 +28,12 @@ IP：ubuntu@ec2-127-0-0-1.compute-1.amazonaws.com
 putty.exe的SSH內容中Auth加上一個登入的私鑰.ppk檔案
 ~~~
 
+## public and private
+~~~
+公開才能做mysql的連線，
+私密是虛擬機的操作
+~~~
+
 ## 權限指令備忘錄
 ~~~
 sudo su  //獲取根用戶

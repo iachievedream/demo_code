@@ -1,70 +1,43 @@
--- phpMyAdmin SQL Dump
--- version 4.9.1
--- https://www.phpmyadmin.net/
---
--- 主機： localhost
--- 產生時間： 
--- 伺服器版本： 8.0.17
--- PHP 版本： 7.3.10
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
-SET time_zone = "+00:00";
+/*
+SQLyog Community Edition- MySQL GUI v8.2 
+MySQL - 8.0.17 : Database - pure_php
+*********************************************************************
+*/
 
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
---
--- 資料庫： `pure_php`
---
+/*!40101 SET SQL_MODE=''*/;
 
--- --------------------------------------------------------
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`pure_php` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 
---
--- 資料表結構 `message_board`
---
+USE `pure_php`;
+
+/*Table structure for table `message_board` */
+
+DROP TABLE IF EXISTS `message_board`;
 
 CREATE TABLE `message_board` (
-  `id` int(1) NOT NULL,
+  `id` int(1) NOT NULL AUTO_INCREMENT,
   `name` varchar(25) NOT NULL,
   `msg` varchar(50) NOT NULL,
-  `update_time` timestamp NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `create_time` datetime DEFAULT NOT NULL,
+  `update_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
---
--- 傾印資料表的資料 `message_board`
---
+/*Data for the table `message_board` */
 
-INSERT INTO `message_board` (`id`, `name`, `msg`, `update_time`) VALUES
-(1, 'fufu', 'hello fufu', '2020-03-25 04:00:42'),
-(2, 'abab', 'hello abab', '2020-03-25 04:00:51'),
-(3, 'cdcd', 'cdcdcd', '2020-07-11 07:35:24');
+insert  into `message_board`(`id`,`name`,`msg`,`create_time`,`update_time`) values 
+(1,'fufu','hello fufu','2020-03-25 12:00:42','2020-03-25 12:00:42'),
+(2,'abab','hello abab','2020-03-25 12:00:51','2020-03-25 12:00:51'),
+(3,'cdcd','cdcdcd','2020-07-11 15:35:24','2020-07-11 15:35:24');
 
---
--- 已傾印資料表的索引
---
-
---
--- 資料表索引 `message_board`
---
-ALTER TABLE `message_board`
-  ADD PRIMARY KEY (`id`);
-
---
--- 在傾印的資料表使用自動遞增(AUTO_INCREMENT)
---
-
---
--- 使用資料表自動遞增(AUTO_INCREMENT) `message_board`
---
-ALTER TABLE `message_board`
-  MODIFY `id` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
