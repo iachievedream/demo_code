@@ -26,11 +26,6 @@ $user = $_POST['username'];
 $password = $_POST['password'];
 
 if ($username != "" && $password != "")  {
-    $servername = 'localhost';
-    $dbname = 'pure_php';
-    $username = 'root';
-    $password = '12345678';
-    $db = mysqli_connect($servername,$username,$password,$dbname);
     $sql = "select * from message_board where user=".$username." and password=".$password;
     $result = mysqli_query($db, $sql);//執行指令
     if (mysqli_fetch_row($result) != false ) {

@@ -14,12 +14,12 @@ Git: View History (git log)<br>
 
 sudo code --user-data-dir="~/.vscode-root"
 
-
 Visual Studio Code多行同时输入
 Visual Studio Code同时选中多行输入，Alt + Shift + 鼠标左键选取多行
 
+<img src="https://github.com/iachievedream/demo_code/blob/master/picture/VScode_Mouse__Wheel_Zoom.png" width="50%" height="50%" />
 
-# xdebug vscode linux
+## xdebug vscode linux
 ~~~
 sudo /etc/init.d/apache2 restart
 [ ok ] Restarting apache2 (via systemctl): apache2.service.
@@ -34,6 +34,7 @@ which php
 "php.validate.executablePath": "/usr/bin/php"
 ~~~
 
+## VScode 套件
 ~~~
 Format HTML in PHP
 Git History
@@ -48,4 +49,19 @@ Prettier - Code formatter
 Preview on Web Server
 ~~~
 
+## vscode設置讓鼠標滾動改變字體大小
+改變Visual Studio Code的編輯區的字型大小 (Editor font size設定)
+1：打開"文件->首選項->設置。選File/Pref/User Settings
+2：打開settings.json文件
+改成
+
+~~~
+{
+    "editor.codeActionsOnSave": null,
+    "editor.mouseWheelZoom": true,   //讓鼠標滾動改變字體大小
+    "editor.fontSize": 12,
+    "window.zoomLevel": 1.3,         //儀表字體
+    "editor.tabSize": 4,   //spaces空格設定
+}
+~~~
 

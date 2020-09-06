@@ -15,6 +15,17 @@ echo "a=".$a.",b=".$b."c=".$c."<br>";
 $list = $a.$b.$c;
 echo $list;
 
+// 陣列用字串打印
+$a [a1]= "abc1";
+$a [a2]= "abc2";
+$a [a3]= "abc3";
+$a [a4]= "abc4";
+$abc = "";
+foreach ($a as $k => $v) {
+    $abc .= $k."=>".$v.",<br>";
+}
+echo $abc;
+
 // explode是中間有何種數值做切開的函數
 list($abcd,$efgh) = explode("3",$list);
 $aa=array($abcd,$efgh);

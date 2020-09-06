@@ -60,3 +60,25 @@ No supported authentication methods available in PuTTY
 AWS更改root密碼
 
 sudo passwd root
+
+
+### 設定SSH
+在應用程式目錄內開啟終端機，執行以下命令。
+$ ssh-keygen
+
+C:\Users\~~~\.ssh
+私匙放在這個資料夾內
+
+公匙則是第三方平台
+
+
+### Q The authenticity of host gitlab com can t be established
+~~~
+解决方案，重新生成新的ssh并进行认证
+在 “Git Bash” 中输入 ssh-keygen.
+此时会生成一个 .ssh文件夹.
+在该文件夹下跟根据 git账号生成公钥和私钥 id_rsa,id_rsa.pub
+打开 id_rsa.pub文件，复制里面的内容
+打开https://gitlab.com/profile/keys，验证自己的gitlab身份并添加key，粘贴刚才复制的 公钥.
+现在就可以向gitlab继续push代码了
+~~~

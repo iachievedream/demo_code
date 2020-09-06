@@ -1,27 +1,30 @@
 <br><br>
 
 <form action="session.php" method="post">
-<input type="submit" name="nlogin" value="login">
+<input type="text" name="inlogin" value="input_username">
+<button id="login" name="login">login</button>
 </form>
 
 <?php
 session_start();
-if($_POST['nlogin']) {
-    $_SESSION['wd'] ="name";
+$username = $_POST['inlogin'];
+if(!empty( $username)) {
+    $_SESSION['username'] = $username;
 }
 
-if(isset($_SESSION['wd'])) {
+if(isset($_SESSION['username'])) {
     echo "登入成功";
 ?>
 
 <form action="session.php" method="post">
-<button id="login" name="nlogout" value="logout">logout</button>
+<input type="text" name="inlogout" value="input_username">
+<button id="login" name="logout">logout</button>
 </form>
 
 <?php
 }
-if($_POST['nlogout']) {
-    unset($_SESSION['wd']);
+if($_POST['inlogout']) {
+    unset($_SESSION['username']);
 }
 ?>
 
