@@ -7,9 +7,16 @@
     <link href="css/css.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<?php 
+require_once("deal.php");
+$deal = new Deal(); 
 
+?>
+
+
+<?php echo "123"; ?>
 <div align="center">
-    <form action="deal.php" id = form1 method="post">
+    <form action="<?php $deal->register(); ?>" id = form1 method="post">
     <p>Login</p>
     <table border="1" wedth=200 align="center">
         <tr align="center" >
@@ -21,7 +28,7 @@
             <td ><input id="idpassword" type="password" name="password"/></td>
         </tr>
         <tr >
-            <td colspan="2" align="center"><button id="add_submit" name="submit">送出</button></td>
+            <td colspan="2" align="center"><button id="login">送出</button></td>
         </tr>
     </form>
 </div>

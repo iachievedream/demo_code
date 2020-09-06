@@ -136,12 +136,12 @@ gcc -o hello test.c
 [回目錄](#ubuntu)
 
 ### 查詢自己電腦IP位置
-ip address 或 hostname -I<br>
+ubuntu:ip address 或 hostname -I<br>
+windows:ipconfig<br>
 ### shell
 sh有些像是widows的批次檔，<br>
 也就是一個程式碼的資訊全部打在一起，<br>
-一起執行，
-執行下列程式即可安裝基本的軟體功能。
+一起執行，執行下列程式即可安裝基本的軟體功能。
 
 ~~~
 sudo nano base.sh
