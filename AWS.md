@@ -82,3 +82,22 @@ C:\Users\~~~\.ssh
 打开https://gitlab.com/profile/keys，验证自己的gitlab身份并添加key，粘贴刚才复制的 公钥.
 现在就可以向gitlab继续push代码了
 ~~~
+
+## pptp
+
+配置AWS EC2的網路安全策略
+
+VPN需要開防火牆的TCP Port 1723
+及 IP Protocol GRE(47) 
+
+IP Protocol GRE(47)
+並不是指要開TCP/UDP 47 Port，而是指VPN
+Pass Through的功能
+
+登入AWS控制檯，在NETWORK& SECURITY的Security Groups裡選擇需要修改的Security
+Group
+
+分別在Inbound和Outbound裡開通TCP
+Port 1723 及 IP Protocol GRE(47) 配置
+
+參考來源:[如何在AWS(基於Amazon Linux)上搭建PPTP VPN](https://codertw.com/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/498737/)

@@ -72,7 +72,7 @@ sudo apt-get install ssh
 # 查看SSH有無被開啟
 # netstat -a | grep ssh
 # 成功會顯示：tcp 0 0 *:ssh *:* LISTEN
-
+# 連線方式:ssh username@hostname
 
 # sudo service ssh start
 # sudo service ssh stop

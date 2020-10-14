@@ -1,23 +1,103 @@
-## VScode的基本教學
-open in browser:預覽網頁，a/t + B<br>
-<br>
+# VScode的基本教學
+## ubuntu 開啟root權限
+sudo code --user-data-dir="~/.vscode-root"
+
+## 快捷鍵
+Visual Studio Code同时选中多行输入，Alt + Shift + 鼠标左键选取多行
+
 快速排版：Shift + Alt + F<br>
-<br>
 git：<br>
 我們以剛剛的同一個專案為例，<br>
 如要觀看整個 git log，請先按下 ctrl + shift + P 叫出命令選擇區，<br>
 可以把它視為 VS Code 的 command line，許多擴充套件也須經由這個地方下指令。<br>
-<br>
 Git: View History (git log)<br>
 <a href="https://blog.tonycube.com/2018/11/visual-studio-code.html">Visual Studio Code 極速上手指南</a><br>
 <a href=""></a><br>
 
-sudo code --user-data-dir="~/.vscode-root"
-
-Visual Studio Code多行同时输入
-Visual Studio Code同时选中多行输入，Alt + Shift + 鼠标左键选取多行
-
 <img src="https://github.com/iachievedream/demo_code/blob/master/picture/VScode_Mouse__Wheel_Zoom.png" width="50%" height="50%" />
+
+## VScode 套件
+~~~
+### 顯示
+indent-rainbow
+使縮排增加顏色，比較美觀~
+
+HTML CSS Support
+
+### 格式整理
+Format HTML in PHP
+
+### 即時預覽程式碼
+open in browser
+預覽網頁，a/t + B<br>
+
+Preview on Web Server
+
+### 附加功能
+Git History
+可以直接看到 commit 紀錄
+
+Markdown All in One
+一應俱全的 Markdown 工具，無論是 highlight、快速鍵、自動補完、預覽，通通給你！
+
+### 測試
+PHP IntelliSense
+自動搜尋你的專案，並提供錯誤報告，看你的專案是否有錯誤，若PHP程式語法有錯，會有紅色底線的錯誤提示。
+
+php cs fixer
+搭配 PHP CS Fixer 使用，自動在儲存時將程式碼修正成符合 PSR-2 的規範格式。重視 Coding Style 者必裝！
+
+XDebug
+搭配 XDebug 使用，可以在 VS Code 中除錯、下中斷點。
+
+PHP Debug
+
+PHPUnit
+寫測試的好用工具
+
+待敘述
+HTML Snippets
+Prettier - Code formatter
+~~~
+
+參考：[小克的 Visual Studio Code 必裝擴充套件（Extensions）私藏推薦](https://blog.goodjack.tw/2018/03/visual-studio-code-extensions.html)
+
+## vscode設置讓鼠標滾動改變字體大小
+~~~
+改變Visual Studio Code的編輯區的字型大小
+(Editor font size設定)
+1：打開"文件->首選項->設置。選File/Pref/User Settings
+2：打開settings.json文件
+改成
+{
+    "editor.codeActionsOnSave": null,
+    "editor.mouseWheelZoom": true,   //讓鼠標滾動改變字體大小
+    "editor.fontSize": 12,
+    "window.zoomLevel": 1.3,         //儀表字體
+    "editor.tabSize": 4,   //spaces空格設定
+}
+~~~
+## php cs fixer 設定
+~~~
+安裝composer
+composer -V
+安裝php-cs-fixer
+composer global require friendsofphp/php-cs-fixer
+~~~
+### vs code(前方空白鍵要注意,要下載php-cs-fixer.phar)
+~~~
+Config:(重要,注意後面的附檔名)
+C:\Users\{你的使用者名稱}\AppData\Roaming\Composer\vendor\bin\config.php_cs
+
+Executable Path：
+${extensionPath}\php-cs-fixer.phar
+
+Executable Path Windows：
+C:\Users\{你的使用者名稱}\AppData\Roaming\Composer\vendor\bin\php-cs-fixer.bat
+
+勾選:Onsave
+
+~~~
 
 ## xdebug vscode linux
 ~~~
@@ -33,35 +113,3 @@ which php
 在vsCode 的文件-》首选项-》设置中，打开 setting.json 文件，添加以下语句
 "php.validate.executablePath": "/usr/bin/php"
 ~~~
-
-## VScode 套件
-~~~
-Format HTML in PHP
-Git History
-HTML CSS Support
-HTML Snippets
-Markdown All in One
-Markdown PDF
-open in browser
-open in browser
-PHPUnit
-Prettier - Code formatter
-Preview on Web Server
-~~~
-
-## vscode設置讓鼠標滾動改變字體大小
-改變Visual Studio Code的編輯區的字型大小 (Editor font size設定)
-1：打開"文件->首選項->設置。選File/Pref/User Settings
-2：打開settings.json文件
-改成
-
-~~~
-{
-    "editor.codeActionsOnSave": null,
-    "editor.mouseWheelZoom": true,   //讓鼠標滾動改變字體大小
-    "editor.fontSize": 12,
-    "window.zoomLevel": 1.3,         //儀表字體
-    "editor.tabSize": 4,   //spaces空格設定
-}
-~~~
-
