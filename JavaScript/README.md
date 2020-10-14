@@ -193,17 +193,6 @@ $(document).ready(function(){
 
 <div id="myDiv"><h2>Let AJAX change this text</h2></div>
 <button id="b01" type="button">Change Content</button>
-
-~~~
-
-
-[目錄](#目錄)
-
-## json
-
-~~~php
-myObj = JSON.parse(this.responseText);
-echo json_encode($response); 
 ~~~
 
 [目錄](#目錄)
