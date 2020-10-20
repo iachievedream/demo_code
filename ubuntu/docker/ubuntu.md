@@ -34,7 +34,7 @@ sudo apt install composer
 sudo apt install apache2
 cd /var/www/html
 sudo mv index.html index1.html
-#apache2 -version
+# apache2 -version
 
 # php install:
 sudo apt install php7.2-cli
@@ -59,7 +59,6 @@ sh base.sh
 [回目錄](#docker)
 
 ## ubuntu的儲存方式實務練習
-以此為例[自己執行ubuntu](#自己執行ubuntu)做一次實務的操作
 ~~~
 images-Save
 docker save -o ubuntu_save.tar ubuntu

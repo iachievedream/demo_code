@@ -1,4 +1,4 @@
-# sql
+# php_sql
 ## sql
 ~~~sql
 -- 新增資料表
@@ -60,3 +60,23 @@ if($this->db->affected_rows()>0)
 }
 ~~~
 
+### bind_param()
+
+~~~
+bind_param("sss", firstname,lastname, $email);
+
+該函式繫結了 SQL 的引數，且告訴資料庫引數的值。 “sss” 引數列處理其餘引數的資料型別。s 字元告訴資料庫該引數為字串。
+
+引數有以下四種型別:
+i – integer（整型）
+d – double（雙精度浮點型）
+s – string（字串）
+b – BLOB（布林值）
+
+每個引數都需要指定型別。
+~~~
+
+## sql
+~~~
+
+~~~
