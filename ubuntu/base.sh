@@ -17,7 +17,7 @@ sudo snap install code --classic
 sudo apt-get update
 sudo apt install docker.io
 
-# apache2 install
+# apache2 install 6/73/73
 sudo apt install apache2
 cd /var/www/html
 sudo mv index.html index1.html

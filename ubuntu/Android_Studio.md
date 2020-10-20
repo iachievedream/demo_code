@@ -25,9 +25,6 @@ cd C:\Program Files\Oracle\VirtualBox
 .\VBoxManage.exe modifyvm <VM_NAME> --nested-hw-virt on
 ~~~
 
-
-
-
 ## flutter报错 Gradle task assembleDebug failed with
 ### Q
 資料來源：<a href="https://segmentfault.com/q/1010000019527353">flutter报错 Gradle task assembleDebug failed with</a>
@@ -79,9 +76,7 @@ sudo chmod -R 755 /dev/kvm
 sudo chown <你系统当前的登陆用户名> -R /dev/kvm
 ~~~
 
-
 https://blog.csdn.net/fesdgasdgasdg/article/details/83044535
-
 
 ## Low disk space on a Android Studio system directory partition
 ### 
