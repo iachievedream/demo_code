@@ -126,3 +126,29 @@ Route::get('post', array('uses' => 'HomeController@index', 'as' => 'post.home'))
 
 
 [回目錄](#目錄)
+
+
+### ubuntu 待整理
+
+
+## laravel
+vi laravel.sh
+~~~
+sudo git clone https://github.com/iachievedream/blog-laravel.git
+sudo chmod -R www-data:www-data /var/www/html/blog-laravel
+sudo chmod -R 755 blog-laravel
+sudo chmod -R 777 blog-laravel/storage
+
+cd blog-laravel
+composer install 
+sudo cp .env.example .env
+# set up MySQL of root and password
+sudo nano .env
+php artisan key:generate
+php artisan migrate:refresh
+php artisan db:seed
+php artisan serve
+php artisan serve --host=127.0.0.1 --port=81
+php artisan serve --host=0.0.0.0 --port=8000
+~~~
+[回目錄](#docker)
