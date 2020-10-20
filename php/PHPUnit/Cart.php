@@ -5,12 +5,9 @@ class Cart
     {
     }
 
-
     public function checkout()
     {
-        throw new CartException('商品配對錯誤');
     }
-
 }
 
 class CartException extends Exception
