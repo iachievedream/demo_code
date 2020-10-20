@@ -31,7 +31,7 @@ console.log(fruits)
 ~~~javascript
 fruits[0]
 >Banana
-~~~javascript
+~~~
 更新指定的list
 ~~~javascript
 fruits[0]="abc"
@@ -49,15 +49,14 @@ var removed = myFish.splice(1, 2);
 
 console.log(myFish)
 >['angel', 'mandarin']
+~~~
 
 >mandarin被刪除一個(第二個list，連續刪除兩個list字串內容)
-~~~javascript
+~~~
 https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/splice
 
 ~~~
 JavaScript Function Parameters
-
-
 
 
 [目錄](#目錄)
@@ -148,7 +147,6 @@ $(selector).stop(stopAll,goToEnd);
 $("#stop").click(function(){
   $("#panel").stop();
 });
-
 ~~~
 
 
@@ -156,7 +154,6 @@ $("#stop").click(function(){
 [目錄](#目錄)
 
 ## Ajax
-
 ~~~javascript
 $.get(URL,callback);
 

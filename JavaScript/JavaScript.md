@@ -29,14 +29,14 @@
 
 ## 變數命名標準_型別_字首
 ~~~
-array 陣列	a
-boolean 布林值	b
-float 浮點數	l
+array 	 陣列	a
+boolean  布林值	b
+float  	 浮點數	l
 function 函式	fn
-int 整型	i
-object 物件	o
-regular 正則	r
-string 字串	s
+int 	 整型	i
+object   物件	o
+regular  正則	r
+string   字串	s
 ~~~
 
 ## 常數_變數_函數
@@ -219,7 +219,7 @@ echo json_encode($arr);
 
 ## BOM
 瀏覽器物件模型 BOM (Browser Object Model)
-
+~~~
 window: 讓你可以存取操作瀏覽器視窗
 screen: 讓你可以存取使用者的螢幕畫面資訊
 location: 讓你可以存取操作頁面的網址 (URL)
@@ -228,7 +228,7 @@ navigator: 讓你可以存取瀏覽器資訊
 Popup: 讓你可以使用瀏覽器內建的彈跳視窗
 Timer: 讓你可以使用瀏覽器內建的計時器
 cookie: 讓你可以管理瀏覽器的 cookie
-
+~~~
 
 ### DOM_Traversing
 ~~~
@@ -242,16 +242,13 @@ document.getElementById 用來根據 id 取得一個 HTML 元素。
 
 ### Event
 ~~~
-  <button onclick="triggerAlert();">click me</button>
-
+<button onclick="triggerAlert();">click me</button>
 
 $('p').click(function() {
   $(this).css('background-color', 'blue');
 });
 
 $('p').click();
-
-
 ~~~
 
 ### API
@@ -279,8 +276,6 @@ var mike = new Person('Mike');
 https://www.fooish.com/
 
 https://www.fooish.com/json/parser.html
-
-
 
 
 
