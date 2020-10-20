@@ -1,30 +1,19 @@
 # docker
+
 [sudo_su](#sudo_su)<br>
 [login_docker_hub](#login_docker_hub)<br>
 [push_docker_hub](#push_docker_hub)<br>
 [基本指令](#基本指令)<br>
 * [啟動容器](#啟動容器)<br>
 * [進入容器](#進入容器)<br>
-* [查看容器](#查看容器)<br>
-* [volume](#volume)<br>
-* [建立一個數據捲](#建立一個數據捲)<br>
+* [數據捲(volume)](#數據捲(volume))<br>
+* [Dockerfile](#Dockerfile)<br>
 
-[Docker_delete_Images_and_Containers](#Docker_delete_Images_and_Containers)<br>
-  
-[自己執行ubuntu](#自己執行ubuntu)<br>
-* [下載到進入容器](#下載到進入容器)<br>
-* [運行sudo到安裝apache2](#運行sudo到安裝apache2)<br>
-* [執行下方指令在contain內](#執行下方指令在contain內)<br>
+[QA](#QA)<br>
 * [QA_sudo_su](#QA_sudo_su)<br>
 * [QA_apache2](#QA_apache2)<br>
 * [QA_php](#QA_php)<br>
 * [QA_could_not_find_driver](#QA_could_not_find_driver)<br>
-  
-[docker的images及contain儲存方式](#docker的images及contain儲存方式)<br>
-* [ubuntu的一次實務練習](#ubuntu的一次實務練習)<br>
-
-測試專案：[laravel](#laravel)<br>
-測試專案：[iachievedeam1_ubuntutest](#iachievedeam1_ubuntutest)<br>
 
 死坑專用工具：[ubuntu18.04_Mysql_卸除](#ubuntu18.04_Mysql_卸除)<br>
 
@@ -44,8 +33,9 @@ apache2實際操作：[dome](https://youtu.be/wl4CWcZC6so)
 
 ## sudo_su
 [啟動 docker-compose 發生 ERROR: Couldn’t connect to Docker daemon at http+docker://localunixsocket - is it running? 錯誤](https://oranwind.org/-solution-qi-dong-docker-compose-fa-sheng-error-couldnt-connect-to-docker-daemon-at-httpdockerlocalunixsocket-is-it-running-cuo-wu/)
-~~~
+
 將當前用戶加入 docker 群組
+~~~
 sudo gpasswd -a ${USER} docker
 sudo su
 su ubuntu (使用者)
@@ -73,31 +63,61 @@ docker push iachievedeam1/test:1.0.0
 以ubuntu為例
 ~~~
 //搜尋
-sudo docker search ubuntu  
+docker search ubuntu  
 //獲取
-sudo docker pull ubuntu    
+docker pull ubuntu    
 //查看目前 images
-sudo docker images         
+docker images         
 //查看運行的容器:
-sudo docker ps             
+docker ps             
 //查看全部運行的容器:
-sudo docker ps -a          
+docker ps -a          
 //停止
-sudo docker stop <id>     
+docker stop <container_id>     
 //刪除容器
-sudo docker rm -f <id>     
+docker rm -f <container_id>     
 //刪除images
-sudo docker rmi  <id>
+docker rmi  <image_id>
+
+//查詢容器
+docker inspect <container_id>
 //查詢容器內IP
- sudo docker inspect <id> | grep '"IPAddress"' | head -n 1
+docker inspect <container_id> | grep '"IPAddress"' | head -n 1
+
+//將所有container停止及刪除，執行以下指令:
+docker stop $(docker ps -a -q)
+docker rm $(docker ps -a -q)
+docker rmi $(docker images)
+
+docker的images及contain儲存方式 基本指令
+
+images 先來做 Save 動作
+docker save -o ubuntu_save.tar ubuntu
+docker save ubuntu > ubuntu_save.tar
+
+載入 ubuntu_save.tar
+docker load --input ubuntu_save.tar
+docker load < ubuntu_save.tar
+
+Container 打包匯出的話可以用 export 指令，例如要將 ubuntutest 的 Container 匯出 :
+docker export ubuntutest > ubuntu_export.tar
+
+接著我們使用剛剛 Export 輸出的檔案來還原，
+cat ubuntu_export.tar | docker import - ubuntutest
 ~~~
+<a href="https://www.opencli.com/linux/docker-delete-images-containers">Docker中刪除Images鏡像及Containers</a>
+
+[比較 save, export 對於映象檔操作差異](https://blog.hinablue.me/docker-bi-jiao-save-export-dui-yu-ying-xiang-dang-cao-zuo-chai-yi/)
+
+[Day 6 關於 Save 與 Export 對 Image 之間的差異](https://ithelp.ithome.com.tw/articles/10193804)
+
 [回目錄](#docker)
 
 ### 啟動容器
 ~~~
 基本用ubuntu跑終端機字串
-sudo docker run ubuntu /bin/echo 'Hello world'
-sudo docker run -itd --name test -p 8080:80 ubuntu /bin/bash
+docker run ubuntu /bin/echo 'Hello world'
+docker run -itd --name test -p 8080:80 ubuntu /bin/bash
 ------------------------------------------------------
 -i：interactive交互是操作，讓容器的標準輸入(STDIN)保持開啟狀態。
 -t：tty是一個虛擬終端(pseudo-tty)，並綁定到容器的標準輸入上。
@@ -118,114 +138,85 @@ docker attach <NAMES>    //容易故障--進入容器(退出停止容器)
 ~~~
 [回目錄](#docker)
 
-### 查看容器
-~~~
-docker inspect [id]
-~~~
-[回目錄](#docker)
-
-### volume
+### 數據捲(volume)
 -v掛載[本機位置：容器位置]
 ~~~
-sudo docker run --name project1  -v ~/project_1:/root/project_1 -p 22:22 -ti ubuntu bash
-sudo docker run -d -P --name web --link db:db training/webapp python app.py
+docker run --name project1  -v ~/project_1:/root/project_1 -p 22:22 -ti ubuntu bash
+
+docker run -d -P --name web --link db:db training/webapp python app.py
 ------------------------------------------------------
 --link name:alias，其中 name 是要連接的容器名稱，alias 是這個連接的別名。
+
+創建一個 volume
+docker volume create <volume_name>
+docker volume create --name test  
+
+查看所有 volumes
+docker volume ls
+
+查看特定 volume 的詳情
+docker volume inspect <volume_name>
+
+刪除
+docker volume rm <volume_name>
+
+清理無主的Volume
+docker volume prune
 ~~~
 [回目錄](#docker)
 
-### 建立一個數據捲
+###  Dockerfile
 ~~~
-sudo docker volume create --name test  
-~~~
-[回目錄](#docker)
+1.基礎映像檔資訊
+2.維護者資訊
+3.映像檔操作指令
+4.容器啟動時需執行指令
 
-## Docker_delete_Images_and_Containers
-<a href="https://www.opencli.com/linux/docker-delete-images-containers">Docker中刪除Images鏡像及Containers</a>
+mkdir ~/Desktop/docker_test
+cd ~/Desktop/docker_test
+sudo nano Dockerfile
+------------------------------
+## FROM : 基底image
+FROM ubuntu
 
-~~~
-確認container
-docker ps -a
+## 維護者的資訊
+MAINTAINER Docker Starter <starter@docker.com>
 
-停止container
-docker stop container_id
+## 在container建立時執行的動作
+RUN apt-get update
 
-刪除container
-docker rm container_id
+ENV LANG en_US.utf8
 
-確認image
+# 指定工作目錄在專案資料夾
+WORKDIR ~/Desktop/docker_test
+
+# 預先要安裝的requirements複製到Docker裡面
+# ADD requirements.txt ~/Desktop/docker_test
+
+# 複製當前目錄的所有檔案到容器內的，資料放在/usr/src/app
+# COPY . ~/Desktop/docker_test
+
+#掛載資料卷
+VOLUME ~/Desktop/docker_test/src
+
+# 開啟Port號
+EXPOSE 80
+
+## 建立新容器時要執行的指令
+CMD ["/bin/bash"]
+--------------------------------------
+
+docker build .
+docker build -t httpd:v1 .
+//myDockerfile檔名
+docker build -f myDockerfile
 docker images
-
-刪除image
-docker rmi image_id
-
-將所有container停止及刪除，執行以下指令:
-docker stop $(docker ps -a -q)
-docker rm $(docker ps -a -q)
-docker rmi $(docker images)
+docker run -itd -p 8888:80 httpd:v1
+docker build -t="ubuntu:v3" .
+-t 是指定image的tag；. 則是當前目錄
 ~~~
-[回目錄](#docker)
 
-## 自己執行ubuntu
-### 下載到進入容器
-~~~
-下載
-docker pull ubuntu:18.04
-
-運行contain
-docker run -t -i ubuntu /bin/bash
-docker run --name ubuntutest -itd -p 8000:80 -p 80:8000 -p 8001:81 -p 8002:82 ubuntu:18.04 bash
-
-進入contain
-sudo docker exec -it ubuntutest bash
-~~~
-[回目錄](#docker)
-
-### 運行sudo到安裝apache2
-執行sell指令前的載入(否則沒有指令可以執行shell)
-~~~
-apt-get update && apt-get -y install sudo && apt-get install vim && apt-get install -y yum
-~~~
-[回目錄](#docker)
-
-### 執行下方指令在contain內
-vi base.sh
-~~~
-#!/bin/bash
-sudo apt-get update
-sudo apt-get install npm
-sudo apt-get install nodejs
-sudo apt-get install curl
-sudo apt install composer
-
-# apache2 install  6/73/73
-sudo apt install apache2
-cd /var/www/html
-sudo mv index.html index1.html
-#apache2 -version
-
-# php install:
-sudo apt install php7.2-cli
-sudo apt install hhvm
-# 新增
-sudo apt-get install php7.2-xml
-sudo apt-get install php-mbstring
-sudo apt install libapache2-mod-php7.2 libapache2-mod-php
-sudo service apache2 restart
-
-#測試中
-## ubuntu安装MySQL
-#sudo apt-get install mysql-server
-#sudo apt install mysql-client
-#sudo apt install libmysqlclient-dev
-## sudo mysql -u root -p
-~~~
-執行
-~~~
-sh base.sh
-~~~
-[回目錄](#docker)
-
+## QA
 ### QA_sudo_su
 新錯誤內容以及處理方式
 ~~~
@@ -272,8 +263,7 @@ vi apache2.conf
 ServerName  localhost:80
 ~~~
 
-[解決httpd: Could not reliably determine the server's fully qualified domain name, using 127.0.0
-](https://www.itread01.com/content/1550156775.html)
+[解決httpd: Could not reliably determine the server's fully qualified domain name, using 127.0.0](https://www.itread01.com/content/1550156775.html)
 
 ### QA_php
 測試php的環境是否正常
@@ -315,101 +305,6 @@ sudo service apache2 restart
 ~~~
 sudo apt-get install php-mysql
 ~~~
-
-## docker的images及contain儲存方式
-### images及contain儲存基本指令
-~~~
-images 先來做 Save 動作
-docker save -o ubuntu_save.tar ubuntu
-docker save ubuntu > ubuntu_save.tar
-
-載入 ubuntu_save.tar
-docker load --input ubuntu_save.tar
-docker load < ubuntu_save.tar
-
-Container 打包匯出的話可以用 export 指令，
-例如要將 ubuntutest 的 Container 匯出 :
-docker export ubuntutest > ubuntu_export.tar
-
-接著我們使用剛剛 Export 輸出的檔案來還原，
-cat ubuntu_export.tar | docker import - ubuntutest
-~~~
-
-[比較 save, export 對於映象檔操作差異](https://blog.hinablue.me/docker-bi-jiao-save-export-dui-yu-ying-xiang-dang-cao-zuo-chai-yi/)
-[Day 6 關於 Save 與 Export 對 Image 之間的差異](https://ithelp.ithome.com.tw/articles/10193804)
-
-[回目錄](#docker)
-
-### ubuntu的一次實務練習
-以此為例[自己執行ubuntu](#自己執行ubuntu)做一次實務的操作
-~~~
-images 先來做 Save 動作
-docker save -o ubuntu_save.tar ubuntu
-Container 打包匯出的話可以用 export 指令，
-例如要將 ubuntutest 的 Container 匯出 :
-docker export ubuntutest > ubuntu_export.tar
-
-刪除所有contain以及images
-docker stop $(docker ps -a -q)
-docker rm $(docker ps -a -q)
-docker rmi $(docker images) -f
-
-載入 ubuntu_save.tar
-docker load < ubuntu_save.tar
-
-運行容器(用原先的images)
-sudo docker run --name ubuntutest -itd -p 8000:80 -p 8001:81 -p 8002:8000 -p 8003:8001 -p 8004:8002 -p 8005:8003 -p 22:22 ubuntu:18.04 /bin/bash
-sudo docker exec -it ubuntutest bash
-
-載入容器(images_ubuntutest)
-cat ubuntu_export.tar | docker import - ubuntutest
-sudo docker run --name ubuntutest -itd -p 8000:80 -p 8001:81 -p 8002:8000 -p 8003:8001 -p 8004:8002 -p 8005:8003 -p 22:22 ubuntutest /bin/bash
-sudo docker exec -it ubuntutest bash
-~~~
-測試出來載入容器(images_ubuntutest)，不需要images原始的檔案，
-但匯入容器的方式原本是contain變成是images的型態。
-
-感覺有些小問題或是邏輯問題
-
-[回目錄](#docker)
-
-## laravel
-vi laravel.sh
-~~~
-sudo git clone https://github.com/iachievedream/blog-laravel.git
-sudo chmod -R www-data:www-data /var/www/html/blog-laravel
-sudo chmod -R 755 blog-laravel
-sudo chmod -R 777 blog-laravel/storage
-
-cd blog-laravel
-composer install 
-sudo cp .env.example .env
-# set up MySQL of root and password
-sudo nano .env
-php artisan key:generate
-php artisan migrate:refresh
-php artisan db:seed
-php artisan serve
-php artisan serve --host=127.0.0.1 --port=81
-php artisan serve --host=0.0.0.0 --port=8000
-~~~
-[回目錄](#docker)
-
-
-## iachievedeam1_ubuntutest
-~~~
-pull images
-docker pull iachievedeam1/ubuntutest:1.0
-
-執行容器
-docker run --name ubuntutest -itd -p 8000:80 -p 80:8000 -p 8001:81 -p 8002:82 iachievedeam1/ubuntutest:1.0 /bin/bash
-
-進入容器
-docker exec -it ubuntutest bash
-~~~
-[運行sudo到安裝apache2](###運行sudo到安裝apache2)
-
-[回目錄](#docker)
 
 ## ubuntu18.04_Mysql_卸除
 ~~~
@@ -464,164 +359,6 @@ docker image ls
 
 [回目錄](#docker)
 
-## 未解
-Cannot stat file /proc/12426/fd/15: Permission denied 
-sudo apt-get install mysql-server
-
-[Getting strange errors while downloading mysql
-](https://askubuntu.com/questions/1129029/getting-strange-errors-while-downloading-mysql)
-
-~~~
-invoke-rc.d: policy-rc.d denied execution of stop.
-update-alternatives: using /etc/mysql/mysql.cnf to provide /etc/mysql/my.cnf (my.cnf) in auto mode
-Renaming removed key_buffer and myisam-recover options (if present)
-Cannot stat file /proc/12425/fd/0: Permission denied
-Cannot stat file /proc/12425/fd/1: Permission denied
-Cannot stat file /proc/12425/fd/2: Permission denied
-Cannot stat file /proc/12425/fd/3: Permission denied
-===============================
-Cannot stat file /proc/12426/fd/23: Permission denied
-Cannot stat file /proc/12426/fd/24: Permission denied
-Cannot stat file /proc/12426/fd/25: Permission denied
-invoke-rc.d: could not determine current runlevel
-invoke-rc.d: policy-rc.d denied execution of start.
-Setting up mysql-server (5.7.30-0ubuntu0.18.04.1) ...
-Processing triggers for libc-bin (2.27-3ubuntu1) ...
-root@8bdc61d2b295:/home# Cannot stat file /proc/12426/fd/15: Permission denied
-bash: Cannot: command not found
-~~~
-
-* 另外需要的指令
-~~~
-sudo apt-get install aptitude
-~~~
-[弱弱的問:這個指令裡的sudo aptitude 可以用 sudo apt-get替換嗎](https://www.ubuntu-tw.org/modules/newbb/viewtopic.php?post_id=153790)
-
-====================
-bash: wget: command not found
-~~~
-sudo apt install wget
-cd /tmp/ && wget https://dev.mysql.com/get/mysql-apt-config_0.8.10-1_all.deb
-~~~
-[How to install wget on a Debian or Ubuntu Linux](https://www.cyberciti.biz/faq/how-to-install-wget-togetrid-of-error-bash-wget-command-not-found/)
-
-### 安裝mysql
-~~~
-sudo docker pull mysql
-sudo docker run -itd --name mysqltest -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 mysql
-~~~
-### MySQL
-~~~
-sudo docker exec -it mysqltest bash
-sudo docker exec -it mysqltest mysql -u root -p
-~~~
-### phpmyadmin
-~~~
-sudo docker search phpmyadmin
-sudo docker pull phpmyadmin/phpmyadmin
-~~~
-### phpmyadmin的資料
-~~~
-sudo docker run --name myadmin -d --link mysqltest:db -p 9100:80 phpmyadmin/phpmyadmin
-~~~
-
-[回目錄](#docker)
-
-## 自己製作dockerfile
-
-vi Dockerfile
-~~~
-FROM ubuntu:18.04
-
-MAINTAINER iachievedream
-ADD file:c3e6bb316dfa6b81dd4478aaa310df532883b1c0a14edeec3f63d641980c1789 in / 
-
-RUN apt-get update && apt-get -y install sudo && apt-get install vim
-# RUN apt-get update
-RUN apt-get install npm
-RUN apt-get install nodejs
-RUN apt-get install curl
-RUN apt install composer
-# php install:
-RUN apt install php7.4-cli
-RUN apt install hhvm
-RUN apt-get install php7.4-xml
-RUN apt-get install php-mbstring
-# apache2 install
-RUN apt install apache2
-
-EXPOSE 80
-EXPOSE 3306
-EXPOSE 8000
-EXPOSE 8001
-
-CMD ["/bin/bash"]
-~~~
-
-sudo docker build -t docker_ubuntu .
-sudo docker build -t docker_ubuntu:v1 .
-
-[回目錄](#docker)
-
-##  Dockerfile 
-mkdir ~/Desktop/docker_test
-cd ~/Desktop/docker_test
-sudo nano Dockerfile
-~~~
-## FROM : 基底image
-FROM ubuntu
-## 維護者的資訊
-MAINTAINER Docker Starter <starter@docker.com>
-## 在container建立時執行的動作
-RUN apt-get update
-RUN apt-get install zip -y
-~~~
-
-~~~
-# FROM ubuntu
-
-MAINTAINER iachievedream iachievedream@gmail.com
-
-RUN apt-get update && apt-get install -y locales && rm -rf /var/lib/apt/lists/* \
-    && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
-ENV LANG en_US.utf8
-
-# 更新映像檔的指令
-RUN apt-get update
-RUN apt install php7.2-cli 
-RUN apt install hhvm 
-RUN apt install apache2
-
-# 創建專案資料夾
-RUN mkdir -p ~/Desktop/docker_test
-RUN mkdir -p ~/Desktop/docker_test/src
-
-# 指定工作目錄在專案資料夾
-WORKDIR ~/Desktop/docker_test
-
-# 預先要安裝的requirements複製到Docker裡面
-# ADD requirements.txt ~/Desktop/docker_test
-
-# 複製當前目錄的所有檔案到容器內的，資料放在/usr/src/app
-# COPY . ~/Desktop/docker_test
-
-#掛載資料卷
-VOLUME ~/Desktop/docker_test/src
-
-# 開啟Port號
-EXPOSE 80
-
-## 建立新容器時要執行的指令
-CMD ["/bin/bash"]
-~~~
-sudo docker build -t httpd:v1 .
-sudo docker images
-sudo docker run -itd -p 8888:80 httpd:v1
-docker build -t="ubuntu:v3" .
--t 是指定image的tag；. 則是當前目錄
-
-[回目錄](#docker)
-
 ## 建立文件
 
 ~~~
@@ -659,3 +396,14 @@ echo 'suceddfully';
 docker-compose up
 
 [回目錄](#docker)
+
+
+
+
+You don't have permission to access this resource. docker
+
+QA:[Apache 403 Forbidden You don't have permission to access / on this server](https://stackoverflow.com/questions/52282432/apache-403-forbidden-you-dont-have-permission-to-access-on-this-server)
+
+複製檔案到docker內
+
+docker cp index1.html a4e1d4cc573c:/var/www/html/index.php

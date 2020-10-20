@@ -99,7 +99,17 @@ mysql -u otheruser -h 127.0.0.1 -p
 ~~~
 docker pull mysql/mysql-server:8.0
 docker run --name=mysql8 -d -p 3306:3306 --env MYSQL_ROOT_PASSWORD=password mysql/mysql-server:8.0
-sudo docker exec -it mysql8 mysql -uroot -p
+
+logs 命令可查看容器是否正常运行
+docker logs mysql8
+
+直接進入container裡面
+docker exec -it mysql8 mysql -uroot -p
+
+進入容器後再登入mysql
+docker exec -it mysql /bin/bash 
+mysql -u root -p
+
 
 # 新增 MySQL 遠端帳號和密碼
 CREATE USER 'otheruser'@'%' IDENTIFIED BY 'password';
@@ -180,5 +190,4 @@ DROP INDEX 'PRIMARY' on member;
 複合索引:
 CREATE INDEX email_tel_index ON member(email, tel);
 ALTER TABLE member ADD INDEX email_tel_index (email, tel);
-
 ~~~

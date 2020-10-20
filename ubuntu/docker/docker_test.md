@@ -1,9 +1,6 @@
-## docker 實際範例
-
-### 簡單類型
-
-#### docker 安裝php(pull php)
-
+# docker 實際範例
+## 簡單類型
+### docker 安裝php(pull php)
 ~~~
 還需做嘗試以及新的內容更新
 sudo docker pull php
@@ -12,8 +9,7 @@ sudo docker run --name phptest -v ~/nginx/www:/www  -d php  //-v掛載
 sudo docker exec -it phptest bash
 ~~~
 
-#### docker 安裝apache(pull httpd)
-
+### docker 安裝apache(pull httpd)
 ~~~
 # 安裝apach2，但這個httpd沒有php的程式功能
 sudo docker pull httpd
@@ -56,10 +52,8 @@ sudo docker exec -it node-test /bin/bash      //進入容器
 root@6c5d265c68a6:/# node -v
 ~~~
 
-### 複雜類型
-
-#### docker 安裝nginx(pull nginx)
-
+## 複雜類型
+### docker 安裝nginx(pull nginx)
 ~~~
 sudo docker run --name nginx-test -p 8080:80 -d nginx
 ------------------------------------------------------
