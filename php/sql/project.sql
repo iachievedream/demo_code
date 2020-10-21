@@ -152,20 +152,20 @@ insert  into `project_value`(`id`,`value_name`) values (1,'待審核'),(2,'進�
 CREATE TABLE `blocked_ip` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `ip` varchar(15) DEFAULT NULL,
-  `loginLimit` varchar(32) DEFAULT NULL,
-  `dateCreated` datetime DEFAULT NULL,
-  `lastTime` datetime DEFAULT NULL,
+  `login_limit` varchar(32) DEFAULT NULL,
+  `date_created` datetime DEFAULT NULL,
+  `last_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
 
 -- 使用者操作紀錄
 CREATE TABLE `log` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `dateCreated` datetime DEFAULT NULL,
-  `controllerName` varchar(100) NOT NULL,
-  `functionName` varchar(100) NOT NULL,
-  `logTitle` varchar(100) NOT NULL,
-  `logContent` varchar(1000) DEFAULT NULL,
+  `date_created` datetime DEFAULT NULL,
+  `controller_name` varchar(100) NOT NULL,
+  `function_name` varchar(100) NOT NULL,
+  `log_title` varchar(100) NOT NULL,
+  `log_content` varchar(1000) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
 
