@@ -1,5 +1,5 @@
 <?php
 $servername = 'localhost';
-$dbname = 'pure_php';
+$dbname = 'project';
 $username = 'root';
 $password = '12345678';
