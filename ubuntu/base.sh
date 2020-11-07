@@ -1,24 +1,24 @@
 #!/bin/bash
-sudo apt install vim
-sudo apt-get update 
+sudo apt install vim -y
+sudo apt-get update -y
 # install yum，npm，nodejs，curl,composer,git
-sudo apt install yum
-sudo apt-get install npm
-sudo apt-get install nodejs
-sudo apt-get install curl
-sudo apt install composer
+sudo apt install yum -y
+sudo apt-get install npm -y
+sudo apt-get install nodejs -y
+sudo apt-get install curl -y
+sudo apt install composer -y
 
 # VScode install:
-sudo apt-get install snapd
+sudo apt-get install snapd -y
 sudo snap install code --classic
 # code //run VScode
 
 # install docker
-sudo apt-get update
-sudo apt install docker.io
+sudo apt-get update -y
+sudo apt install docker.io -y
 
 # apache2 install 6/73/73
-sudo apt install apache2
+sudo apt install apache2 -y
 cd /var/www/html
 sudo mv index.html index1.html
 #apache2 -version
@@ -31,18 +31,18 @@ sudo mv index.html index1.html
 # sudo service apache2 restart
 
 # php install:
-sudo apt install php7.2-cli
-sudo apt install hhvm      
+sudo apt install php7.2-cli -y
+sudo apt install hhvm -y
 # 新增
-sudo apt-get install php7.2-xml
-sudo apt-get install php-mbstring
-sudo apt install libapache2-mod-php7.2 libapache2-mod-php
+sudo apt-get install php7.2-xml -y
+sudo apt-get install php-mbstring -y
+sudo apt install libapache2-mod-php7.2 libapache2-mod-php -y
 sudo service apache2 restart
 
 # ubuntu安装MySQL
-sudo apt-get install mysql-server
-sudo apt install mysql-client
-sudo apt install libmysqlclient-dev
+sudo apt-get install mysql-server -y
+sudo apt install mysql-client -y
+sudo apt install libmysqlclient-dev -y
 # sudo mysql -u root -p
 # # 建立賦予權限的帳戶 root_sql=ab,yourpasswd=12345678
 # CREATE USER 'ab'@'localhost' IDENTIFIED BY '12345678';
@@ -53,7 +53,7 @@ sudo apt install libmysqlclient-dev
 
 
 # install phpmyadmin
-sudo apt-get install phpmyadmin
+sudo apt-get install phpmyadmin -y
 # sudo nano /etc/apache2/apache2.conf
 
 # and add the following line at the bottom of the file (you can add it anywhere in the file, I just choose the bottom here so that you can easily access it for modification):
@@ -67,8 +67,9 @@ sudo apt-get install phpmyadmin
 
 # http://127.0.0.1/phpmyadmin/
 
+
 # install ssh
-sudo apt-get install ssh
+sudo apt-get install ssh -y
 # 查看SSH有無被開啟
 # netstat -a | grep ssh
 # 成功會顯示：tcp 0 0 *:ssh *:* LISTEN
