@@ -317,6 +317,16 @@ sudo chmod -R 666 laravel
 
 
 ## other_tool
+
+### googl<br>
+
+~~~
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+
+sudo apt install -y -f ./google-chrome-stable_current_amd64.deb
+~~~
+[google](https://learningsky.io/ubuntu-install-google-chrome/)
+
 ### 截圖工具<br>
 ubuntu自帶截圖工具,可以在terminator中呼叫。<br>
 ~~~
