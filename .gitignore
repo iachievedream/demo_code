@@ -1,7 +1,7 @@
 # Ignore files called 'passsword.php'
 php/msg_PDO/password.php
 php/msg_pure/password.php
-laravel/laravel_login.md
+php/6Frameworks/laravel/laravel_login.md
 
 php/.vscode/launch.json
 .vscode/launch.json
