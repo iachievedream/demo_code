@@ -7,12 +7,12 @@ services:
     container_name: gitlab
     restart: always
     volumes:
-      - /gitlab/config:/etc/gitlab
-      - /gitlab/logs:/var/log/gitlab
-      - /gitlab/data:/var/opt/gitlab
+      - /mydata/gitlab/config:/etc/gitlab
+      - /mydata/gitlab/logs:/var/log/gitlab
+      - /mydata/gitlab/data:/var/opt/gitlab
     ports:
       - 444:443
-      - 83:80
+      - 81:80
     networks:
       - devel-net
  

@@ -170,29 +170,6 @@ sudo docker run -itd -p 8888:80 web:v1
 ~~~
 
 <br>
-
-#### Docker 安装 jenkins(pull jenkins)
-
-~~~
-下載jenkins
-sudo docker pull jenkins/jenkins
-運行myjenkins容器
-sudo docker run --name myjenkins -d -p 8080:8080 -p 50000:50000 jenkins/jenkins
-sudo docker run --name myjenkins -d -p 8080:8080 -p 50000:50000 -v `pwd`:/var/jenkins_home/workspace jenkins/jenkins
-
-進入容器
-sudo docker exec -it myjenkins bash
-查看密碼
-cat /var/jenkins_home/secrets/initialAdminPassword
-
-另外指令(待了解)
-sudo docker run -d -u 0 --privileged  --name jenkins_node1 -p 49003:8081 -v `pwd`:/var/jenkins_home/workspace jenkins/jenkins
-~~~
-
-原文網址：<a href="https://kknews.cc/code/jlrxe66.html">如何使用 Docker 安裝 Jenkins</a><br>
-未有詳細介紹指令。
-
-<br>
 <br>
 實測一半:
 https://ithelp.ithome.com.tw/articles/10194183?sc=rss.iron
@@ -237,8 +214,5 @@ test<br>
 
 <a href="https://vincent.fishboneapps.com/2019/05/31/Docker-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-II-Day3/">Docker 快速學習自我挑戰 II Day3
 </a><br>
-<a href=""></a><br>
-<a href=""></a><br>
-<a href=""></a><br>
 <a href=""></a><br>
 <a href=""></a><br>
