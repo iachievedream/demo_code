@@ -55,7 +55,6 @@ sudo apt install libmysqlclient-dev -y
 # FLUSH PRIVILEGES;
 
 
-
 # install phpmyadmin
 sudo apt-get install phpmyadmin -y
 # sudo nano /etc/apache2/apache2.conf
@@ -82,7 +81,6 @@ sudo apt-get install ssh -y
 # sudo service ssh start
 # sudo service ssh stop
 # sudo service ssh restart
-
 
 
 # tool

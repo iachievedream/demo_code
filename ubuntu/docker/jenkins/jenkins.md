@@ -3,15 +3,15 @@
 ~~~
 下載jenkins
 sudo docker pull jenkins/jenkins
+
 運行myjenkins容器
 sudo docker run --name myjenkins -d -p 8080:8080 -p 50000:50000 jenkins/jenkins
 sudo docker run --name myjenkins -d -p 8080:8080 -p 50000:50000 -v `mydata`/jenkins:/var/jenkins_home/workspace jenkins/jenkins
-
 sudo docker run --name myjenkins -d -p 8080:8080 -p 50000:50000 -v `mydata`/jenkins:/var/jenkins_home jenkins/jenkins
-
 
 進入容器
 sudo docker exec -it myjenkins bash
+
 查看密碼
 cat /var/jenkins_home/secrets/initialAdminPassword
 
