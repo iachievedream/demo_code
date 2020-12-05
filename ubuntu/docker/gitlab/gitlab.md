@@ -22,3 +22,7 @@ docker-compose up -d
 ~~~
 
 [三秒教你用 Docker 安裝 GitLab](https://blog.toright.com/posts/5831/%E4%B8%89%E7%A7%92%E6%95%99%E4%BD%A0%E7%94%A8-docker-%E5%AE%89%E8%A3%9D-gitlab.html)
+
+
+
+初始帳號為root
