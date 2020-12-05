@@ -7,6 +7,7 @@ docker pull ubuntu:18.04
 運行contain
 docker run -t -i ubuntu /bin/bash
 docker run --name ubuntutest -itd -p 80:80 -p 8000:8000 ubuntu:18.04 bash
+docker run --privileged --name ubuntutest -itd -p 81:80 -p 8000:8000 -v /var/www/html:/var/www/html ubuntu:18.04 bash
 
 進入contain
 docker exec -it ubuntutest bash
@@ -21,29 +22,11 @@ apt-get update && apt-get -y install sudo && apt-get install vim && apt-get inst
 [回目錄](#docker)
 
 ## 執行下方指令在contain內
-vi base.sh
+複製 bash.sh的檔案
 ~~~
-#!/bin/bash
-sudo apt-get update -y
-sudo apt-get install npm -y
-sudo apt-get install nodejs -y
-sudo apt-get install curl -y
-sudo apt install composer -y
-
-# apache2 install  6/73/73
-sudo apt install apache2
-cd /var/www/html
-sudo mv index.html index1.html
-# apache2 -version
-
-# php install:
-sudo apt install php7.2-cli -y
-sudo apt install hhvm -y
-# 新增
-sudo apt-get install php7.2-xml -y
-sudo apt-get install php-mbstring -y
-sudo apt install libapache2-mod-php7.2 libapache2-mod-php -y
-sudo service apache2 restart
+使用下方使令可以把本機的程式碼丟入container當中
+docker cp bash.sh  06f:/home/
+注:06f是container的ID編號。
 ~~~
 執行
 ~~~
@@ -74,91 +57,16 @@ docker run --name ubuntutest -itd -p 8000:80 -p 8001:81 -p 8002:8000 -p 8003:800
 docker exec -it ubuntutest bash
 ~~~
 
-[回目錄](#docker)
-
-###  Dockerfile
-sudo mkdir docker_ubuntu
-sudo chmod 777 docker_ubuntu
-cd docker_ubuntu
-sudo vi Dockerfile
-~~~
-FROM ubuntu:18.04
-
-MAINTAINER iachievedream iachievedream@gmail.com
-
-RUN apt-get update \
-    && apt-get -y install sudo \
-    && apt-get install vim\
-    && apt-get install npm\
-    && apt-get install nodejs\
-    && apt-get install curl\
-    && apt install composer\
-    &&apt install php7.4-cli\
-    && apt install hhvm\
-    && apt-get install php7.4-xml\
-    && apt-get install php-mbstring\
-    && apt install apache2
-
-EXPOSE 80
-EXPOSE 3306
-EXPOSE 8000
-EXPOSE 8001
-CMD ["/bin/bash"]
-~~~
-
-~~~
-FROM ubuntu:18.04
-
-MAINTAINER iachievedream iachievedream@gmail.com
-
-RUN apt-get update -y\
-    && apt install vim -y\
-    && apt-get update -y\
-    && apt install yum -y\
-    && apt-get install npm -y\
-    && apt-get install nodejs -y\
-    && apt-get install curl -y\
-    && apt install composer -y\
-    && apt install apache2 -y\
-    && cd /var/www/html\
-    && mv index.html index1.html\
-    && apt install php7.2-cli -y\
-    && apt install hhvm -y\
-    && apt-get install php7.2-xml -y\
-    && apt-get install php-mbstring -y\
-    && apt install libapache2-mod-php7.2 libapache2-mod-php -y\
-    && service apache2 restart\
-    && apt-get install mysql-server -y\
-    && apt install mysql-client -y\
-    && apt install libmysqlclient-dev -y\
-    && apt-get install phpmyadmin -y\
-    && apt-get install ssh  -y
-EXPOSE 80
-EXPOSE 3306
-EXPOSE 8000
-EXPOSE 8001
-CMD ["/bin/bash"]
-~~~
-docker build .
-docker build -t docker_ubuntu:v1 .
-docker build -t docker_ubuntu .
-docker run -t -i 395860ec0aa8 /bin/bash
-docker run -t -i -p 81:80 7513cc650b6f /bin/bash
-
-docker run --name ubuntutest -itd -p 8000:80 ubuntu:18.04 bash
-
-
 ## iachievedeam1_ubuntutest
 ~~~
-pull images
+下載images
 docker pull iachievedeam1/ubuntutest:1.0
 
 執行容器
-docker run --name ubuntutest -itd -p 80:80 -p 8000:8000 -p 8080:8080 iachievedeam1/ubuntutest:1.0 /bin/bash
+docker run --name ubuntutest -itd -p 81:80 -p 8000:8000 iachievedeam1/ubuntutest:1.0 /bin/bash
 
 進入容器
 docker exec -it ubuntutest bash
-~~~
-[運行sudo到安裝apache2](###運行sudo到安裝apache2)
 
-[回目錄](#docker)
+
+~~~

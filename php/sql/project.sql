@@ -46,21 +46,12 @@ CREATE TABLE `permission_type` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
-insert  into `permission_type`(`id`,`sort`,`type_name`,`type_number`,`date_created`,`user_created`) values 
-(1,1,'管理權限','admin','0000-00-00 00:00:00',0),
-(2,2,'出勤系統','check','0000-00-00 00:00:00',0),
-(3,3,'專案系統','project','0000-00-00 00:00:00',0),
-(4,4,'薪資系統','accounting','0000-00-00 00:00:00',0),
-(5,5,'訂單系統','ordernum','0000-00-00 00:00:00',0);
-
 -- 權限類型
 CREATE TABLE `permission_value` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `value_name` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
-
-insert  into `permission_value`(`id`,`value_name`) values (1,'無'),(2,'唯讀'),(3,'讀寫');
 
 --------------------------------------------------------------------------------------------------
 -- 出勤系統
@@ -101,18 +92,11 @@ CREATE TABLE `check_status` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
-insert  into `check_status`(`id`,`status_type`) values (1,'-'),(2,'正常'),(3,'異常');
-
-
 CREATE TABLE `check_type` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `type_name` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
-
-insert  into `check_type`(`id`,`type_name`) values (1,'上班'),(2,'下班');
-
-
 
 --------------------------------------------------------------------------------------------------
 -- 專案系統
@@ -136,11 +120,6 @@ CREATE TABLE `project_type` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
-insert  into `project_type`(`id`,`sort`,`type_name`,`type_number`,`date_created`,`user_created`) values 
-(1,1,'公司規章','Company_regulations','0000-00-00 00:00:00',0),
-(2,2,'專案一','project1','0000-00-00 00:00:00',0),
-(3,3,'專案二','project2','0000-00-00 00:00:00',0);
-
 
 -- 權限類型
 CREATE TABLE `project_value` (
@@ -148,8 +127,6 @@ CREATE TABLE `project_value` (
   `value_name` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
-
-insert  into `project_value`(`id`,`value_name`) values (1,'待審核'),(2,'進行中'),(3,'已結案'),(4,'其他異動狀態');
 --------------------------------------------------------------------------------------------------
 -- 其他功能SQL
 -- 登入錯誤封鎖IP
@@ -173,8 +150,6 @@ CREATE TABLE `log` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-
-
 -- 已解決
 -- #1822 - Failed to add the foreign key constraint. Missing index for constraint 'fk_name' in the referenced table 'user'
 -- user.username上面添加unique的唯一項目,
@@ -183,3 +158,25 @@ CREATE TABLE `log` (
 --   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2,
 --   -- ADD KEY `fk_name` (`name`),//多餘的
 --   ADD CONSTRAINT `fk_name` FOREIGN KEY (`name`) REFERENCES `user` (`username`);
+
+--------------------------------------------------------------------------------------------------
+
+insert  into `permission_type`(`id`,`sort`,`type_name`,`type_number`,`date_created`,`user_created`) values 
+(1,1,'管理權限','admin','0000-00-00 00:00:00',0),
+(2,2,'出勤系統','check','0000-00-00 00:00:00',0),
+(3,3,'專案系統','project','0000-00-00 00:00:00',0),
+(4,4,'薪資系統','accounting','0000-00-00 00:00:00',0),
+(5,5,'訂單系統','ordernum','0000-00-00 00:00:00',0);
+
+insert  into `permission_value`(`id`,`value_name`) values (1,'無'),(2,'唯讀'),(3,'讀寫');
+
+insert  into `check_status`(`id`,`status_type`) values (1,'-'),(2,'正常'),(3,'異常');
+
+insert  into `check_type`(`id`,`type_name`) values (1,'上班'),(2,'下班');
+
+insert  into `project_type`(`id`,`sort`,`type_name`,`type_number`,`date_created`,`user_created`) values 
+(1,1,'公司規章','Company_regulations','0000-00-00 00:00:00',0),
+(2,2,'專案一','project1','0000-00-00 00:00:00',0),
+(3,3,'專案二','project2','0000-00-00 00:00:00',0);
+
+insert  into `project_value`(`id`,`value_name`) values (1,'待審核'),(2,'進行中'),(3,'已結案'),(4,'其他異動狀態');

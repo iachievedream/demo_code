@@ -66,11 +66,13 @@ DB_USERNAME=root
 DB_PASSWORD=
 ~~~
 嘗試laravel是否順利安裝
+
 使用Cmder軟體進入此資料夾執行下列指令
 ~~~
 php artisan serve
 ~~~
 如果出現127.0.0.1:8000，
+
 查看是否此網址進入有無看見laravel畫面
 
 [回目錄](#目錄)
@@ -88,7 +90,9 @@ php artisan migrate
 
 ## 建立新的資料庫，使用Migration建立(須按照下方格式)
 php artisan make:migration create_articlese_table
+
 新增這隻檔案程式，名稱為下：
+
 2020_02_25_025914_create_articles_table.php
 ~~~
 CreateArticlesTable
@@ -129,6 +133,7 @@ php artisan migrate:refresh
 ## 在Seeder建立資料表內的假資料
 
 修改此檔案資料以填充資料表內資料
+
 database/seeds/DatabaseSeeder.php
 ~~~
 
@@ -195,24 +200,15 @@ factory(App\User::class,10)->create();
 新增下方程式
 ~~~
 Auth::routes();
-
 Route::get('/','ArticleController@index');
-
 Route::group(['middleware'=>'auth'],function(){
-
 	Route::get('/create','ArticleController@create');
-    
-	Route::post('/store','ArticleController@store');
-
+    Route::post('/store','ArticleController@store');
 	Route::group(['middleware'=>'authority'],function(){
-
 		Route::get('/show/edit/{id}/','ArticleController@edit');
-
 		Route::post('/show/edit/update/{id}','ArticleController@update');
-
 		Route::post('/show/delete/{id}/','ArticleController@destroy');
 	});
-
 });
 ~~~
 
@@ -223,11 +219,9 @@ Route::get('/show/{id}','ArticleController@show');
 前面是使用方法(以get為例)，<br>
 第一個'/show/{id}'是網址的進入方式，<br>
 第二個'ArticleController@show'<br>
-則是Controller的檔案以及後方需執行或進入的函數。
-
-group則是整理route，把相同的歸在一起。
-
-middleware則是中間進入Controller需要進行的驗證機制。
+則是Controller的檔案以及後方需執行或進入的函數。<br>
+group則是整理route，把相同的歸在一起。<br>
+middleware則是中間進入Controller需要進行的驗證機制。<br>
 
 [回目錄](#目錄)
 
@@ -238,11 +232,8 @@ php artisan make:model Article
 會增加此檔案
 ~~~
 <?php
-
 namespace App;
-
 use Illuminate\Database\Eloquent\Model;
-
 class Article extends Model
 {
     protected $fillable = [

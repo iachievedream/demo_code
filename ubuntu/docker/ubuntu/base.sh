@@ -17,5 +17,13 @@ sudo apt install hhvm -y
 # 新增
 sudo apt-get install php7.2-xml -y
 sudo apt-get install php-mbstring -y
+sudo apt-get install php7.2-mysql -y
 sudo apt install libapache2-mod-php7.2 libapache2-mod-php -y
 sudo service apache2 restart
+
+# 專案檔案下載
+cd /var/www/html/
+sudo git clone https://github.com/iachievedream/CodeIgniter3.git
+sudo git clone https://github.com/iachievedream/demo_code
+sudo git clone https://github.com/iachievedream/blog-laravel-jwt.git
+sudo git clone https://github.com/iachievedream/blog-laravel.git

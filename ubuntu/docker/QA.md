@@ -90,3 +90,15 @@ docker run --name myadmin -d --link mysqltest:db -p 9100:80 phpmyadmin/phpmyadmi
 ~~~
 
 [回目錄](#docker)
+
+
+
+[docker 挂载/var/jenkins_home 无法启动](https://blog.csdn.net/u012971339/article/details/81183147)
+
+1，这个问题是由于权限问题引起的一个是root权限  一个是docker权限
+
+2，解决方法：
+
+1）sudo chown -R 1000 data
+
+2）rm 之前的容器 重新run 就可以了
