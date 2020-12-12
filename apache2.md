@@ -35,14 +35,14 @@ Listen 85
 ~~~
 
 ### 建立/開啟虛擬站台 (設定hosts)
-sudo nano etc/host
+sudo vi etc/host
 ~~~
 添加下列內容
 127.0.0.1 laravel.local
 ~~~
 ### 更改appache2的conf
-sudo nano /etc/apache2/sites-available/000-default.conf 
-sudo nano /etc/apache2/sites-available/laravel.local.conf
+sudo vi /etc/apache2/sites-available/000-default.conf 
+sudo vi /etc/apache2/sites-available/laravel.local.conf
 ~~~
 <VirtualHost laravel.local:80>
     ServerAdmin webmaster@localhost
@@ -70,6 +70,12 @@ sudo service apache2 restart
 
 參考資料：[2018 簡潔高效的 PHP & Laravel 工作術](https://medium.com/@shengyou/2018ironman-eos-for-php-developer-day13-124a0903e937)
 
+### Q.AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.17.0.4. Set the 'ServerName' directive globally to suppress this message
+~~~
+sudo vi /etc/apache2/apache2.conf
+add
+ServerName 127.0.0.1
+~~~
 
 
 ## iptables

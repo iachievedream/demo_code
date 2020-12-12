@@ -75,7 +75,7 @@ sudo git clone https://github.com/iachievedream/blog-laravel.git
 sudo chmod -R www-data:www-data /var/www/html/blog-laravel
 //sudo chown -R www-data:root /var/www/laravel_test
 //更改的目標用戶組和用戶，更改的目標文件夾
-sudo chmod -R 755 blog-laravel
+sudo chmod -R 777 blog-laravel
 sudo chmod -R 777 blog-laravel/storage
 //sudo chmod 777 laravel
 //sudo chmod 777 laravel/storage

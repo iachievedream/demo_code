@@ -34,39 +34,29 @@ sh base.sh
 ~~~
 [回目錄](#docker)
 
-## ubuntu的儲存方式實務練習
-~~~
-images-Save
-docker save -o ubuntu_save.tar ubuntu
-載入 ubuntu_save.tar
-docker load < ubuntu_save.tar
-
-Container-export
-docker export ubuntutest > ubuntu_export.tar
-還原 Export Container
-cat ubuntu_export.tar | docker import - ubuntutest
-
-
-運行容器(用原先的images)
-docker run --name ubuntutest -itd -p 8000:80 -p 8001:81 -p 8002:8000 -p 8003:8001 -p 8004:8002 -p 8005:8003 -p 22:22 ubuntu:18.04 /bin/bash
-docker exec -it ubuntutest bash
-
-載入容器(images_ubuntutest)
-cat ubuntu_export.tar | docker import - ubuntutest
-docker run --name ubuntutest -itd -p 8000:80 -p 8001:81 -p 8002:8000 -p 8003:8001 -p 8004:8002 -p 8005:8003 -p 22:22 ubuntutest /bin/bash
-docker exec -it ubuntutest bash
-~~~
-
-## iachievedeam1_ubuntutest
+## apache2_php72
 ~~~
 下載images
-docker pull iachievedeam1/ubuntutest:1.0
+docker push iachievedeam1/apache2_php72:1.0.0
 
 執行容器
-docker run --name ubuntutest -itd -p 81:80 -p 8000:8000 iachievedeam1/ubuntutest:1.0 /bin/bash
+docker run --name apache2 -itd -p 80:80 -p 8000:8000 iachievedeam1/apache2_php72:1.0.1 /bin/bash
 
 進入容器
-docker exec -it ubuntutest bash
-
-
+docker exec -it apache2 bash
 ~~~
+
+使用base.sh以及原先ubuntu18的images做安裝匯出製作而成
+
+## xampp_php7.4
+~~~
+下載images
+docker push iachievedeam1/xampp_php74:1.0.0
+
+docker run --name xampp_php74 -itd -p 80:80 -p 8000:8000 iachievedeam1/apache2_php72:1.0.0 /bin/bash
+
+進入容器
+docker exec -it xampp_php74 bash
+~~~
+
+使用laravel8.sh以及原先ubuntu18的images做安裝匯出製作而成

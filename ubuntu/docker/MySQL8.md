@@ -54,7 +54,9 @@ drop user 'otheruser'@'localhost';
 
 # 新增 MySQL 遠端帳號和密碼
 CREATE USER 'otheruser'@'%' IDENTIFIED BY 'password';
+# 設定權限
 GRANT ALL PRIVILEGES ON *.* TO 'otheruser'@'%';
+# 讓設定生效
 FLUSH PRIVILEGES;
 
 刪除帳號
@@ -94,8 +96,7 @@ mysql -u otheruser -h 127.0.0.1 -p
 ~~~
 [回目錄](#MySQL8)
 
-## MySQL8實務練習
-下載docker上面的mysql
+## 使用docker操作MySQL8實務練習
 ~~~
 docker pull mysql/mysql-server:8.0
 docker run --name=mysql8 -d -p 3306:3306 --env MYSQL_ROOT_PASSWORD=password mysql/mysql-server:8.0
@@ -104,12 +105,7 @@ logs 命令可查看容器是否正常运行
 docker logs mysql8
 
 直接進入container裡面
-docker exec -it mysql8 mysql -uroot -p
-
-進入容器後再登入mysql
-docker exec -it mysql /bin/bash 
-mysql -u root -p
-
+docker exec -it mysql8 mysql -u root -p
 
 # 新增 MySQL 遠端帳號和密碼
 CREATE USER 'otheruser'@'%' IDENTIFIED BY 'password';
