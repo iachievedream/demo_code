@@ -12,7 +12,10 @@
 出現VMware Tools的安裝檔案VMwareTools-10.1.6-5214329.tar.gz,<br>
 複製此檔案到本地目錄並解壓,<br>
 解壓出來可以看到有一個vmware-install.pl的檔案,
-
+~~~
+gunzip VMwareTools~
+tar xvf VMwareTools~
+~~~
 這個檔案就是安裝VMware Tools的指令碼檔案,
 使用指令為:
 ~~~

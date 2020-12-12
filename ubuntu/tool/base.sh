@@ -43,49 +43,49 @@ sudo apt-get install php-mbstring -y
 sudo apt install libapache2-mod-php7.2 libapache2-mod-php -y
 sudo service apache2 restart
 
-# ubuntu安装MySQL
-sudo apt-get install mysql-server -y
-sudo apt install mysql-client -y
-sudo apt install libmysqlclient-dev -y
-# sudo mysql -u root -p
-# # 建立賦予權限的帳戶 root_sql=ab,yourpasswd=12345678
-# CREATE USER 'ab'@'localhost' IDENTIFIED BY '12345678';
-# GRANT ALL PRIVILEGES ON *.* TO 'ab'@'localhost' WITH GRANT OPTION;
-# # GRANT ALL PRIVILEGES ON *.* TO 'phpmyadmin'@'localhost' IDENTIFIED BY 'yourpasswd';//賦予所有權限
-# FLUSH PRIVILEGES;
+# # ubuntu安装MySQL
+# sudo apt-get install mysql-server -y
+# sudo apt install mysql-client -y
+# sudo apt install libmysqlclient-dev -y
+# # sudo mysql -u root -p
+# # # 建立賦予權限的帳戶 root_sql=ab,yourpasswd=12345678
+# # CREATE USER 'ab'@'localhost' IDENTIFIED BY '12345678';
+# # GRANT ALL PRIVILEGES ON *.* TO 'ab'@'localhost' WITH GRANT OPTION;
+# # # GRANT ALL PRIVILEGES ON *.* TO 'phpmyadmin'@'localhost' IDENTIFIED BY 'yourpasswd';//賦予所有權限
+# # FLUSH PRIVILEGES;
 
 
-# install phpmyadmin
-sudo apt-get install phpmyadmin -y
-# sudo nano /etc/apache2/apache2.conf
+# # install phpmyadmin
+# sudo apt-get install phpmyadmin -y
+# # sudo nano /etc/apache2/apache2.conf
 
-# and add the following line at the bottom of the file (you can add it anywhere in the file, I just choose the bottom here so that you can easily access it for modification):
-# # Include /etc/phpmyadmin/apache.conf
-# sudo service apache2 restart
+# # and add the following line at the bottom of the file (you can add it anywhere in the file, I just choose the bottom here so that you can easily access it for modification):
+# # # Include /etc/phpmyadmin/apache.conf
+# # sudo service apache2 restart
 
-# #see phpMyAdmin config
-# sudo nano /etc/dbconfig-common/phpmyadmin.conf
-# dbc_dbuser='root_sql'
-# dbc_dbpass='yourpasswd'
+# # #see phpMyAdmin config
+# # sudo nano /etc/dbconfig-common/phpmyadmin.conf
+# # dbc_dbuser='root_sql'
+# # dbc_dbpass='yourpasswd'
 
-# http://127.0.0.1/phpmyadmin/
-
-
-# install ssh
-sudo apt-get install ssh -y
-# 查看SSH有無被開啟
-# netstat -a | grep ssh
-# 成功會顯示：tcp 0 0 *:ssh *:* LISTEN
-# 連線方式:ssh username@hostname
-
-# sudo service ssh start
-# sudo service ssh stop
-# sudo service ssh restart
+# # http://127.0.0.1/phpmyadmin/
 
 
-# tool
-# 還原點設立
-sudo apt-add-repository -y ppa:teejee2008/ppa
-sudo -i
-apt update
-apt install timeshift
+# # install ssh
+# sudo apt-get install ssh -y
+# # 查看SSH有無被開啟
+# # netstat -a | grep ssh
+# # 成功會顯示：tcp 0 0 *:ssh *:* LISTEN
+# # 連線方式:ssh username@hostname
+
+# # sudo service ssh start
+# # sudo service ssh stop
+# # sudo service ssh restart
+
+
+# # tool
+# # 還原點設立
+# sudo apt-add-repository -y ppa:teejee2008/ppa
+# sudo -i
+# apt update
+# apt install timeshift
