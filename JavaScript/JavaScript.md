@@ -278,9 +278,6 @@ https://www.fooish.com/
 https://www.fooish.com/json/parser.html
 
 
-
-
-
 ~~~javascript
 document.addEventListener('DOMContentLoaded',function() {
 	// 作用函數

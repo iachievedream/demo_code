@@ -42,6 +42,8 @@ docker push iachievedeam1/apache2_php72:1.0.0
 執行容器
 docker run --name apache2 -itd -p 80:80 -p 8000:8000 iachievedeam1/apache2_php72:1.0.1 /bin/bash
 
+docker run --name apache2 -itd -p 80:80 -p 8000:8000 -v /mydata/code:/var/www/html iachievedeam1/apache2_php72:1.0.0 /bin/bash
+
 進入容器
 docker exec -it apache2 bash
 ~~~
@@ -53,10 +55,27 @@ docker exec -it apache2 bash
 下載images
 docker push iachievedeam1/xampp_php74:1.0.0
 
-docker run --name xampp_php74 -itd -p 80:80 -p 8000:8000 iachievedeam1/apache2_php72:1.0.0 /bin/bash
+docker run --name xampp_php74 -itd -p 80:80 -p 8000:8000 iachievedeam1/xampp_php74:1.0.0 /bin/bash
+
+docker run --name xampp_php74 -itd -p 80:80 -p 8000:8000 -v /mydata/code:/opt/lampp/htdocs iachievedeam1/xampp_php74:1.0.0 /bin/bash
 
 進入容器
 docker exec -it xampp_php74 bash
 ~~~
 
 使用laravel8.sh以及原先ubuntu18的images做安裝匯出製作而成
+
+## mysql8
+~~~
+下載images
+docker push iachievedeam1/mysql8:1.0.0
+
+docker run --name=mysql8 -d -p 3306:3306 --env MYSQL_ROOT_PASSWORD=password iachievedeam1/mysql8:1.0.0
+
+docker run --name=mysql8 -d -p 3306:3306 --env MYSQL_ROOT_PASSWORD=password iachievedeam1/mysql8:1.0.0
+
+docker run --name xampp_php74 -itd -p 80:80 -p 8000:8000 -v /mydata/code:/opt/lampp/htdocs iachievedeam1/xampp_php74:1.0.0 /bin/bash
+
+進入容器
+docker exec -it mysql8 mysql -u root -p
+~~~

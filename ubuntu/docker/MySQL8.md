@@ -104,6 +104,11 @@ docker run --name=mysql8 -d -p 3306:3306 --env MYSQL_ROOT_PASSWORD=password mysq
 logs 命令可查看容器是否正常运行
 docker logs mysql8
 
+//查詢容器
+docker inspect mysql8
+//查詢容器內IP
+docker inspect mysql8 | grep '"IPAddress"' | head -n 1
+
 直接進入container裡面
 docker exec -it mysql8 mysql -u root -p
 

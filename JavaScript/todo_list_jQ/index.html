@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="../tool/jquery-3.3.1.min.js"></script>
+    <script src="script.js"></script>
+    <style>
+        .wrapper {
+            width: 400px;
+            margin: 0 auto;
+        }
+        .filters {
+            display: flex;
+        }
+        .filters div{
+            border: 1px solid grey;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        .list {
+            border: 1px solid black;
+            margin-top: 10px;
+        }
+        .list-item {
+            display: flex;
+            position: relative;
+        }
+        .list-item_state {
+            margin: 0 10px;
+        }
+        .list-item_actor {
+            position: absolute;
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div>
+            <input type="test" name="todo" /><button class="add-todo">add new</button>
+        </div>
+        <h2>Todo</h2>
+        <div class="filters">
+            <div>all</div>
+            <div>complete</div>    
+        </div>
+        <div class="list">
+            <div class="list_item">
+                <div class="list-item_state">0</div>
+                <div class="list_item_content">first todo</div>
+                <button class="list_item_action">recart no complete</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

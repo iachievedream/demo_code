@@ -35,23 +35,23 @@ sudo chmod -R 777 bootstrap/cache
 # composer install
 
 
-# sudo nano /opt/lampp/etc/httpd.conf
+# sudo vi /opt/lampp/etc/httpd.conf
 # 把其中 Include etc/extra/httpd-vhosts.conf 這行取消註解
 
-## sudo nano /opt/lampp/etc/extra/httpd-vhosts.conf
+## sudo vi /opt/lampp/etc/extra/httpd-vhosts.conf
 # <VirtualHost 192.168.0.31:80>
 #     ServerAdmin webmaster@dummy-host2.example.com
-#     DocumentRoot "/opt/lampp/htdocs/laravel/public"
-#     ServerName laravel.local          
-#     <Directory "/opt/lampp/htdocs/laravel">
+#     DocumentRoot "/opt/lampp/htdocs/laravel8/public"
+#     ServerName laravel8.local          
+#     <Directory "/opt/lampp/htdocs/laravel8">
 #         Options All
 #         AllowOverride All
 #         Require all granted
 #     </Directory>
 # </VirtualHost>
 
-# sudo nano /etc/hosts
+# sudo vi /etc/hosts
 # 新增一行
-# 127.0.0.1 laravel.local
+# 127.0.0.1 laravel8.local
 
 sudo /opt/lampp/lampp start

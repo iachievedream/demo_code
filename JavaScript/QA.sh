@@ -4,8 +4,8 @@
 
 後台
 ~~~
-			// echo '下班打卡成功';
-			json_encode('下班打卡成功');
+	// echo '下班打卡成功';
+	json_encode('下班打卡成功');
 ~~~
 
 ## unexpected end of json input
