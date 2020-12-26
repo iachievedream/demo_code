@@ -113,3 +113,21 @@ which php
 在vsCode 的文件-》首选项-》设置中，打开 setting.json 文件，添加以下语句
 "php.validate.executablePath": "/usr/bin/php"
 ~~~
+
+
+## snippet-generator
+
+VSCode Snippet
+
+程式碼快捷鍵的設定
+
+[snippet](https://snippet-generator.app/)
+
+<img src="https://github.com/iachievedream/demo_code/blob/master/picture/vscode_snippets.png" width="50%" height="50%" />
+
+
+[2018 VS Code 設定大補帖與小技巧](https://medium.com/@mvpdw06/2018-vs-code-%E8%A8%AD%E5%AE%9A%E5%A4%A7%E8%A3%9C%E5%B8%96%E8%88%87%E5%B0%8F%E6%8A%80%E5%B7%A7-24c6269b0cc1)
+
+[VS Code (Visual Studio Code) 編輯工具-相關設定-snippets](https://ssorc.tw/7174/vs-code-visual-studio-code-%E7%B7%A8%E8%BC%AF%E5%B7%A5%E5%85%B7-%E7%9B%B8%E9%97%9C%E8%A8%AD%E5%AE%9A-snippets/)
+
+[VS Code 中自訂程式碼片段的功能（snippet）](https://pjchender.blogspot.com/2017/04/vs-code-snippet.html)
