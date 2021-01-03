@@ -85,6 +85,7 @@ composer install
 
 //有安裝問題用這個
 //composer install --ignore-platform-reqs
+//composer update --ignore-platform-reqs
 
 sudo cp .env.example .env
 //copy .env.example .env

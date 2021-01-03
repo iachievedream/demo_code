@@ -5,6 +5,15 @@ sudo apt-get install nodejs -y
 sudo apt-get install curl -y
 sudo apt install composer -y
 
+## node
+# 參考來源:https://oranwind.org/post-post-11/
+sudo apt-get update -y
+sudo apt-get install curl -y
+curl --version
+curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+sudo apt-get install -y nodejs -y
+node -v
+
 # apache2 install  6/73/73
 sudo apt install apache2
 cd /var/www/html
