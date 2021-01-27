@@ -85,6 +85,7 @@ composer install
 
 //有安裝問題用這個
 //composer install --ignore-platform-reqs
+//composer update --ignore-platform-reqs
 
 sudo cp .env.example .env
 //copy .env.example .env
@@ -97,7 +98,7 @@ php artisan jwt:secret
 
 php artisan migrate:refresh
 //php artisan db:seed
-php artisan serves
+php artisan serve
 //php artisan serve --host=127.0.0.1 --port=80
 
 80 port 轉成其他 port(host需要換成外網ID),再使用
