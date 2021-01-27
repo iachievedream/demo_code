@@ -13,6 +13,8 @@
 * * [chmod](#chmod)<br>
 
 [other_tool](#other_tool)
+* [filezilla](##filezilla)
+
 
 ## 基本指令
 ### Terminal
@@ -265,14 +267,18 @@ apt install timeshift
 *timeshift
 ~~~
 
-### [ 在 Ubuntu 18.04 中新增新酷音輸入法](https://medium.com/@racktar7743/ubuntu-%E5%9C%A8-ubuntu-18-04-%E4%B8%AD%E6%96%B0%E5%A2%9E%E6%96%B0%E9%85%B7%E9%9F%B3%E8%BC%B8%E5%85%A5%E6%B3%95-4aa85782f656)
+### [在 Ubuntu 18.04 中新增新酷音輸入法](https://medium.com/@racktar7743/ubuntu-%E5%9C%A8-ubuntu-18-04-%E4%B8%AD%E6%96%B0%E5%A2%9E%E6%96%B0%E9%85%B7%E9%9F%B3%E8%BC%B8%E5%85%A5%E6%B3%95-4aa85782f656)
 
 ~~~
 sudo apt install ibus-chewing
 ~~~
 
 
-<a href=""></a><br>
-<a href=""></a><br>
-<a href=""></a><br>
-<a href=""></a><br>
+
+### filezilla
+~~~
+sudo apt-get install vsftpd
+sudo /etc/init.d/vsftpd start
+sudo /etc/init.d/vsftpd status
+~~~
+參考:[详解---filezilla连接不上Ubuntu解决办法](https://blog.csdn.net/xiaobai_IT_learn/article/details/89211359)

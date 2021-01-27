@@ -25,6 +25,9 @@ git add .
 git commit -m "註解內容"
 git remote add origin http~~~
 git push -u origin test
+
+全部分支內容
+git push -u origin --all
 ~~~
 5.分支
 ~~~

@@ -1,17 +1,25 @@
 # ubuntu 20.04
 
-## apache2的安裝
+## finish
+~~~
+docker pull iachievedeam1/apache2_php74_sqlsrc:1.0.0
+docker run --name php74 -itd -p 81:80 -p 8001:8000 iachievedeam1/apache2_php74_sqlsrc:1.0.0 bash
+docker exec -it php74 bash
+sudo service apache2 restart
+~~~
+
+## apache2 install  6/73/73
 ~~~bash
 #!/bin/bash
 sudo apt-get update -y
 sudo apt install apache2 -y
 sudo apt install php php-cli php-fpm php-json php-common php-mysql php-zip php-gd php-mbstring php-curl php-xml php-pear php-bcmath -y
-
 sudo apt install composer -y
 ~~~
 
 ## mssql的安裝
 ~~~bash
+#!/bin/bash
 # Step 1: Update Ubuntu System
 sudo apt-get update
 sudo apt-get -y upgrade
@@ -34,14 +42,15 @@ sudo /opt/mssql/bin/mssql-conf setup
 systemctl status mssql-server.service 
 ~~~
 
-
-## sqlsrc
+## sqlsrv
 ~~~bash
+#!/bin/bash
 # SqlSrv on PHP 7.4 and Ubuntu 20.04
 sudo apt update
 sudo apt install php-pear php-dev -y
-# 錯誤不理會
-# curl -s https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+# 重要須重視
+curl -s https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+
 sudo bash -c "curl -s https://packages.microsoft.com/config/ubuntu/20.04/prod.list > /etc/apt/sources.list.d/mssql-release.list"
 sudo apt update
 sudo ACCEPT_EULA=Y apt -y install msodbcsql17 mssql-tools
@@ -70,21 +79,11 @@ exit
 sudo phpenmod -v 7.4 sqlsrv pdo_sqlsrv
 ~~~
 
-
-## laravel設定
+## docker enviroment doing
 ~~~
-DB_CONNECTION=sqlsrv
-DB_HOST=127.0.0.1
-DB_PORT=1433
-DB_DATABASE=laravel
-DB_USERNAME=sa
-DB_PASSWORD=
+docker pull ubuntu:20.04
+docker run --name php74 -itd -p 80:80 -p 8000:8000 -p 1433:1433 ubuntu:20.04 bash
+docker exec -it php74 bash
+
+apt-get update && apt-get -y install sudo && apt-get install vim && apt-get install -y yum
 ~~~
-
-
-## filezilla
-sudo apt-get install vsftpd
-sudo /etc/init.d/vsftpd start
-sudo /etc/init.d/vsftpd status
-
-參考:[详解---filezilla连接不上Ubuntu解决办法](https://blog.csdn.net/xiaobai_IT_learn/article/details/89211359)

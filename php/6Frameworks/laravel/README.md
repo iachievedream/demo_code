@@ -98,7 +98,7 @@ php artisan jwt:secret
 
 php artisan migrate:refresh
 //php artisan db:seed
-php artisan serves
+php artisan serve
 //php artisan serve --host=127.0.0.1 --port=80
 
 80 port 轉成其他 port(host需要換成外網ID),再使用
