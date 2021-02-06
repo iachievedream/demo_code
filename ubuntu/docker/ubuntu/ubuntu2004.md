@@ -1,6 +1,6 @@
 # ubuntu 20.04
 
-## finish
+## finish apache2_php74_sqlsrc
 ~~~
 docker pull iachievedeam1/apache2_php74_sqlsrc:1.0.0
 docker run --name php74 -itd -p 81:80 -p 8001:8000 iachievedeam1/apache2_php74_sqlsrc:1.0.0 bash
@@ -15,31 +15,6 @@ sudo apt-get update -y
 sudo apt install apache2 -y
 sudo apt install php php-cli php-fpm php-json php-common php-mysql php-zip php-gd php-mbstring php-curl php-xml php-pear php-bcmath -y
 sudo apt install composer -y
-~~~
-
-## mssql的安裝
-~~~bash
-#!/bin/bash
-# Step 1: Update Ubuntu System
-sudo apt-get update
-sudo apt-get -y upgrade
-sudo reboot
-
-# Step 2: Import the public repository GPG keys:(有錯誤，但不影響)
-sudo wget -qO- https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
-
-# Step 3: Add Microsoft SQL Server 2019 Ubuntu repository:
-sudo add-apt-repository "$(wget -qO- https://packages.microsoft.com/config/ubuntu/18.04/mssql-server-2019.list)"
-
-# Step 4: Install MS SQL Server 2019 on Ubuntu 20.04/18.04/16.04 LTS
-sudo apt update
-sudo apt install mssql-server -y
-
-# Step 5: Initialize MS SQL Server 2019 on Ubuntu 20.04/18.04/16.04
-sudo /opt/mssql/bin/mssql-conf setup
-
-# 3
-systemctl status mssql-server.service 
 ~~~
 
 ## sqlsrv
@@ -82,8 +57,50 @@ sudo phpenmod -v 7.4 sqlsrv pdo_sqlsrv
 ## docker enviroment doing
 ~~~
 docker pull ubuntu:20.04
-docker run --name php74 -itd -p 80:80 -p 8000:8000 -p 1433:1433 ubuntu:20.04 bash
-docker exec -it php74 bash
+docker run --name test -itd -p 80:80 -p 8000:8000 -p 1433:1433 ubuntu:20.04 bash
+docker run --name test -itd -p 3306:3306 ubuntu:20.04 bash
+
+docker exec -it test bash
 
 apt-get update && apt-get -y install sudo && apt-get install vim && apt-get install -y yum
 ~~~
+
+
+## mssql的安裝
+~~~bash
+#!/bin/bash
+# Step 1: Update Ubuntu System
+sudo apt-get update
+sudo apt-get -y upgrade
+sudo reboot
+
+# Step 2: Import the public repository GPG keys:(有錯誤，但不影響)
+sudo wget -qO- https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+
+# Step 3: Add Microsoft SQL Server 2019 Ubuntu repository:
+sudo add-apt-repository "$(wget -qO- https://packages.microsoft.com/config/ubuntu/18.04/mssql-server-2019.list)"
+
+# Step 4: Install MS SQL Server 2019 on Ubuntu 20.04/18.04/16.04 LTS
+sudo apt update
+sudo apt install mssql-server -y
+
+# Step 5: Initialize MS SQL Server 2019 on Ubuntu 20.04/18.04/16.04
+sudo /opt/mssql/bin/mssql-conf setup
+
+# 3
+systemctl status mssql-server.service 
+~~~
+## docker mssql的安裝
+~~~
+sudo docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=<YourStrong@Passw0rd>" \
+   -p 1433:1433 --name mssql -h sql1 \
+   -d mcr.microsoft.com/mssql/server:2019-latest
+~~~
+
+### 連接非1433port的方法
+
+~~~
+server name:127.0.0.1,1434
+~~~
+
+參考資料:[SQL Server 透過 TCP/IP 遠端連線時如何使用非 1433 埠號](https://blog.miniasp.com/post/2009/03/29/How-to-connect-to-SQL-Server-using-non-default-1433-port)
