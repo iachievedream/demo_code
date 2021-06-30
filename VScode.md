@@ -3,7 +3,7 @@
 sudo code --user-data-dir="~/.vscode-root"
 
 ## 快捷鍵
-Visual Studio Code同时选中多行输入，Alt + Shift + 鼠标左键选取多行
+Visual Studio Code同时选中多行输入，Alt + Shift + 鼠标左键选取多行，如果搭配搜尋以及enter鍵可以重複地方快速取代。
 
 快速排版：Shift + Alt + F<br>
 git：<br>
@@ -18,46 +18,49 @@ Git: View History (git log)<br>
 
 ## VScode 套件
 ~~~
-### 顯示
+### 顯示:使縮排增加顏色，比較美觀
 indent-rainbow
-使縮排增加顏色，比較美觀~
 
+### html 標籤上寫上class所能提供的樣式
 HTML CSS Support
+
+### Tailwind的輔助套件
+Tailwind CSS IntelliSensePreview
+
+### 快速開發:可以編輯常用的程式碼做快速的貼上以及修改(須上網查詢如何設定的內容)
+HTML Snippets
 
 ### 格式整理
 Format HTML in PHP
 
-### 即時預覽程式碼
-open in browser
-預覽網頁，a/t + B<br>
-
-Preview on Web Server
-
-### 附加功能
-Git History
-可以直接看到 commit 紀錄
-
-Markdown All in One
-一應俱全的 Markdown 工具，無論是 highlight、快速鍵、自動補完、預覽，通通給你！
-
-### 測試
-PHP IntelliSense
-自動搜尋你的專案，並提供錯誤報告，看你的專案是否有錯誤，若PHP程式語法有錯，會有紅色底線的錯誤提示。
-
+### 搭配 PHP CS Fixer 使用，自動在儲存時將程式碼修正成符合 PSR-2 的規範格式。重視 Coding Style 者必裝！
 php cs fixer
-搭配 PHP CS Fixer 使用，自動在儲存時將程式碼修正成符合 PSR-2 的規範格式。重視 Coding Style 者必裝！
 
-XDebug
-搭配 XDebug 使用，可以在 VS Code 中除錯、下中斷點。
 
-PHP Debug
+## 測試
+### 自動搜尋你的專案，並提供錯誤報告，看你的專案是否有錯誤，若PHP程式語法有錯，會有紅色底線的錯誤提示。
+PHP IntelliSense
 
-PHPUnit
-寫測試的好用工具
+### 其他類似的測試套件:
+XDebug:搭配 XDebug 使用，可以在 VS Code 中除錯、下中斷點。
+PHP Debug:
+PHPUnit:寫測試的好用工具
 
-待敘述
-HTML Snippets
-Prettier - Code formatter
+
+### 即時預覽程式碼(預覽網頁，a/t + B)
+open in browser
+以下兩項相同(不須裝)
+Live Server，Preview on Web Server
+
+### 可以直接看到 commit 紀錄
+Git History
+
+## 附加功能
+
+### 一應俱全的 Markdown 工具，無論是 highlight、快速鍵、自動補完、預覽，通通給你！
+Markdown All in One
+
+待敘述:Prettier - Code formatter
 ~~~
 
 參考：[小克的 Visual Studio Code 必裝擴充套件（Extensions）私藏推薦](https://blog.goodjack.tw/2018/03/visual-studio-code-extensions.html)

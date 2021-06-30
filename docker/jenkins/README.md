@@ -12,6 +12,9 @@ docker exec -it myjenkins bash
 
 查看密碼
 cat /var/jenkins_home/secrets/initialAdminPassword
+
+安裝附屬套件(遠端主機必須)
+sudo apt update && sudo apt install openjdk-8-jre -y
 ~~~
 
 ## 執行bash檔

@@ -104,3 +104,16 @@ server name:127.0.0.1,1434
 ~~~
 
 參考資料:[SQL Server 透過 TCP/IP 遠端連線時如何使用非 1433 埠號](https://blog.miniasp.com/post/2009/03/29/How-to-connect-to-SQL-Server-using-non-default-1433-port)
+
+
+## windows的php安裝sqlsrv過程
+
+官網下載SQLSRV58這隻檔案
+解壓縮至這個路徑：C:\xampp\php\ext
+修改C:\xampp\php\php.ini的檔案，結尾處新增下列兩欄
+~~~
+extension=php_sqlsrv_74_ts_x64.dll  
+extension=php_pdo_sqlsrv_74_ts_x64.dll  
+~~~
+
+參考資料：[PHP 使用 SQLSRV 連結 MS SQL Server 教學](https://oranwind.org/php-mssql-sqlsrv/)
