@@ -1,8 +1,10 @@
 # docker
 
+[myself_teaching_video](#myself_teaching_video)<br>
 [sudo_su](#sudo_su)<br>
 [login_docker_hub](#login_docker_hub)<br>
 [push_docker_hub](#push_docker_hub)<br>
+
 [基本指令](#基本指令)<br>
 * [啟動容器](#啟動容器)<br>
 * [進入容器](#進入容器)<br>
@@ -27,7 +29,8 @@
 [Dockerfile](#Dockerfile)<br>
 [文件](#文件)<br>
 
-# 程式整理docker
+
+## myself_teaching_video
 docker_apache實際操作：[dome](https://youtu.be/wqK81mVUsaM)<br>
 apache2實際操作：[dome](https://youtu.be/wl4CWcZC6so)
 
@@ -59,38 +62,45 @@ docker push iachievedeam1/test:1.0.0
 ~~~
 [回目錄](#docker)
 
-## 基本指令
-以ubuntu為例
+## 基本指令(以ubuntu為例)
+搜尋
+> docker search ubuntu  
+
+獲取
+> docker pull ubuntu    
+
+查看目前 images
+> docker images         
+
+查看運行的容器:
+> docker ps             
+
+查看全部運行的容器:
+> docker ps -a          
+
+停止
+> docker stop <container_id>     
+
+刪除容器
+> docker rm -f <container_id>     
+
+刪除images
+> docker rmi  <image_id>
+
+查詢容器
+> docker inspect <container_id>
+
+查詢容器內IP
+> docker inspect <container_id> | grep '"IPAddress"' | head -n 1
+
+將所有container停止及刪除，執行以下指令:
 ~~~
-//搜尋
-docker search ubuntu  
-//獲取
-docker pull ubuntu    
-//查看目前 images
-docker images         
-//查看運行的容器:
-docker ps             
-//查看全部運行的容器:
-docker ps -a          
-//停止
-docker stop <container_id>     
-//刪除容器
-docker rm -f <container_id>     
-//刪除images
-docker rmi  <image_id>
-
-//查詢容器
-docker inspect <container_id>
-//查詢容器內IP
-docker inspect <container_id> | grep '"IPAddress"' | head -n 1
-
-//將所有container停止及刪除，執行以下指令:
 docker stop $(docker ps -a -q)
 docker rm $(docker ps -a -q)
 docker rmi $(docker images)
-
+~~~
 docker的images及contain儲存方式 基本指令
-
+~~~
 images 先來做 Save 動作
 docker save -o ubuntu_save.tar ubuntu
 docker save ubuntu > ubuntu_save.tar
@@ -146,23 +156,23 @@ docker run --name project1  -v ~/project_1:/root/project_1 -p 22:22 -ti ubuntu b
 docker run -d -P --name web --link db:db training/webapp python app.py
 ------------------------------------------------------
 --link name:alias，其中 name 是要連接的容器名稱，alias 是這個連接的別名。
-
+~~~
 創建一個 volume
-docker volume create <volume_name>
+> docker volume create <volume_name>
 docker volume create --name test  
 
 查看所有 volumes
-docker volume ls
+> docker volume ls
 
 查看特定 volume 的詳情
-docker volume inspect <volume_name>
+> docker volume inspect <volume_name>
 
 刪除
-docker volume rm <volume_name>
+> docker volume rm <volume_name>
 
 清理無主的Volume
-docker volume prune
-~~~
+> docker volume prune
+
 [回目錄](#docker)
 
 ###  Dockerfile

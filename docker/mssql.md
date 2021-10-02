@@ -2,30 +2,43 @@
 ###### tags:`docker`
 ## 下載且在運行mssql [mssql](https://docs.microsoft.com/zh-tw/sql/linux/quickstart-install-connect-docker?view=sql-server-ver15&pivots=cs1-bash)
 
-~~~
-docker pull mcr.microsoft.com/mssql/server:2019-latest
+下載
+> docker pull mcr.microsoft.com/mssql/server:2019-latest
 
 運行
-docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=Password" -p 1433:1433 --name sql1 -h fu_db -d mcr.microsoft.com/mssql/server:2019-latest
+> docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=Password" -p 1433:1433 --name mssql_name -h mssql_db -d mcr.microsoft.com/mssql/server:2019-latest
+
 example:Password=123456789
 
 查詢docker容器的ip位置
-docker inspect sql1 | grep '"IPAddress"' | head -n 1
+> docker inspect mssql_name
+
+> docker inspect mssql_name | grep '"IPAddress"' | head -n 1
 
 hint:php連接mssql的IP位置進mssql的容器直接下
-docker exec -it mssql bash
-hostname -I 
+> docker exec -it mssql_name bash
+
+> hostname -I
 
 可以使用localhost連線，但不能使用IP連線
+~~~
 port:1433
 user:sa
 Password:123456789
+~~~
 
 丟入bak檔之前的設定
 ~~~
 sudo chmod -R 777 text.bak
 chown mssql text.bak
-docker cp bash.sh  06f:/home/
+> 原目錄：
+docker cp text.bak  06f:/var/opt/mssql/data
+
+> win10：
+docker cp C:\Users\user\Desktop\text.bak container_id:/var/opt/mssql/data
+
+> mac：
+docker cp /Users/user/Documents/text.bak container_id:/var/opt/mssql/data
 ~~~
 
 2021 03 21_mssql
