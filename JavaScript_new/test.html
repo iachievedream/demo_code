@@ -9,23 +9,29 @@
 <body>
     <p>x為</p>
         <!-- <em id="x_num_id"></em> 公分 -->
-    <input class = "x_num_class" type = "test">
-    <div class="send">send</div>
+    <input id = "x_num_id" type = "test">
+    <div id="send">send</div>
 
     <p>相加結果為：<em id="num_id"></em></p>
 </body>
 <script>
     function add(x , y){
+        console.log("add(x , y) "+x);//console顯示
         add_num = x + y;
         console.log(add_num);//console顯示
         return add_num ;//輸出到add的函數
     }
-    var x_num = document.getElementsByClassName('x_num_class')[0];
-    var send = document.getElementsByClassName('send')[0];//抓取參數
-    send.onclick = function(){
-        // console.log(x_num);//console顯示
+    // var x_num = document.getElementsByClassName('x_num_class')[0];
+    // var send = document.getElementsByClassName('send')[0];//抓取參數
+    // send.onclick = function(){
+    document.getElementById('send').onclick=function(){
+        // 是+而非.
+
+        // var x_num = document.getElementsByClassName('x_num_id')[0];
+        var x_num  = document.getElementById('x_num_id').value;//有.value的是數值，沒有的則是一個div
+        console.log("x_num "+x_num);//console顯示
+        console.log("x_num:typeof "+typeof(x_num));//console顯示
         num = add(x_num,1);
-        // console.log(num);//console顯示
 
         document.getElementById('num_id').textContent = num;
     }
