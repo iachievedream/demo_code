@@ -21,13 +21,13 @@ sudo mv index.html index1.html
 # apache2 -version
 
 # php install:
-sudo apt install php7.2-cli -y
+sudo apt install php7.4-cli -y
 sudo apt install hhvm -y
 # 新增
-sudo apt-get install php7.2-xml -y
+sudo apt-get install php7.4-xml -y
 sudo apt-get install php-mbstring -y
-sudo apt-get install php7.2-mysql -y
-sudo apt install libapache2-mod-php7.2 libapache2-mod-php -y
+sudo apt-get install php7.4-mysql -y
+sudo apt install libapache2-mod-php7.4 libapache2-mod-php -y
 sudo service apache2 restart
 
 # 專案檔案下載

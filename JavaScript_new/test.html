@@ -15,23 +15,23 @@
     function add(x , y){
         console.log("add(x , y) "+x);
         add_num = parseInt(x) + parseInt(y);//parseInt轉成數字 錯誤為 add_num = x + y;
-        console.log(add_num);
-        return add_num ;//輸出到add的函數
+        return add_num ;//輸出到add的函數 console.log(add_num);
     }
-    // var x_num = document.getElementsByClassName('x_num_class')[0];
     // var send = document.getElementsByClassName('send')[0];//抓取參數
     // send.onclick = function(){
     document.getElementById('send').onclick=function(){// 是+而非.
         // var x_num = document.getElementsByClassName('x_num_id')[0];
         var x_num  = document.getElementById('x_num_id').value;//有.value的是數值，沒有的則是一個div
-        var y_num  = document.getElementById('y_num_id').value;//有.value的是數值，沒有的則是一個div
-        console.log("x_num "+x_num);
+        var y_num  = document.getElementById('y_num_id').value;//抓取這一欄id上的數值
         console.log("x_num:typeof "+typeof(x_num));
-        num = add(x_num,y_num);
-        console.log("num = "+num);
-        document.getElementById('num_id').textContent = num;
+        num = add(x_num,y_num); //console.log("num = "+num);
+        document.getElementById('num_id').textContent = num;//輸出顯示在網頁上面
     }
 </script>
+<br><br><br>
+
+參考<a href="https://hsuchihting.github.io/javascript/20200316/526717564/">JS 筆記 - 利用函式 function 寫一個計算題</a>
+
 </html>
 <!-- 相加結果為：[object HTMLInputElement]1
     有些
