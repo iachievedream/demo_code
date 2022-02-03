@@ -1,20 +1,12 @@
 #!/bin/bash
 sudo apt-get update -y
 
-# 中新增新酷音輸入法
-sudo apt install ibus-chewing
-
 # install yum，npm，nodejs，curl,composer,git
 sudo apt install yum -y
 sudo apt-get install npm -y
 sudo apt-get install nodejs -y
 sudo apt-get install curl -y
 sudo apt install composer -y
-
-# VScode install:
-sudo apt-get install snapd -y
-sudo snap install code --classic
-# code //run VScode
 
 # install docker
 sudo apt-get update -y
