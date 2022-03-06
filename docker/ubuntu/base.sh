@@ -44,6 +44,7 @@ sudo apt install hhvm -y
 # 新增
 sudo apt-get install php7.4-xml -y
 sudo apt-get install php-mbstring -y
+sudo apt-get install php7.4-curl -y
 sudo apt-get install php7.4-mysql -y
 sudo apt install libapache2-mod-php7.4 libapache2-mod-php -y
 sudo service apache2 restart

@@ -1,22 +1,4 @@
 # ubuntu
-
-[基本指令](#基本指令)<br>
-* [Terminal](##Terminal)<br>
-* [編輯文字檔案](##編輯文字檔案)<br>
-* [查詢自己電腦IP位置](##查詢自己電腦IP位置)<br>
-* [shell](##shell)<br>
-* [操作SSH](##操作SSH)<br>
-* * [清除系統上被佔用的Port](#清除系統上被佔用的Port)<br>
-  
-[防火牆](#防火牆)<br>
-[Q&A](#Q&A)<br>
-* [mkdir Permission denied](#mkdir_Permission_denied)<br>
-* * [chmod](#chmod)<br>
-
-[other_tool](#other_tool)
-* [filezilla](##filezilla)
-
-
 ## 基本指令
 ### Terminal
 開啟Terminal，sudo 管理者執行，sudo -i<br>
@@ -161,7 +143,11 @@ ubuntu則是需 ssh username@hostname<br>
 
 <a href="https://sites.google.com/site/linuxcooltea/home/ubuntu-she-dingssh-yuan-duan-lian-xian-gong-neng">Ubuntu - SSH 的安裝與設定 和 設定SSH遠端連線功能</a>
 <br>
-[回目錄](#ubuntu)
+
+#### 變更使用者密碼
+> sudo passwd ubuntu
+
+參考資料：[Linux 的 passwd 指令範例教學](https://blog.gtwang.org/linux/linux-passwd-command-examples/)
 
 #### 清除系統上被佔用的Port
 ~~~

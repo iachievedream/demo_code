@@ -6,7 +6,7 @@ docker pull ubuntu:18.04
 
 運行contain
 docker run -t -i ubuntu /bin/bash
-docker run --name ubuntutest -itd -p 80:80 -p 8000:8000 ubuntu:18.04 bash
+docker run --name ubuntutest -itd -p 80:80 -p 8000:8000 ubuntu:20.04 bash
 docker run --privileged --name ubuntutest -itd -p 81:80 -p 8000:8000 -v /var/www/html:/var/www/html ubuntu:18.04 bash
 
 進入contain
