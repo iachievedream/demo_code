@@ -83,3 +83,25 @@ git stash clear
 > git remote set-url origin https://<your_token>@github.com/<USERNAME>/<REPO>.git
 
 參考資料：[github開發人員在七夕搞事情：remote: Support for password authentication was removed on August 13, 2021.](https://www.uj5u.com/ruanti/294517.html)
+
+## 更新專案的時候發生的錯誤碼`remote origin already exists`
+删除远程分支：
+> git remote rm origin
+> git remote add origin git@github.com:[your git name]/[your git repertory]
+
+如：
+>git remote add origin git@github.com:iachievedream/demo.git
+
+…or push an existing repository from the command line
+
+git branch -M main
+git push -u origin main
+
+------
+新的遠端更新
+git pull <remote> <branch>
+git pull main main
+git pull prod prod
+
+
+參考資料：[git---如何解决fatal: remote origin already exists报错window下git报错](https://blog.csdn.net/Wbiokr/article/details/73436695)
