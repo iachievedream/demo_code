@@ -1,8 +1,8 @@
 #!/bin/bash
-sudo apt-get update && apt-get -y install sudo && apt-get install vim && apt-get install -y yum
+apt-get update && apt-get -y install sudo && apt-get install vim && apt-get install -y yum
 
 sudo apt-get update -y
-sudo apt-get install npm -y
+sudo apt-get install npm -y # 6/73/73
 sudo apt-get install nodejs -y
 sudo apt-get install curl -y
 sudo apt install composer -y
