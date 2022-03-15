@@ -105,3 +105,9 @@ git pull prod prod
 
 
 參考資料：[git---如何解决fatal: remote origin already exists报错window下git报错](https://blog.csdn.net/Wbiokr/article/details/73436695)
+
+## git rebase
+
+[另一種合併方式（使用 rebase）](https://gitbook.tw/chapters/branch/merge-with-rebase)
+
+## PR()
