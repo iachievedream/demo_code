@@ -1,6 +1,15 @@
 # git操作
 分支：master、dev、test
 
+先安裝且開啟cmder的軟體
+~~~
+// 進入專案資料夾
+cd 資料夾位置
+
+git clone https的專案下載網址
+git clone https://github.com/iachievedream/demo_code.git
+~~~
+
 1.更新專案
 ~~~
 git fetch  //查看與線上檔案差異
@@ -15,9 +24,14 @@ git checkout test //切換分支
 ~~~
 3.本機備份
 ~~~
+//此資料夾路徑做git的初始化動作
 git init
+
+//載入以變動的檔案
 git add .
-git commit -m "註解內容"
+
+//做一個追蹤的版本控制，以及備註"origin"的說明
+git commit -m "origin"
 ~~~
 4.上傳至線上
 ~~~
