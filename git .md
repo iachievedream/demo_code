@@ -73,9 +73,11 @@ git stash clear
 
 ## 下載私密專案
 私密專案的下載方式
-> cd ~
-> rm -r .ssh
-> ssh-keygen -t rsa -C iachievedream@gmail.com (你的github邮箱地址)
+~~~
+cd ~
+rm -r .ssh
+ssh-keygen -t rsa -C iachievedream@gmail.com (你的github邮箱地址)
+~~~
 
 後敘述入yes以及按enter鍵即可，
 注意ssh的憑證位置是否在此處，
