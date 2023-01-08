@@ -5,6 +5,8 @@ sudo code --user-data-dir="~/.vscode-root"
 ## 快捷鍵
 Visual Studio Code同时选中多行输入，Alt + Shift + 鼠标左键选取多行，如果搭配搜尋以及enter鍵可以重複地方快速取代。
 
+Alt + Z 自動換行
+
 快速排版：Shift + Alt + F<br>
 git：<br>
 我們以剛剛的同一個專案為例，<br>
@@ -33,10 +35,6 @@ HTML Snippets
 ### 格式整理
 Format HTML in PHP
 
-### 搭配 PHP CS Fixer 使用，自動在儲存時將程式碼修正成符合 PSR-2 的規範格式。重視 Coding Style 者必裝！
-php cs fixer
-
-
 ## 測試
 ### 自動搜尋你的專案，並提供錯誤報告，看你的專案是否有錯誤，若PHP程式語法有錯，會有紅色底線的錯誤提示。
 PHP IntelliSense
@@ -60,7 +58,25 @@ Git History
 ### 一應俱全的 Markdown 工具，無論是 highlight、快速鍵、自動補完、預覽，通通給你！
 Markdown All in One
 
-待敘述:Prettier - Code formatter
+### 
+PHP Intelephense
+~~~
+"php.validate.executablePath": "//usr//local//bin//php",
+"php.executablePath": "//usr//local//bin//php",
+~~~
+
+Prettier - Code formatter
+可以透過按 shift + alt + F 的方式，讓整個程式碼重新排版
+
+Code Spell Checker
+主動進行英文偵測，避免拼錯。
+
+favorites
+特定的檔案或資料夾新增到我的最愛
+
+[Deprecated] Bracket Pair Colorizer 2
+大、中、小括弧 ( { }、[ ]、( ) ) 加上各自獨立的顏色
+
 ~~~
 
 參考：[小克的 Visual Studio Code 必裝擴充套件（Extensions）私藏推薦](https://blog.goodjack.tw/2018/03/visual-studio-code-extensions.html)
@@ -78,14 +94,34 @@ Markdown All in One
     "editor.fontSize": 12,
     "window.zoomLevel": 1.3,         //儀表字體
     "editor.tabSize": 4,   //spaces空格設定
+
+    "intelephense.files.associations": [
+        "*.php",
+        "*.phtml"
+    ], //spaces空格設定
+    
+    "php.validate.executablePath": "//usr//local//bin//php",
+    "php.executablePath": "//usr//local//bin//php",
+    "php-cs-fixer.onsave": true,
+    "php-cs-fixer.executablePath": "${extensionPath}/php-cs-fixer.phar",
+    "php-cs-fixer.lastDownload": 1665164381120,
+    "php-cs-fixer.exclude": [
+    
+    ],
 }
 ~~~
 ## php cs fixer 設定
+搭配 PHP CS Fixer 使用，自動在儲存時將程式碼修正成符合 PSR-2 的規範格式。重視 Coding Style 者必裝！
+
 ~~~
+windows
 安裝composer
 composer -V
 安裝php-cs-fixer
 composer global require friendsofphp/php-cs-fixer
+
+mac
+brew install php-cs-fixer
 ~~~
 ### vs code(前方空白鍵要注意,要下載php-cs-fixer.phar)
 ~~~
@@ -99,8 +135,8 @@ Executable Path Windows：
 C:\Users\{你的使用者名稱}\AppData\Roaming\Composer\vendor\bin\php-cs-fixer.bat
 
 勾選:Onsave
-
 ~~~
+
 
 ## xdebug vscode linux
 ~~~
@@ -123,6 +159,10 @@ which php
 VSCode Snippet
 
 程式碼快捷鍵的設定
+
+Command ⌘ + Shift ⇧ + P 開啟命令列
+ctrl+shift+p 開啟命令列
+就可以編輯快捷鍵。
 
 [snippet](https://snippet-generator.app/)
 

@@ -17,10 +17,10 @@
 v的路徑注意
 
 windws：
-> docker run --name php74 -itd -p 22:22 -p 85:80 -p 90:81 -p 8005:8000 -p 8010:8001 -v C:\Users\{user}\Desktop\docker\:/var/www iachievedeam1/apache2_php74_sqlsrc:1.0.1 bash
+> docker run --name php74 -itd -p 22:22 -p 85:80 -p 90:81 -p 8005:8000 -p 8010:8001 -v C:\Users\{user}\Desktop\docker\:/var/www iachievedeam1/apache2_php74_sqlsrc:1.0.2 bash
 
 mac：
-> docker run --name php74 -itd -p 22:22 -p 85:80 -p 90:81 -p 8005:8000 -p 8010:8001 -v /Users/{user}/Documents/docker/:/var/www iachievedeam1/apache2_php74_sqlsrc:1.0.1 bash
+> docker run --name php74 -itd -p 22:22 -p 85:80 -p 90:81 -p 8005:8000 -p 8010:8001 -v /Users/{user}/Documents/docker/:/var/www iachievedeam1/apache2_php74_sqlsrc:1.0.2 bash
 
 {user}:為自己電腦的使用者名稱。
 測試機的port多一個5

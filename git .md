@@ -127,3 +127,5 @@ git pull prod prod
 [另一種合併方式（使用 rebase）](https://gitbook.tw/chapters/branch/merge-with-rebase)
 
 ## PR()
+
+credentialhelperselector

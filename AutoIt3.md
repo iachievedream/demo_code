@@ -90,3 +90,21 @@ WinWaitActive("XAMPP Control Panel v3.2.4   [ Compiled: Jun 5th 2019 ]")
 ControlClick("XAMPP", "Start", "[CLASS:TBitBtn; INSTANCE:30]", "")
 WinClose("XAMPP")
 ~~~
+
+## bat
+
+製作自動安裝軟體
+
+自動安裝軟體bat
+bat一鍵安裝
+
+~~~bat
+echo off 
+REM echo
+REM start/wait E:\tool\UML_astah-communit.exe /S
+REM echo  UML_astah ok
+
+REM echo  wait
+REM start/wait E:\tool\evince.msi /QB
+REM echo UML_StarUML ok
+~~~
